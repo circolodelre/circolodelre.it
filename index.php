@@ -16,14 +16,13 @@ require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
-$app = new Slim\App();
+$app = new \Slim\App();
 
 $container = $app->getContainer();
-$container['renderer'] = new \Slim\Views\PhpRenderer("./templates");
+$container['view'] = new \Slim\Views\PhpRenderer('./templates');
 
-$app->get('/hello/{name}', function ($request, $response, $args) {
-    return $this->renderer->render($response, "hello.phtml", $args);
+$app->get('/', function ($request, $response, $args) {
+    return $this->view->render($response, 'index.phtml', $args);
 });
-
 
 $app->run();
