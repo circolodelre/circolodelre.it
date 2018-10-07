@@ -1,6 +1,11 @@
 {
+    "autoload": {
+        "files": ["functions.php"]
+    },
     "require": {
         "slim/slim": "^3.9",
-        "slim/php-view": "^2.2"
+        "slim/php-view": "^2.2",
+        "monolog/monolog": "^1.23",
+        "webmozart/glob": "^4.1"
     }
 }

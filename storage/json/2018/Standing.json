@@ -1,0 +1,152 @@
+{
+    "0": {
+        "Tournaments": {
+            "1527372000": {
+                "Time": 1527372000,
+                "Date": "27\/05\/2018"
+            }
+        },
+        "Rows": {
+            "e482677c4b4f4f65667582fd07fe3939": {
+                "Name": "Mangiaracina Andrea",
+                "Title": "  E",
+                "1527372000": " 4.0",
+                "Count": " 4.0",
+                "Score": " 4.0",
+                "Bonus": 5,
+                "Total": " 4.0",
+                "Rank": 1
+            },
+            "7189812d227e926eacc192b75a252350": {
+                "Name": "Mirasolo Davide",
+                "Title": "  N",
+                "1527372000": " 4.0",
+                "Count": " 4.0",
+                "Score": " 4.0",
+                "Bonus": 5,
+                "Total": " 4.0",
+                "Rank": 2
+            },
+            "6dcecc2cb2868be2ece93d292ba38b42": {
+                "Name": "Vaccaro Giuseppe",
+                "Title": "E-O60",
+                "1527372000": " 3.5",
+                "Count": " 3.5",
+                "Score": " 3.5",
+                "Bonus": 4.5,
+                "Total": " 3.5",
+                "Rank": 3
+            },
+            "602af131d1b6f59f96167270b6ef3d8e": {
+                "Name": "Bianco Francesco",
+                "Title": "  N",
+                "1527372000": " 2.5",
+                "Count": " 2.5",
+                "Score": " 2.5",
+                "Bonus": 3.5,
+                "Total": " 2.5",
+                "Rank": 4
+            },
+            "e6218dc27f7a3ca5a7de7f1b0b268062": {
+                "Name": "Simone Bonagiuso",
+                "Title": "  D",
+                "1527372000": " 2.0",
+                "Count": " 2.0",
+                "Score": " 2.0",
+                "Bonus": 3,
+                "Total": " 2.0",
+                "Rank": 5
+            },
+            "42e2ecd2431c06a8c0eb786c545fd614": {
+                "Name": "Bertuglia Michelangelo",
+                "Title": "D-O60",
+                "1527372000": " 2.0",
+                "Count": " 2.0",
+                "Score": " 2.0",
+                "Bonus": 3,
+                "Total": " 2.0",
+                "Rank": 6
+            },
+            "78da03434dcac87bb8b7fad4879cf4f4": {
+                "Name": "Marino Giorgia",
+                "Title": "D-U14",
+                "1527372000": " 1.0",
+                "Count": " 1.0",
+                "Score": " 1.0",
+                "Bonus": 2,
+                "Total": " 1.0",
+                "Rank": 7
+            },
+            "53f46442e96e16d00224ca59b7dc83cf": {
+                "Name": "Marino Giuseppe",
+                "Title": "  D",
+                "1527372000": " 1.0",
+                "Count": " 1.0",
+                "Score": " 1.0",
+                "Bonus": 2,
+                "Total": " 1.0",
+                "Rank": 8
+            }
+        }
+    },
+    "1527372000": {
+        "Rows": {
+            "e482677c4b4f4f65667582fd07fe3939": {
+                "Count": " 4.0",
+                "Name": "Mangiaracina Andrea",
+                "Title": "  E",
+                "Score": " 4.0",
+                "Total": " 4.0"
+            },
+            "7189812d227e926eacc192b75a252350": {
+                "Count": " 4.0",
+                "Name": "Mirasolo Davide",
+                "Title": "  N",
+                "Score": " 4.0",
+                "Total": " 4.0"
+            },
+            "6dcecc2cb2868be2ece93d292ba38b42": {
+                "Count": " 3.5",
+                "Name": "Vaccaro Giuseppe",
+                "Title": "E-O60",
+                "Score": " 3.5",
+                "Total": " 3.5"
+            },
+            "602af131d1b6f59f96167270b6ef3d8e": {
+                "Count": " 2.5",
+                "Name": "Bianco Francesco",
+                "Title": "  N",
+                "Score": " 2.5",
+                "Total": " 2.5"
+            },
+            "e6218dc27f7a3ca5a7de7f1b0b268062": {
+                "Count": " 2.0",
+                "Name": "Simone Bonagiuso",
+                "Title": "  D",
+                "Score": " 2.0",
+                "Total": " 2.0"
+            },
+            "42e2ecd2431c06a8c0eb786c545fd614": {
+                "Count": " 2.0",
+                "Name": "Bertuglia Michelangelo",
+                "Title": "D-O60",
+                "Score": " 2.0",
+                "Total": " 2.0"
+            },
+            "78da03434dcac87bb8b7fad4879cf4f4": {
+                "Count": " 1.0",
+                "Name": "Marino Giorgia",
+                "Title": "D-U14",
+                "Score": " 1.0",
+                "Total": " 1.0"
+            },
+            "53f46442e96e16d00224ca59b7dc83cf": {
+                "Count": " 1.0",
+                "Name": "Marino Giuseppe",
+                "Title": "  D",
+                "Score": " 1.0",
+                "Total": " 1.0"
+            }
+        }
+    }
+}

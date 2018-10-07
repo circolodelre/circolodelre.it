@@ -16,13 +16,27 @@ require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
-$app = new \Slim\App();
+$app = new \Slim\App([
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+]);
 
 $container = $app->getContainer();
 $container['view'] = new \Slim\Views\PhpRenderer('./templates');
+$container['logger'] = function () {
+    $logger = new \Monolog\Logger('debug');
+    $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
+    $logger->pushHandler(new \Monolog\Handler\StreamHandler(__DIR__.'/storage/log', \Monolog\Logger::ERROR));
+    return $logger;
+};
 
 $app->get('/', function ($request, $response, $args) {
-    return $this->view->render($response, 'index.phtml', $args);
+    $year = date('Y');
+    $file = __DIR__.'/storage/json/'.$year.'/Standing.json';
+    return $this->view->render($response, 'index.phtml', [
+        'standing' => json_decode(file_get_contents($file), true),
+    ]);
 });
 
 $app->run();
