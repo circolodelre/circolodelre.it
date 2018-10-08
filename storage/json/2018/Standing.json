@@ -1,152 +1,402 @@
 {
-    "0": {
-        "Tournaments": {
-            "1527372000": {
-                "Time": 1527372000,
-                "Date": "27\/05\/2018"
+    "Stages": {
+        "1527372000": {
+            "Time": 1527372000,
+            "Date": "27\/05\/2018",
+            "Stage": "#1",
+            "Rows": {
+                "7189812d227e926eacc192b75a252350": {
+                    "Name": "Mirasolo Davide",
+                    "Title": "  N",
+                    "Score": " 4.0",
+                    "Total": " 4.0"
+                },
+                "e482677c4b4f4f65667582fd07fe3939": {
+                    "Name": "Mangiaracina Andrea",
+                    "Title": "  E",
+                    "Score": " 4.0",
+                    "Total": " 4.0"
+                },
+                "6dcecc2cb2868be2ece93d292ba38b42": {
+                    "Name": "Vaccaro Giuseppe",
+                    "Title": "E-O60",
+                    "Score": " 3.5",
+                    "Total": " 3.5"
+                },
+                "602af131d1b6f59f96167270b6ef3d8e": {
+                    "Name": "Bianco Francesco",
+                    "Title": "  N",
+                    "Score": " 2.5",
+                    "Total": " 2.5"
+                },
+                "e6218dc27f7a3ca5a7de7f1b0b268062": {
+                    "Name": "Simone Bonagiuso",
+                    "Title": "  D",
+                    "Score": " 2.0",
+                    "Total": " 2.0"
+                },
+                "42e2ecd2431c06a8c0eb786c545fd614": {
+                    "Name": "Bertuglia Michelangelo",
+                    "Title": "D60M",
+                    "Score": " 2.0",
+                    "Total": " 2.0"
+                },
+                "78da03434dcac87bb8b7fad4879cf4f4": {
+                    "Name": "Marino Giorgia",
+                    "Title": "D-U14",
+                    "Score": " 1.0",
+                    "Total": " 1.0"
+                },
+                "53f46442e96e16d00224ca59b7dc83cf": {
+                    "Name": "Marino Giuseppe",
+                    "Title": "  D",
+                    "Score": " 1.0",
+                    "Total": " 1.0"
+                }
             }
         },
-        "Rows": {
-            "e482677c4b4f4f65667582fd07fe3939": {
-                "Name": "Mangiaracina Andrea",
-                "Title": "  E",
-                "1527372000": " 4.0",
-                "Count": " 4.0",
-                "Score": " 4.0",
-                "Bonus": 5,
-                "Total": " 4.0",
-                "Rank": 1
-            },
-            "7189812d227e926eacc192b75a252350": {
-                "Name": "Mirasolo Davide",
-                "Title": "  N",
-                "1527372000": " 4.0",
-                "Count": " 4.0",
-                "Score": " 4.0",
-                "Bonus": 5,
-                "Total": " 4.0",
-                "Rank": 2
-            },
-            "6dcecc2cb2868be2ece93d292ba38b42": {
-                "Name": "Vaccaro Giuseppe",
-                "Title": "E-O60",
-                "1527372000": " 3.5",
-                "Count": " 3.5",
-                "Score": " 3.5",
-                "Bonus": 4.5,
-                "Total": " 3.5",
-                "Rank": 3
-            },
-            "602af131d1b6f59f96167270b6ef3d8e": {
-                "Name": "Bianco Francesco",
-                "Title": "  N",
-                "1527372000": " 2.5",
-                "Count": " 2.5",
-                "Score": " 2.5",
-                "Bonus": 3.5,
-                "Total": " 2.5",
-                "Rank": 4
-            },
-            "e6218dc27f7a3ca5a7de7f1b0b268062": {
-                "Name": "Simone Bonagiuso",
-                "Title": "  D",
-                "1527372000": " 2.0",
-                "Count": " 2.0",
-                "Score": " 2.0",
-                "Bonus": 3,
-                "Total": " 2.0",
-                "Rank": 5
-            },
-            "42e2ecd2431c06a8c0eb786c545fd614": {
-                "Name": "Bertuglia Michelangelo",
-                "Title": "D-O60",
-                "1527372000": " 2.0",
-                "Count": " 2.0",
-                "Score": " 2.0",
-                "Bonus": 3,
-                "Total": " 2.0",
-                "Rank": 6
-            },
-            "78da03434dcac87bb8b7fad4879cf4f4": {
-                "Name": "Marino Giorgia",
-                "Title": "D-U14",
-                "1527372000": " 1.0",
-                "Count": " 1.0",
-                "Score": " 1.0",
-                "Bonus": 2,
-                "Total": " 1.0",
-                "Rank": 7
-            },
-            "53f46442e96e16d00224ca59b7dc83cf": {
-                "Name": "Marino Giuseppe",
-                "Title": "  D",
-                "1527372000": " 1.0",
-                "Count": " 1.0",
-                "Score": " 1.0",
-                "Bonus": 2,
-                "Total": " 1.0",
-                "Rank": 8
+        "1538961116": {
+            "Time": 1538961116,
+            "Date": "08\/10\/2018",
+            "Stage": "08\/10\/2018",
+            "Rows": {
+                "7189812d227e926eacc192b75a252350": {
+                    "Name": "Mirasolo Davide",
+                    "Title": "  N",
+                    "Score": " 4.5",
+                    "Total": " 4.5"
+                },
+                "cf8adca857a28e410aa933a4a252fe3a": {
+                    "Name": "Guarina Filippo",
+                    "Title": "  D",
+                    "Score": " 3.5",
+                    "Total": " 3.5"
+                },
+                "e482677c4b4f4f65667582fd07fe3939": {
+                    "Name": "Mangiaracina Andrea",
+                    "Title": "  D",
+                    "Score": " 3.5",
+                    "Total": " 3.5"
+                },
+                "6dcecc2cb2868be2ece93d292ba38b42": {
+                    "Name": "Vaccaro Giuseppe",
+                    "Title": "D-O60",
+                    "Score": " 3.0",
+                    "Total": " 3.0"
+                },
+                "42e2ecd2431c06a8c0eb786c545fd614": {
+                    "Name": "Bertuglia Michelangelo",
+                    "Title": "E-O60",
+                    "Score": " 2.0",
+                    "Total": " 2.0"
+                },
+                "602af131d1b6f59f96167270b6ef3d8e": {
+                    "Name": "Bianco Francesco",
+                    "Title": "   ",
+                    "Score": " 1.5",
+                    "Total": " 1.5"
+                },
+                "32128d2cd7b48b72df02eb963961f2d3": {
+                    "Name": "Oddo",
+                    "Title": "   ",
+                    "Score": " 1.5",
+                    "Total": " 1.5"
+                },
+                "946b76d6c892c5b89036e52864e05ef5": {
+                    "Name": "Maggio",
+                    "Title": "   ",
+                    "Score": " 0.5",
+                    "Total": " 0.5"
+                }
             }
         }
     },
-    "1527372000": {
+    "General": {
         "Rows": {
-            "e482677c4b4f4f65667582fd07fe3939": {
-                "Count": " 4.0",
-                "Name": "Mangiaracina Andrea",
-                "Title": "  E",
-                "Score": " 4.0",
-                "Total": " 4.0"
-            },
             "7189812d227e926eacc192b75a252350": {
-                "Count": " 4.0",
+                "Count": " 4.5",
                 "Name": "Mirasolo Davide",
                 "Title": "  N",
-                "Score": " 4.0",
-                "Total": " 4.0"
+                "Rating": 1440,
+                "1527372000": " 4.0",
+                "Score": " 4.5",
+                "Bonus": " 4.5",
+                "Total": " 4.5",
+                "Trend": "=",
+                "1538961116": " 4.5"
+            },
+            "e482677c4b4f4f65667582fd07fe3939": {
+                "Count": " 3.5",
+                "Name": "Mangiaracina Andrea",
+                "Title": "  D",
+                "Rating": 1440,
+                "1527372000": " 4.0",
+                "Score": " 3.5",
+                "Bonus": " 3.5",
+                "Total": " 3.5",
+                "Trend": "=",
+                "1538961116": " 3.5"
             },
             "6dcecc2cb2868be2ece93d292ba38b42": {
-                "Count": " 3.5",
+                "Count": " 3.0",
                 "Name": "Vaccaro Giuseppe",
-                "Title": "E-O60",
-                "Score": " 3.5",
-                "Total": " 3.5"
+                "Title": "D-O60",
+                "Rating": 1440,
+                "1527372000": " 3.5",
+                "Score": " 3.0",
+                "Bonus": " 3.0",
+                "Total": " 3.0",
+                "Trend": "=",
+                "1538961116": " 3.0"
             },
             "602af131d1b6f59f96167270b6ef3d8e": {
-                "Count": " 2.5",
+                "Count": " 1.5",
                 "Name": "Bianco Francesco",
-                "Title": "  N",
-                "Score": " 2.5",
-                "Total": " 2.5"
+                "Title": "   ",
+                "Rating": 1440,
+                "1527372000": " 2.5",
+                "Score": " 1.5",
+                "Bonus": " 1.5",
+                "Total": " 1.5",
+                "Trend": "=",
+                "1538961116": " 1.5"
             },
             "e6218dc27f7a3ca5a7de7f1b0b268062": {
                 "Count": " 2.0",
                 "Name": "Simone Bonagiuso",
                 "Title": "  D",
+                "Rating": 1440,
+                "1527372000": " 2.0",
                 "Score": " 2.0",
-                "Total": " 2.0"
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
             },
             "42e2ecd2431c06a8c0eb786c545fd614": {
                 "Count": " 2.0",
                 "Name": "Bertuglia Michelangelo",
-                "Title": "D-O60",
+                "Title": "E-O60",
+                "Rating": 1440,
+                "1527372000": " 2.0",
                 "Score": " 2.0",
-                "Total": " 2.0"
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "=",
+                "1538961116": " 2.0"
             },
             "78da03434dcac87bb8b7fad4879cf4f4": {
                 "Count": " 1.0",
                 "Name": "Marino Giorgia",
                 "Title": "D-U14",
+                "Rating": 1440,
+                "1527372000": " 1.0",
                 "Score": " 1.0",
-                "Total": " 1.0"
+                "Bonus": " 1.0",
+                "Total": " 1.0",
+                "Trend": "="
             },
             "53f46442e96e16d00224ca59b7dc83cf": {
                 "Count": " 1.0",
                 "Name": "Marino Giuseppe",
                 "Title": "  D",
+                "Rating": 1440,
+                "1527372000": " 1.0",
                 "Score": " 1.0",
-                "Total": " 1.0"
+                "Bonus": " 1.0",
+                "Total": " 1.0",
+                "Trend": "="
+            },
+            "4b8f3132bc74b7d6f3f8df945c9f535e": {
+                "Count": " 4.5",
+                "Name": "Marino Ga.",
+                "Title": "N-18",
+                "Rating": 1440,
+                "1538961116": " 4.5",
+                "Score": " 4.5",
+                "Bonus": " 4.5",
+                "Total": " 4.5",
+                "Trend": "="
+            },
+            "3020e86d3ecc97034da4309ae4e3e39e": {
+                "Count": " 4.0",
+                "Name": "Etiopia S.",
+                "Title": "  D",
+                "Rating": 1440,
+                "1538961116": " 4.0",
+                "Score": " 4.0",
+                "Bonus": " 4.0",
+                "Total": " 4.0",
+                "Trend": "="
+            },
+            "88ff0bbd96ddf34bd2038627519bd9ef": {
+                "Count": " 3.5",
+                "Name": "Scimemi M.",
+                "Title": "E-18",
+                "Rating": 1440,
+                "1538961116": " 3.5",
+                "Score": " 3.5",
+                "Bonus": " 3.5",
+                "Total": " 3.5",
+                "Trend": "="
+            },
+            "d6c277cc9a20539dde4fe63be3e7dcba": {
+                "Count": " 3.0",
+                "Name": "Bonsignore G.",
+                "Title": "  D",
+                "Rating": 1440,
+                "1538961116": " 3.0",
+                "Score": " 3.0",
+                "Bonus": " 3.0",
+                "Total": " 3.0",
+                "Trend": "="
+            },
+            "1de42c9a3d798d9bb4ccd2cd01e38182": {
+                "Count": " 3.0",
+                "Name": "Bonagiuso Si.",
+                "Title": "  D",
+                "Rating": 1440,
+                "1538961116": " 3.0",
+                "Score": " 3.0",
+                "Bonus": " 3.0",
+                "Total": " 3.0",
+                "Trend": "="
+            },
+            "33c202e3f379ca0cb48642597614194c": {
+                "Count": " 3.0",
+                "Name": "Bianco F.",
+                "Title": "  N",
+                "Rating": 1440,
+                "1538961116": " 3.0",
+                "Score": " 3.0",
+                "Bonus": " 3.0",
+                "Total": " 3.0",
+                "Trend": "="
+            },
+            "fb7f5a92ad90531257e76619bed1abc1": {
+                "Count": " 3.0",
+                "Name": "Mangiaracina A.",
+                "Title": "  E",
+                "Rating": 1440,
+                "1538961116": " 3.0",
+                "Score": " 3.0",
+                "Bonus": " 3.0",
+                "Total": " 3.0",
+                "Trend": "="
+            },
+            "9b9a80f1904fc574445bce2e4f54204a": {
+                "Count": " 2.0",
+                "Name": "Marino Ma.",
+                "Title": "E-18",
+                "Rating": 1440,
+                "1538961116": " 2.0",
+                "Score": " 2.0",
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
+            },
+            "e03d791ef0ed2ce7b0e79f577ddc3347": {
+                "Count": " 2.0",
+                "Name": "Signorello A.",
+                "Title": "E-14",
+                "Rating": 1440,
+                "1538961116": " 2.0",
+                "Score": " 2.0",
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
+            },
+            "b020813a9e6fa765b55cb93f3410da42": {
+                "Count": " 2.0",
+                "Name": "Titone G.",
+                "Title": "D-18",
+                "Rating": 1440,
+                "1538961116": " 2.0",
+                "Score": " 2.0",
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
+            },
+            "c5c1643aa9681054850290ebde8b7661": {
+                "Count": " 2.0",
+                "Name": "Bonagiuso Sa.",
+                "Title": "D-18",
+                "Rating": 1440,
+                "1538961116": " 2.0",
+                "Score": " 2.0",
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
+            },
+            "83037f04a137aece4f99111ef6e57a82": {
+                "Count": " 2.0",
+                "Name": "Messina A.",
+                "Title": "E-18",
+                "Rating": 1440,
+                "1538961116": " 2.0",
+                "Score": " 2.0",
+                "Bonus": " 2.0",
+                "Total": " 2.0",
+                "Trend": "="
+            },
+            "01d21ee257fd7f75b288260df9c0568a": {
+                "Count": " 1.0",
+                "Name": "Sanclemente F.",
+                "Title": "  D",
+                "Rating": 1440,
+                "1538961116": " 1.0",
+                "Score": " 1.0",
+                "Bonus": " 1.0",
+                "Total": " 1.0",
+                "Trend": "="
+            },
+            "27cddfd84095c0435843a87eaca64ec2": {
+                "Count": " 0.0",
+                "Name": "Bertuglia M.",
+                "Title": "D-60",
+                "Rating": 1440,
+                "1538961116": " 0.0",
+                "Score": " 0.0",
+                "Bonus": " 0.0",
+                "Total": " 0.0",
+                "Trend": "="
+            },
+            "cf8adca857a28e410aa933a4a252fe3a": {
+                "Count": " 3.5",
+                "Name": "Guarina Filippo",
+                "Title": "  D",
+                "Rating": 1440,
+                "1538961116": " 3.5",
+                "Score": " 3.5",
+                "Bonus": " 3.5",
+                "Total": " 3.5",
+                "Trend": "="
+            },
+            "32128d2cd7b48b72df02eb963961f2d3": {
+                "Count": " 1.5",
+                "Name": "Oddo",
+                "Title": "   ",
+                "Rating": 1440,
+                "1538961116": " 1.5",
+                "Score": " 1.5",
+                "Bonus": " 1.5",
+                "Total": " 1.5",
+                "Trend": "="
+            },
+            "946b76d6c892c5b89036e52864e05ef5": {
+                "Count": " 0.5",
+                "Name": "Maggio",
+                "Title": "   ",
+                "Rating": 1440,
+                "1538961116": " 0.5",
+                "Score": " 0.5",
+                "Bonus": " 0.5",
+                "Total": " 0.5",
+                "Trend": "="
             }
         }
+    },
+    "0": {
+        "Rows": null,
+        "Tournaments": null
     }
 }

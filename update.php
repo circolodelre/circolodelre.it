@@ -25,24 +25,25 @@ $globCsv = str_replace(
 );
 
 foreach (Glob::glob($globCsv) as $file) {
-    copy($file, $jsonPath.'/'.basename($file));
+    echo " - $file\n";
+    copy($file, $csvPath.'/'.basename($file));
 }
 
-
-//switch ($settings['date-format'])
-
-$standing = [
-    0 => []
-];
-
+$standing = [];
 foreach (scandir($csvPath) as $file) {
     if ($file[0] != '.' && preg_match('/\.csv$/i', $file)) {
         $page = vegachess_get_standing_csv($csvPath . '/' . $file);
         $time = strtotime_match_format($page[0][0], $dateFormat);
+        $date = date($dateFormat, $time);
 
-        $standing[0]['Tournaments'][$time] = [
+        preg_match('/#([0-9]+)/', $page[0][0], $stage);
+
+        // General standing tournaments info
+        $standing['Stages'][$time] = [
             'Time' => $time,
-            'Date' => date($dateFormat, $time),
+            'Date' => $date,
+            'Stage' => isset($stage[1]) ? $stage[0] : $date,
+            'Rows' => [],
         ];
 
         for ($i = 4; $i < count($page); $i++) {
@@ -52,39 +53,35 @@ foreach (scandir($csvPath) as $file) {
             $playerScore = $page[$i][10];
             $playerHash = md5($playerName.'|'.$playerDate);
 
-            $standing[0]['Rows'][$playerHash]['Name'] = $playerName;
-            $standing[0]['Rows'][$playerHash]['Title'] = $playerTitle;
-            $standing[0]['Rows'][$playerHash][$time] =  $playerScore;
-            $standing[0]['Rows'][$playerHash]['Count'] = $playerScore;
-            $standing[0]['Rows'][$playerHash]['Score'] = $playerScore;
-            $standing[0]['Rows'][$playerHash]['Bonus'] = $playerScore;
-            $standing[0]['Rows'][$playerHash]['Total'] = $playerScore;
+            $row = &$standing['General']['Rows'][$playerHash];
+            $row['Count']  = isset($row['Count']) ? $row['Count'] + 1 : 1;
+            $row['Name']   = $playerName;
+            $row['Title']  = $playerTitle;
+            $row['Rating'] = 1440;
+            $row[$time]    = $playerScore;
+            $row['Count']  = $playerScore;
+            $row['Score']  = $playerScore;
+            $row['Bonus']  = $playerScore;
+            $row['Total']  = $playerScore;
+            $row['Trend']  = '=';
 
-            $standing[$time]['Rows'][$playerHash]['Count'] = $playerScore;
-
-            if (empty($standing[0]['Rows'][$playerHash]['Bonus'])) {
-                $standing[0]['Rows'][$playerHash]['Bonus'] = 1;
-            } else {
-                $standing[0]['Rows'][$playerHash]['Bonus']++;
-            }
-
-            $standing[0]['Rows'][$playerHash]['Score'] = $playerScore;
-            $standing[$time]['Rows'][$playerHash]['Name'] = $playerName;
-            $standing[$time]['Rows'][$playerHash]['Title'] = $playerTitle;
-            $standing[$time]['Rows'][$playerHash]['Score'] =  $playerScore;
-            $standing[$time]['Rows'][$playerHash]['Total'] = $playerScore;
+            $row = &$standing['Stages'][$time]['Rows'][$playerHash];
+            $row['Name'] = $playerName;
+            $row['Title'] = $playerTitle;
+            $row['Score'] =  $playerScore;
+            $row['Total'] = $playerScore;
         }
     }
 }
 
 // Update ranks
 $rank = 1;
-foreach ($standing[0]['Rows'] as &$row) {
+foreach ($standing['General']['Rows'] as &$row) {
     $row['Rank'] = $rank;
     $rank++;
 }
 
-ksort($standing[0]['Tournaments']);
+ksort($standing['Stages']);
 
 // Save file
 file_put_contents($jsonPath.'/Standing.json', json_encode($standing, JSON_PRETTY_PRINT));

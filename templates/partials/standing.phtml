@@ -1,31 +1,106 @@
 
-<h2 class="title is-4">Classifica generale</h2>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Pos</th>
-        <th>Giocatore</th>
-        <?php foreach ($standing[0]['Tournaments'] as $tournament) { ?>
-            <th><?=$tournament['Date']?></th>
-        <?php } ?>
-        <th>Punti</th>
-        <th>Bonus</th>
-        <th>Totale</th>
-    </tr>
-    </thead>
 
-    <tbody>
-        <?php foreach ($standing[0]['Rows'] as $row) { ?>
-            <tr>
-                <th><?=$row['Rank']?></th>
-                <td><?=$row['Name']?></td>
-                <?php foreach ($standing[0]['Tournaments'] as $tournament) { ?>
-                    <td><?=$row[$tournament['Time']]??'-'?></td>
+<div class="columns">
+    <div class="column">
+        <h2 class="title is-4"><?=_('Classifica generale')?></h2>
+        <h3 class="subtitle is-4"><?=_('Aggiornata al')?> <?=date($dateFormat)?></h3>
+
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th class="has-text-centered">Pos.</th>
+                    <th class="has-text-centered">Cat.</th>
+                    <th>Giocatore</th>
+                    <th class="has-text-centered">Valutazione</th>
+                    <?php foreach ($standing['Stages'] as $stage) { ?>
+                        <th class="has-text-centered"><?=_('Torneo')?> <?=$stage['Stage']?></th>
+                    <?php } ?>
+                    <th class="has-text-centered">Punti</th>
+                    <th class="has-text-centered">Bonus</th>
+                    <th class="has-text-centered">Totale</th>
+                    <th class="has-text-centered">Tendenza</th>
+                </tr>
+            </thead>
+
+            <tbody class="has-text-centered">
+                <?php foreach ($standing['General']['Rows'] as $row) { ?>
+                    <tr>
+                        <th class="has-text-centered">
+                            <?php if ($row['Rank'] == 1) { ?>
+                                <span class="icon has-text-warning">
+                                  <i class="fas fa-medal"></i>
+                                </span>
+                            <?php } elseif ($row['Rank'] == 2) { ?>
+                                <span class="icon has-text-grey-lighter">
+                                  <i class="fas fa-medal"></i>
+                                </span>
+                            <?php } elseif ($row['Rank'] == 3) { ?>
+                                <span class="icon has-text-grey">
+                                  <i class="fas fa-medal"></i>
+                                </span>
+                            <?php } else { ?>
+                                <?=$row['Rank']?>
+                            <?php } ?>
+                        </th>
+                        <td class="has-text-centered"><?=$row['Title']?></td>
+                        <td><?=$row['Name']?></td>
+                        <td class="has-text-centered"><?=$row['Rating']?></td>
+                        <?php foreach ($standing['Stages'] as $stage) { ?>
+                            <td class="has-text-centered"><?=$row[$stage['Time']]??'-'?></td>
+                        <?php } ?>
+                        <td class="has-text-centered"><?=$row['Score']?></td>
+                        <td class="has-text-centered"><?=$row['Bonus']?></td>
+                        <th class="has-text-centered"><?=$row['Total']?></th>
+
+                        <td class="has-text-centered">
+
+                            <span class="icon has-text-success">
+                              <i class="fas fa-arrow-up"></i>
+                            </span>
+                            <span class="icon has-text-info">
+                              <i class="fas fa-equals"></i>
+                            </span>
+                            <span class="icon has-text-danger">
+                              <i class="fas fa-arrow-down"></i>
+                            </span>
+
+                        </td>
+                   </tr>
                 <?php } ?>
-                <td><?=$row['Score']?></td>
-                <td><?=$row['Bonus']?></td>
-                <th><?=$row['Total']?></th>
-           </tr>
-        <?php } ?>
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="columns">
+    <?php foreach ($standing['Stages'] as $stage) { ?>
+        <div class="column">
+            <h2 class="title is-4"><?=_('Classifica Torneo')?> <?=$stage['Stage']?></h2>
+            <h3 class="subtitle is-4"><?=_('del')?> <?=$stage['Date']?></h3>
+
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th class="has-text-centered">Pos.</th>
+                    <th class="has-text-centered">Cat.</th>
+                    <th>Giocatore</th>
+                    <th class="has-text-centered">Valutazione</th>
+                    <th class="has-text-centered">Punti</th>
+                    <th class="has-text-centered">Buc1</th>
+                    <th class="has-text-centered">BucT</th>
+                </tr>
+                </thead>
+
+                <?php foreach ($stage['Rows'] as $row) { ?>
+                    <tbody class="has-text-centered">
+                        <td class="has-text-centered"><?=$row['Name']?></td>
+                        <td class="has-text-centered"><?=$row['Score']?></td>
+                        <td class="has-text-centered"><?=$row['Bonus']?></td>
+                        <th class="has-text-centered"><?=$row['Total']?></th>
+                    </tbody>
+                <?php } ?>
+            </table>
+        </div>
+    <?php } ?>
+</div>
+
