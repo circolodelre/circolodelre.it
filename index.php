@@ -16,6 +16,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 session_start();
 
+$settings = circolodelre_load_settings();
+
 $app = new \Slim\App([
     'settings' => [
         'displayErrorDetails' => true,
@@ -31,10 +33,12 @@ $container['logger'] = function () {
     return $logger;
 };
 
-$app->get('/', function ($request, $response, $args) {
+$app->get('/', function ($request, $response, $args) use ($settings) {
     $year = date('Y');
     $file = __DIR__.'/storage/json/'.$year.'/Standing.json';
+
     return $this->view->render($response, 'index.phtml', [
+        'settings' => $settings,
         'standing' => json_decode(file_get_contents($file), true),
     ]);
 });

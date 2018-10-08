@@ -1,5 +1,17 @@
 <?php
 
+/**
+ *
+ */
+function circolodelre_load_settings()
+{
+    $settings = json_decode(file_get_contents('settings.json'), true);
+
+    $settings['date-format'] = $settings['date-format'] ?? 'd/m/Y';
+    $settings['current-year'] = $settings['current-year'] ?? date('Y');
+
+    return $settings;
+}
 
 /**
  * @param $file
