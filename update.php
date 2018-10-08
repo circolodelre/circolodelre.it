@@ -26,78 +26,92 @@ foreach (Glob::glob($globCsv) as $file) {
     copy($file, $csvPath.'/'.basename($file));
 }
 
-$standing = [];
-$last = 0;
-foreach (scandir ($csvPath) as $file) {
-    if ($file[0] != '.' && preg_match('/\.csv$/i', $file)) {
-        $page = vegachess_get_standing_csv($csvPath . '/' . $file);
-        $time = strtotime_match_format($page[0][0], $settings['date-format']);
-        $last = $time > $last ? $time : $last;
-        $date = date($settings['date-format'], $time);
+$trends = [];
+$championship = [];
+$standings = circolodelre_load_standings_csv($csvPath, $settings['date-format']);
 
-        preg_match('/#([0-9]+)/', $page[0][0], $stage);
+foreach ($standings as $time => $standing) {
+    // general stages championship info
+    $championship['stages'][$time] = [
+        'time'   => $time,
+        'rows'   => [],
+    ];
 
-        // General standing tournaments info
-        $standing['stages'][$time] = [
-            'time' => $time,
-            'date' => $date,
-            'number' => isset($stage[1]) ? $stage[0] : $date,
-            'rows' => [],
-        ];
+    // loop through standing rows
+    foreach ($standing['rows'] as $row0) {
+        $row = &$championship['general']['rows'][$row0['key']];
+        $row['count']  = isset($row['count']) ? $row['count'] + 1 : 1;
+        $row['player'] = $row0['name'];
+        $row['title']  = $row0['title'];
+        $row[$time]    = $row0['score'];
+        $row['score']  = number_format(isset($row['score']) ? $row['score'] + $row0['score'] : $row0['score'], 1);
+        $row['bonus']  = number_format($row['count'] > 3 ? $row['count'] + 3 : $row['count'], 1);
+        $row['total']  = number_format($row['score'] + $row['bonus'], 1);
+        $row['rating'] = 1440 + 40 * $row['score'] - 100 * $row['count'];
 
-        for ($i = 4; $i < count($page); $i++) {
-            $player = trim($page[$i][3]);
-            $title  = trim($page[$i][2]);
-            $birth  = trim($page[$i][7]);
-            $score  = number_format(floatval($page[$i][10]), 1);
-            $buc1   = number_format(floatval($page[$i][11]), 1);
-            $bucT   = number_format(floatval($page[$i][12]), 1);
-            $key    = md5($player.'|'.$birth);
+        $row = &$championship['stages'][$time]['rows'][$row0['key']];
+        $row['player'] = $row0['name'];
+        $row['title']  = $row0['title'];
+        $row['score']  = $row0['score'];
+        $row['buc1']   = $row0['buc1'];
+        $row['buct']   = $row0['buct'];
 
-            $row = &$standing['general']['rows'][$key];
+        if (!$standing['last']) {
+            $row = &$trends[$row0['key']];
             $row['count']  = isset($row['count']) ? $row['count'] + 1 : 1;
-            $row['player'] = $player;
-            $row['title']  = $title;
-            $row[$time]    = $score;
-            $row['score']  = number_format(isset($row['score']) ? $row['score'] + $score : $score, 1);
+            $row['score']  = number_format(isset($row['score']) ? $row['score'] + $row0['score'] : $row0['score'], 1);
             $row['bonus']  = number_format($row['count'] > 3 ? $row['count'] + 3 : $row['count'], 1);
             $row['total']  = number_format($row['score'] + $row['bonus'], 1);
             $row['rating'] = 1440 + 40 * $row['score'] - 100 * $row['count'];
-            $row['trend']  = '=';
-
-            $row = &$standing['stages'][$time]['rows'][$key];
-            $row['player'] = $player;
-            $row['title']  = $title;
-            $row['score']  = $score;
-            $row['buc1']   = $buc1;
-            $row['buct']   = $bucT;
         }
     }
 }
 
-// Update ranks
-usort($standing['general']['rows'], function($row0, $row1) {
+//
+function circolodelre_standing_sort($row0, $row1)
+{
     return $row0['total'] > $row1['total'] ? -1 : 1;
-});
-
-$rank = 1;
-foreach ($standing['general']['rows'] as &$row) {
-    $row['rank'] = $rank;
-    $rank++;
 }
 
-$standing['general']['rows'] = array_values($standing['general']['rows']);
+//
+function circolodelre_apply_rank(&$standing)
+{
+    usort($standing, 'circolodelre_standing_sort');
 
-
-foreach ($standing['stages'] as &$stage) {
     $rank = 1;
-    foreach ($stage['rows'] as &$row) {
+    foreach ($standing as &$row) {
         $row['rank'] = $rank;
         $rank++;
     }
 }
 
-ksort($standing['stages']);
+// Update ranks
+circolodelre_apply_rank($trends);
+
+// Update ranks
+circolodelre_apply_rank($championship['general']['rows']);
+
+// Apply trends
+foreach ($championship['general']['rows'] as $key => &$row) {
+    $row['trend'] = [];
+
+    if (empty($trends[$key])) {
+        $row['trend']['rank']   = '=';
+        $row['trend']['rating'] = '=';
+        continue;
+    }
+
+    $row['trend']['rank']   = circolodelre_trend_sign($trends[$key]['rank'], $row['rank']);
+    $row['trend']['rating'] = circolodelre_trend_sign($trends[$key]['rating'], $row['rating']);
+}
+
+//
+foreach ($championship['stages'] as &$stage) {
+    circolodelre_apply_rank($stage['rows']);
+}
+
+ksort($championship['stages']);
 
 // Save file
-file_put_contents($jsonPath.'/Standing.json', json_encode($standing, JSON_PRETTY_PRINT));
+$championship['general']['rows'] = array_values($championship['general']['rows']);
+file_put_contents($jsonPath.'/Championship.json', json_encode($championship, JSON_PRETTY_PRINT));

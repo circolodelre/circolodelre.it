@@ -34,12 +34,11 @@ $container['logger'] = function () {
 };
 
 $app->get('/', function ($request, $response, $args) use ($settings) {
-    $year = date('Y');
-    $file = __DIR__.'/storage/json/'.$year.'/Standing.json';
+    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
 
     return $this->view->render($response, 'index.phtml', [
         'settings' => $settings,
-        'standing' => json_decode(file_get_contents($file), true),
+        'championship' => json_decode(file_get_contents($file), true),
     ]);
 });
 
