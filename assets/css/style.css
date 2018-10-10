@@ -9592,6 +9592,10 @@ label.panel-block:hover {
   min-height: 100vh;
 }
 
+.card.is-fullheight {
+  height: 100%;
+}
+
 .hero-video {
   overflow: hidden;
 }
@@ -9668,4 +9672,3 @@ label.panel-block:hover {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem;
 }
-/*# sourceMappingURL=bulma.css.map */

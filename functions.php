@@ -21,39 +21,25 @@ function circolodelre_load_settings()
 function circolodelre_load_standings_csv($csvPath, $dateFormat)
 {
     $last = 0;
-    $pages = [];
     $csvFiles = scandir_csv($csvPath);
+    $standings = [];
 
     foreach ($csvFiles as $file) {
         $standing = vegachess_get_standing_csv($file);
         $time = strtotime_match_format($standing['name'], $dateFormat);
         preg_match('/#([0-9]+)/', $standing['name'], $number);
-        $page['last'] = false;
-        $page['date'] = date($dateFormat, $time);
-        $page['number'] = isset($number[1]) ? $number[0] : $page['date'];
-        $pages[$time] = $page;
+        $standing['last'] = false;
+        $standing['date'] = date($dateFormat, $time);
+        $standing['number'] = isset($number[1]) ? $number[0] : $standing['date'];
+        $standings[$time] = $standing;
         $last = $time > $last ? $time : $last;
     }
 
-    $pages[$last]['last'] = true;
+    $standings[$last]['last'] = true;
 
-    return $pages;
-}
+    ksort($standings);
 
-/**
- * @param $value1
- * @param $value2
- * @return string
- */
-function circolodelre_trend_sign($value1, $value2)
-{
-    if ($value1 > $value2) {
-        return '<';
-    } elseif ($value1 < $value2) {
-        return '>';
-    } else {
-        return '=';
-    }
+    return $standings;
 }
 
 /**
@@ -100,16 +86,18 @@ function vegachess_get_standing_csv($file)
     ];
 
     foreach ($page[3] as &$field) {
-        $field = strtolower(trim($file));
+        $field = str_replace(' ', '-', strtolower(trim($field)));
     }
 
     for ($i = 4; $i < count($page); $i++) {
         $row = [];
+
         foreach ($page[3] as $c => $field) {
-            $row[$field] = $page[$i][$c];
+            $row[$field] = trim($page[$i][$c]);
         }
+
         $row['key'] = md5($row['name'].'|'.$row['birth']);
-        $standing['rows'][] = $row;
+        $standing['rows'][$row['key']] = $row;
     }
 
     return $standing;
