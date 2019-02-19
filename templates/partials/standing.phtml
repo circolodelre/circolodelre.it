@@ -35,14 +35,14 @@
                                         <span class="icon has-text-warning">
                                             <i class="fas fa-medal"></i>
                                         </span>
-                                    <?php } elseif ($row['rank'] == 2) { ?>
+                                    <!--?php } elseif ($row['rank'] == 2) { ?>
                                         <span class="icon has-text-grey-lighter">
                                             <i class="fas fa-medal"></i>
-                                        </span>
-                                    <?php } elseif ($row['rank'] == 3) { ?>
+                                        </span -->
+                                    <!--?php } elseif ($row['rank'] == 3) { ?>
                                         <span class="icon has-text-grey">
                                             <i class="fas fa-medal"></i>
-                                        </span>
+                                        </span -->
                                     <?php } else { ?>
                                         <?=$row['rank']?>
                                     <?php } ?>
@@ -103,40 +103,42 @@
                     <h2 class="title is-5"><?=_('Classifica Torneo')?> <?=$stage['number']?></h2>
                     <h3 class="subtitle is-6"><?=_('del')?> <?=$stage['date']?></h3>
 
-                    <table class="table is-fullwidth">
-                        <thead>
-                        <tr>
-                            <th class="has-text-centered">Pos.</th>
-                            <th class="has-text-centered">Cat.</th>
-                            <th>Giocatore</th>
-                            <th class="has-text-centered">Punti</th>
-                            <th class="has-text-centered">Buc1</th>
-                            <th class="has-text-centered">BucT</th>
-                        </tr>
-                        </thead>
+                    <div class="table-container">
+                        <table class="table is-fullwidth">
+                            <thead>
+                            <tr>
+                                <th class="has-text-centered">Pos.</th>
+                                <th class="has-text-centered">Cat.</th>
+                                <th>Giocatore</th>
+                                <th class="has-text-centered">Punti</th>
+                                <th class="has-text-centered">Buc1</th>
+                                <th class="has-text-centered">BucT</th>
+                            </tr>
+                            </thead>
 
-                        <?php foreach ($stage['rows'] as $row) { ?>
-                            <tbody class="has-text-centered">
-                                <th class="has-text-centered"><?=$row['rank']?></th>
-                                <td class="has-text-centered">
-                                    <?php if ($row['gender'] != 'f') { ?>
-                                        <span class="icon has-text-primary">
-                                            <i class="fas fa-male"></i>
-                                        </span>
-                                    <?php } else { ?>
-                                        <span class="icon has-text-danger">
-                                            <i class="fas fa-female"></i>
-                                        </span>
-                                    <?php } ?>
-                                    <?=$row['title']?>
-                                </td>
-                                <td><?=$row['player']?></td>
-                                <td class="has-text-centered"><?=$row['total']?></td>
-                                <td class="has-text-centered"><?=$row['buc1']?></td>
-                                <td class="has-text-centered"><?=$row['buct']?></td>
-                            </tbody>
-                        <?php } ?>
-                    </table>
+                            <?php foreach ($stage['rows'] as $row) { ?>
+                                <tbody class="has-text-centered">
+                                    <th class="has-text-centered"><?=$row['rank']?></th>
+                                    <td class="has-text-centered">
+                                        <?php if ($row['gender'] != 'f') { ?>
+                                            <span class="icon has-text-primary">
+                                                <i class="fas fa-male"></i>
+                                            </span>
+                                        <?php } else { ?>
+                                            <span class="icon has-text-danger">
+                                                <i class="fas fa-female"></i>
+                                            </span>
+                                        <?php } ?>
+                                        <?=$row['title']?>
+                                    </td>
+                                    <td><?=$row['player']?></td>
+                                    <td class="has-text-centered"><?=$row['total']?></td>
+                                    <td class="has-text-centered"><?=$row['buc1']?></td>
+                                    <td class="has-text-centered"><?=$row['buct']?></td>
+                                </tbody>
+                            <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
