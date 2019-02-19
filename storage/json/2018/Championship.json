@@ -8,7 +8,8 @@
             "rows": {
                 "93b762b0c002c3244d0db89520212f23": {
                     "player": "Mangiaracina Andrea",
-                    "title": "E",
+                    "gender": "m",
+                    "title": "B1",
                     "total": "4.0",
                     "buc1": "12.0",
                     "buct": "13.0",
@@ -16,7 +17,8 @@
                 },
                 "6efc4534ae57ab7d20642a5fe9b774b7": {
                     "player": "Mirasolo Davide",
-                    "title": "N",
+                    "gender": "m",
+                    "title": "A1",
                     "total": "4.0",
                     "buc1": "12.0",
                     "buct": "13.0",
@@ -24,7 +26,8 @@
                 },
                 "ea4f25ba03d1d0110102f7393c58adc3": {
                     "player": "Vaccaro Giuseppe",
-                    "title": "E-O60",
+                    "gender": "m",
+                    "title": "B6",
                     "total": "3.5",
                     "buc1": "12.5",
                     "buct": "13.5",
@@ -32,7 +35,8 @@
                 },
                 "1c5fce5d727e3c2580222330b1477006": {
                     "player": "Bianco Francesco",
-                    "title": "N",
+                    "gender": "m",
+                    "title": "A1",
                     "total": "2.5",
                     "buc1": "13.5",
                     "buct": "14.5",
@@ -40,15 +44,17 @@
                 },
                 "a97991a6d4aeb56bd7f71a0779cab96c": {
                     "player": "Bertuglia Michelangelo",
-                    "title": "D60M",
+                    "gender": "m",
+                    "title": "C6",
                     "total": "2.0",
                     "buc1": "9.5",
                     "buct": "10.5",
                     "rank": 5
                 },
-                "7e4e4b035b4ea6b6bb1969838dba5d3a": {
-                    "player": "Simone Bonagiuso",
-                    "title": "D",
+                "7c89c8b4d618f2f7050805903b16bca1": {
+                    "player": "Bonagiuso Simone",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "2.0",
                     "buc1": "10.5",
                     "buct": "11.5",
@@ -56,7 +62,8 @@
                 },
                 "4a0d2c0d4de98af454f179db79be02c5": {
                     "player": "Marino Giuseppe",
-                    "title": "D",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "1.0",
                     "buc1": "10.0",
                     "buct": "11.0",
@@ -64,7 +71,8 @@
                 },
                 "b78e068d926079546da865e86677c21a": {
                     "player": "Marino Giorgia",
-                    "title": "D-U14",
+                    "gender": "f",
+                    "title": "C4",
                     "total": "1.0",
                     "buc1": "12.0",
                     "buct": "13.0",
@@ -77,9 +85,10 @@
             "date": "24\/06\/2018",
             "number": "#2",
             "rows": {
-                "ef061b52a36ed03aee827a1d8ca72dc3": {
-                    "player": "Marino Ga.",
-                    "title": "N-18",
+                "06eafe2944f35ec9cbb5d77db0740b09": {
+                    "player": "Marino Gabriele",
+                    "gender": "m",
+                    "title": "A8",
                     "total": "4.5",
                     "buc1": "12.5",
                     "buct": "12.5",
@@ -87,23 +96,26 @@
                 },
                 "ef6268d513dd0df42e6846ac72dc326d": {
                     "player": "Etiopia Salvatore",
-                    "title": "D",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "4.0",
                     "buc1": "12.5",
                     "buct": "14.5",
                     "rank": 2
                 },
-                "8b462bc004bcb7402b24474851c34abd": {
-                    "player": "Scimemi M.",
-                    "title": "E-18",
+                "bc695bb7be8ccb233ed9352bfd0e9449": {
+                    "player": "Scimemi Marco",
+                    "gender": "m",
+                    "title": "C8",
                     "total": "3.5",
                     "buc1": "13.5",
                     "buct": "13.5",
                     "rank": 3
                 },
-                "5b20808299cab13bbefb929c186ece5f": {
-                    "player": "Mangiaracina Aandrea",
-                    "title": "E",
+                "93b762b0c002c3244d0db89520212f23": {
+                    "player": "Mangiaracina Andrea",
+                    "gender": "m",
+                    "title": "E1",
                     "total": "3.0",
                     "buc1": "10.5",
                     "buct": "12.5",
@@ -111,7 +123,8 @@
                 },
                 "1c5fce5d727e3c2580222330b1477006": {
                     "player": "Bianco Francesco",
-                    "title": "N",
+                    "gender": "m",
+                    "title": "A1",
                     "total": "3.0",
                     "buc1": "10.5",
                     "buct": "12.5",
@@ -119,23 +132,26 @@
                 },
                 "7c89c8b4d618f2f7050805903b16bca1": {
                     "player": "Bonagiuso Simone",
-                    "title": "D",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "3.0",
                     "buc1": "12.0",
                     "buct": "13.0",
                     "rank": 6
                 },
-                "6acde2e0ca08b2a9ab1b6feedbef8baa": {
-                    "player": "Bonsignore G.",
-                    "title": "D",
+                "9de9446143af5364c273117a209a80e6": {
+                    "player": "Bonsignore Giuseppe",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "3.0",
                     "buc1": "15.0",
                     "buct": "18.0",
                     "rank": 7
                 },
-                "5259cc197444aa25e55d8eb6e2e2bb6a": {
-                    "player": "Messina A.",
-                    "title": "E-18",
+                "584d28fe949729efe668de9bea0af62e": {
+                    "player": "Messina Antonino",
+                    "gender": "m",
+                    "title": "C8",
                     "total": "2.0",
                     "buc1": "8.0",
                     "buct": "8.0",
@@ -143,39 +159,44 @@
                 },
                 "fa64f03bd8f5f9772de48808dc61adfb": {
                     "player": "Bonagiuso Samuel",
-                    "title": "D-18",
+                    "gender": "m",
+                    "title": "C8",
                     "total": "2.0",
                     "buc1": "10.0",
                     "buct": "10.0",
                     "rank": 9
                 },
-                "c9bccdbc0051f108ce76847cc886cab4": {
-                    "player": "Titone G.",
-                    "title": "D-18",
+                "0c406ae1293284b739482afef68ece55": {
+                    "player": "Titone Giuseppe",
+                    "gender": "m",
+                    "title": "C8",
                     "total": "2.0",
                     "buc1": "10.0",
                     "buct": "11.0",
                     "rank": 10
                 },
-                "ed3fc92e593340118848885e7846546f": {
-                    "player": "Signorello A.",
-                    "title": "E-14",
+                "740ee8a3f02c54f3d363a94844ecabe4": {
+                    "player": "Signorello Andrea",
+                    "gender": "m",
+                    "title": "C4",
                     "total": "2.0",
                     "buc1": "12.0",
                     "buct": "14.0",
                     "rank": 11
                 },
-                "5d5fc552dbdc20f6ff5f0154984f1d9c": {
-                    "player": "Marino Ma.",
-                    "title": "E-18",
+                "8695f3c2e9f1e8709b4ff18aae3e92f3": {
+                    "player": "Marino Martina",
+                    "gender": "f",
+                    "title": "B8",
                     "total": "2.0",
                     "buc1": "12.5",
                     "buct": "13.5",
                     "rank": 12
                 },
-                "520e0522d26292088b6dfe53a286fc95": {
-                    "player": "Sanclemente F.",
-                    "title": "D",
+                "c38e96842aed5eef1efe91a8e4f8fdf0": {
+                    "player": "Sanclemente Fabrizio",
+                    "gender": "m",
+                    "title": "C1",
                     "total": "1.0",
                     "buc1": "9.0",
                     "buct": "9.0",
@@ -183,7 +204,8 @@
                 },
                 "a97991a6d4aeb56bd7f71a0779cab96c": {
                     "player": "Bertuglia Michelangelo",
-                    "title": "D-60",
+                    "gender": "m",
+                    "title": "C6",
                     "total": "0.0",
                     "buc1": "12.0",
                     "buct": "13.0",
@@ -198,7 +220,8 @@
             "rows": {
                 "6efc4534ae57ab7d20642a5fe9b774b7": {
                     "player": "Mirasolo Davide",
-                    "title": "N",
+                    "gender": "m",
+                    "title": "A1",
                     "total": "4.5",
                     "buc1": "11.5",
                     "buct": "12.0",
@@ -206,7 +229,8 @@
                 },
                 "93b762b0c002c3244d0db89520212f23": {
                     "player": "Mangiaracina Andrea",
-                    "title": "D",
+                    "gender": "m",
+                    "title": "B1",
                     "total": "3.5",
                     "buc1": "11.5",
                     "buct": "12.0",
@@ -214,7 +238,8 @@
                 },
                 "2260cb8a27af73e752725a6122f8abd7": {
                     "player": "Guarina Filippo",
-                    "title": "D",
+                    "gender": "m",
+                    "title": "B1",
                     "total": "3.5",
                     "buc1": "13.0",
                     "buct": "14.5",
@@ -222,7 +247,8 @@
                 },
                 "ea4f25ba03d1d0110102f7393c58adc3": {
                     "player": "Vaccaro Giuseppe",
-                    "title": "D-O60",
+                    "gender": "m",
+                    "title": "B6",
                     "total": "3.0",
                     "buc1": "11.5",
                     "buct": "12.0",
@@ -230,15 +256,17 @@
                 },
                 "a97991a6d4aeb56bd7f71a0779cab96c": {
                     "player": "Bertuglia Michelangelo",
-                    "title": "E-O60",
+                    "gender": "m",
+                    "title": "C6",
                     "total": "2.0",
                     "buc1": "11.5",
                     "buct": "13.0",
                     "rank": 5
                 },
-                "0d581afd1db3cb9f0c749afccbfd787e": {
-                    "player": "Oddo",
-                    "title": "",
+                "12d2225d73354be7f9dfd805c228075f": {
+                    "player": "Oddo Giuseppe",
+                    "gender": "m",
+                    "title": "C4",
                     "total": "1.5",
                     "buc1": "10.5",
                     "buct": "11.0",
@@ -246,15 +274,17 @@
                 },
                 "1c5fce5d727e3c2580222330b1477006": {
                     "player": "Bianco Francesco",
-                    "title": "",
+                    "gender": "m",
+                    "title": "A1",
                     "total": "1.5",
                     "buc1": "11.0",
                     "buct": "11.5",
                     "rank": 7
                 },
-                "830a28f12a4fa275671ca2fbce6eb21b": {
-                    "player": "Maggio",
-                    "title": "",
+                "123cc63b9591baeed7e6292f08753c12": {
+                    "player": "Maggio Giuseppe",
+                    "gender": "m",
+                    "title": "C0",
                     "total": "0.5",
                     "buc1": "12.5",
                     "buct": "14.0",
@@ -266,9 +296,26 @@
     "general": {
         "rows": [
             {
+                "count": 3,
+                "player": "Mangiaracina Andrea",
+                "gender": "m",
+                "title": "B1",
+                "1527372000": "4.0",
+                "score": "10.5",
+                "bonus": "3.0",
+                "total": "13.5",
+                "rating-var": "+38",
+                "rating": 1554,
+                "1529791200": "3.0",
+                "1532815200": "3.5",
+                "rank": 1,
+                "trend": 0
+            },
+            {
                 "count": 2,
                 "player": "Mirasolo Davide",
-                "title": "N",
+                "gender": "m",
+                "title": "A1",
                 "1527372000": "4.0",
                 "score": "8.5",
                 "bonus": "2.0",
@@ -276,13 +323,14 @@
                 "rating-var": "+76",
                 "rating": 1573,
                 "1532815200": "4.5",
-                "rank": 1,
+                "rank": 2,
                 "trend": 4
             },
             {
                 "count": 3,
                 "player": "Bianco Francesco",
-                "title": "",
+                "gender": "m",
+                "title": "A1",
                 "1527372000": "2.5",
                 "score": "7.0",
                 "bonus": "3.0",
@@ -291,27 +339,14 @@
                 "rating": 1421,
                 "1529791200": "3.0",
                 "1532815200": "1.5",
-                "rank": 2,
+                "rank": 3,
                 "trend": -1
             },
             {
                 "count": 2,
-                "player": "Mangiaracina Andrea",
-                "title": "D",
-                "1527372000": "4.0",
-                "score": "7.5",
-                "bonus": "2.0",
-                "total": "9.5",
-                "rating-var": "+38",
-                "rating": 1535,
-                "1532815200": "3.5",
-                "rank": 3,
-                "trend": 1
-            },
-            {
-                "count": 2,
                 "player": "Vaccaro Giuseppe",
-                "title": "D-O60",
+                "gender": "m",
+                "title": "B6",
                 "1527372000": "3.5",
                 "score": "6.5",
                 "bonus": "2.0",
@@ -320,12 +355,13 @@
                 "rating": 1497,
                 "1532815200": "3.0",
                 "rank": 4,
-                "trend": 2
+                "trend": 4
             },
             {
                 "count": 3,
                 "player": "Bertuglia Michelangelo",
-                "title": "E-O60",
+                "gender": "m",
+                "title": "C6",
                 "1527372000": "2.0",
                 "score": "4.0",
                 "bonus": "3.0",
@@ -335,77 +371,84 @@
                 "1529791200": "0.0",
                 "1532815200": "2.0",
                 "rank": 5,
-                "trend": 6
+                "trend": 5
+            },
+            {
+                "count": 2,
+                "player": "Bonagiuso Simone",
+                "gender": "m",
+                "title": "C1",
+                "1527372000": "2.0",
+                "score": "5.0",
+                "bonus": "2.0",
+                "total": "7.0",
+                "rating-var": "+19",
+                "rating": 1440,
+                "1529791200": "3.0",
+                "rank": 6,
+                "trend": -3
             },
             {
                 "count": 1,
-                "player": "Marino Ga.",
-                "title": "N-18",
+                "player": "Marino Gabriele",
+                "gender": "m",
+                "title": "A8",
                 "1529791200": "4.5",
                 "score": "4.5",
                 "bonus": "1.0",
                 "total": "5.5",
                 "rating-var": "+76",
                 "rating": 1516,
-                "rank": 6,
-                "trend": -4
+                "rank": 7,
+                "trend": -3
             },
             {
                 "count": 1,
                 "player": "Etiopia Salvatore",
-                "title": "D",
+                "gender": "m",
+                "title": "C1",
                 "1529791200": "4.0",
                 "score": "4.0",
                 "bonus": "1.0",
                 "total": "5.0",
                 "rating-var": "+57",
                 "rating": 1497,
-                "rank": 7,
-                "trend": -4
+                "rank": 8,
+                "trend": -3
             },
             {
                 "count": 1,
-                "player": "Scimemi M.",
-                "title": "E-18",
+                "player": "Scimemi Marco",
+                "gender": "m",
+                "title": "C8",
                 "1529791200": "3.5",
                 "score": "3.5",
                 "bonus": "1.0",
                 "total": "4.5",
                 "rating-var": "+38",
                 "rating": 1478,
-                "rank": 8,
-                "trend": -1
+                "rank": 9,
+                "trend": -2
             },
             {
                 "count": 1,
                 "player": "Guarina Filippo",
-                "title": "D",
+                "gender": "m",
+                "title": "B1",
                 "1532815200": "3.5",
                 "score": "3.5",
                 "bonus": "1.0",
                 "total": "4.5",
                 "rating-var": "+38",
                 "rating": 1478,
-                "rank": 9,
-                "trend": 0
-            },
-            {
-                "count": 1,
-                "player": "Bonsignore G.",
-                "title": "D",
-                "1529791200": "3.0",
-                "score": "3.0",
-                "bonus": "1.0",
-                "total": "4.0",
-                "rating-var": "+19",
-                "rating": 1459,
                 "rank": 10,
                 "trend": 0
             },
             {
                 "count": 1,
-                "player": "Mangiaracina Aandrea",
-                "title": "E",
+                "player": "Bonsignore Giuseppe",
+                "gender": "m",
+                "title": "C1",
                 "1529791200": "3.0",
                 "score": "3.0",
                 "bonus": "1.0",
@@ -417,34 +460,37 @@
             },
             {
                 "count": 1,
-                "player": "Bonagiuso Simone",
-                "title": "D",
-                "1529791200": "3.0",
-                "score": "3.0",
+                "player": "Messina Antonino",
+                "gender": "m",
+                "title": "C8",
+                "1529791200": "2.0",
+                "score": "2.0",
                 "bonus": "1.0",
-                "total": "4.0",
-                "rating-var": "+19",
-                "rating": 1459,
+                "total": "3.0",
+                "rating-var": "-19",
+                "rating": 1421,
                 "rank": 12,
-                "trend": -4
+                "trend": -1
             },
             {
                 "count": 1,
-                "player": "Simone Bonagiuso",
-                "title": "D",
-                "1527372000": "2.0",
+                "player": "Bonagiuso Samuel",
+                "gender": "m",
+                "title": "C8",
+                "1529791200": "2.0",
                 "score": "2.0",
                 "bonus": "1.0",
                 "total": "3.0",
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 13,
-                "trend": 4
+                "trend": -1
             },
             {
                 "count": 1,
-                "player": "Messina A.",
-                "title": "E-18",
+                "player": "Titone Giuseppe",
+                "gender": "m",
+                "title": "C8",
                 "1529791200": "2.0",
                 "score": "2.0",
                 "bonus": "1.0",
@@ -452,12 +498,13 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 14,
-                "trend": -2
+                "trend": -1
             },
             {
                 "count": 1,
-                "player": "Bonagiuso Samuel",
-                "title": "D-18",
+                "player": "Signorello Andrea",
+                "gender": "m",
+                "title": "C4",
                 "1529791200": "2.0",
                 "score": "2.0",
                 "bonus": "1.0",
@@ -465,12 +512,13 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 15,
-                "trend": -2
+                "trend": -1
             },
             {
                 "count": 1,
-                "player": "Titone G.",
-                "title": "D-18",
+                "player": "Marino Martina",
+                "gender": "f",
+                "title": "B8",
                 "1529791200": "2.0",
                 "score": "2.0",
                 "bonus": "1.0",
@@ -478,97 +526,76 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 16,
-                "trend": -2
+                "trend": -1
             },
             {
                 "count": 1,
-                "player": "Signorello A.",
-                "title": "E-14",
-                "1529791200": "2.0",
-                "score": "2.0",
-                "bonus": "1.0",
-                "total": "3.0",
-                "rating-var": "-19",
-                "rating": 1421,
-                "rank": 17,
-                "trend": -2
-            },
-            {
-                "count": 1,
-                "player": "Marino Ma.",
-                "title": "E-18",
-                "1529791200": "2.0",
-                "score": "2.0",
-                "bonus": "1.0",
-                "total": "3.0",
-                "rating-var": "-19",
-                "rating": 1421,
-                "rank": 18,
-                "trend": -2
-            },
-            {
-                "count": 1,
-                "player": "Oddo",
-                "title": "",
+                "player": "Oddo Giuseppe",
+                "gender": "m",
+                "title": "C4",
                 "1532815200": "1.5",
                 "score": "1.5",
                 "bonus": "1.0",
                 "total": "2.5",
                 "rating-var": "-38",
                 "rating": 1402,
-                "rank": 19,
+                "rank": 17,
                 "trend": 0
             },
             {
                 "count": 1,
-                "player": "Sanclemente F.",
-                "title": "D",
+                "player": "Sanclemente Fabrizio",
+                "gender": "m",
+                "title": "C1",
                 "1529791200": "1.0",
                 "score": "1.0",
                 "bonus": "1.0",
                 "total": "2.0",
                 "rating-var": "-57",
                 "rating": 1383,
-                "rank": 20,
+                "rank": 18,
                 "trend": -2
             },
             {
                 "count": 1,
                 "player": "Marino Giorgia",
-                "title": "D-U14",
+                "gender": "f",
+                "title": "C4",
                 "1527372000": "1.0",
                 "score": "1.0",
                 "bonus": "1.0",
                 "total": "2.0",
                 "rating-var": "-57",
                 "rating": 1383,
-                "rank": 21,
-                "trend": -2
+                "rank": 19,
+                "trend": -1
             },
             {
                 "count": 1,
                 "player": "Marino Giuseppe",
-                "title": "D",
+                "gender": "m",
+                "title": "C1",
                 "1527372000": "1.0",
                 "score": "1.0",
                 "bonus": "1.0",
                 "total": "2.0",
                 "rating-var": "-57",
                 "rating": 1383,
-                "rank": 22,
-                "trend": -2
+                "rank": 20,
+                "trend": -3
             },
             {
                 "count": 1,
-                "player": "Maggio",
-                "title": "",
+                "player": "Maggio Giuseppe",
+                "gender": "m",
+                "title": "C0",
                 "1532815200": "0.5",
                 "score": "0.5",
                 "bonus": "1.0",
                 "total": "1.5",
                 "rating-var": "-76",
                 "rating": 1364,
-                "rank": 23,
+                "rank": 21,
                 "trend": 0
             }
         ]

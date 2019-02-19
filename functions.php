@@ -25,14 +25,20 @@ function circolodelre_load_standings_csv($csvPath, $dateFormat)
     $standings = [];
 
     foreach ($csvFiles as $file) {
-        $standing = vegachess_get_standing_csv($file);
-        $time = strtotime_match_format($standing['name'], $dateFormat);
-        preg_match('/#([0-9]+)/', $standing['name'], $number);
-        $standing['last'] = false;
-        $standing['date'] = date($dateFormat, $time);
-        $standing['number'] = isset($number[1]) ? $number[0] : $standing['date'];
-        $standings[$time] = $standing;
-        $last = $time > $last ? $time : $last;
+        if (preg_match('/^(.*)-Standing\\.csv$/', $file, $name)) {
+            $players = vegachess_get_players_csv($name[1].'-Players.csv');
+            $standing = vegachess_get_standing_csv($file);
+            foreach ($standing['rows'] as &$row) {
+                $row['gender'] = $players['rows'][$row['id']]['gender'];
+            }
+            $time = strtotime_match_format($standing['name'], $dateFormat);
+            preg_match('/#([0-9]+)/', $standing['name'], $number);
+            $standing['last'] = false;
+            $standing['date'] = date($dateFormat, $time);
+            $standing['number'] = isset($number[1]) ? $number[0] : $standing['date'];
+            $standings[$time] = $standing;
+            $last = $time > $last ? $time : $last;
+        }
     }
 
     $standings[$last]['last'] = true;
@@ -101,6 +107,48 @@ function vegachess_get_standing_csv($file)
     }
 
     return $standing;
+}
+
+/**
+ * @param $file
+ * @return array
+ * @throws Exception
+ */
+function vegachess_get_players_csv($file)
+{
+    if (!file_exists($file)) {
+        throw new Exception("file not found.\n");
+    }
+
+    $page = [];
+    $read = fopen($file, 'r');
+
+    while (($line = fgetcsv($read, 0, ';')) !== false) {
+        $page[] = $line;
+    }
+
+    fclose($read);
+
+    $players = [
+        'name'   => trim($page[0][0]),
+        'rows'   => [],
+    ];
+
+    foreach ($page[2] as &$field) {
+        $field = str_replace(' ', '-', strtolower(trim($field)));
+    }
+
+    for ($i = 3; $i < count($page); $i++) {
+        $row = [];
+
+        foreach ($page[2] as $c => $field) {
+            $row[$field] = trim($page[$i][$c]);
+        }
+
+        $players['rows'][$row['n']] = $row;
+    }
+
+    return $players;
 }
 
 /**

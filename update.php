@@ -21,8 +21,17 @@ $globCsv = str_replace(
 );
 
 foreach (Glob::glob($globCsv) as $file) {
-    echo " - $file\n";
-    copy($file, $csvPath.'/'.basename($file));
+    copy($file, $csvPath.'/'.basename(dirname($file)).'-Standing.csv');
+}
+
+$globCsv = str_replace(
+    ['${YEAR}', '~'],
+    [$settings['year'], $_SERVER['HOME']],
+    $settings['tournaments-path'].'/**/Players.csv'
+);
+
+foreach (Glob::glob($globCsv) as $file) {
+    copy($file, $csvPath.'/'.basename(dirname($file)).'-Players.csv');
 }
 
 $trends = [];
@@ -45,6 +54,7 @@ foreach ($standings as $time => $standing) {
         $row = &$championship['general']['rows'][$row0['key']];
         $row['count']  = isset($row['count']) ? $row['count'] + 1 : 1;
         $row['player'] = $row0['name'];
+        $row['gender'] = $row0['gender'];
         $row['title']  = $row0['title'];
         $row[$time]    = $row0['score'];
         $row['score']  = number_format(isset($row['score']) ? $row['score'] + $row0['score'] : $row0['score'], 1);
@@ -59,6 +69,7 @@ foreach ($standings as $time => $standing) {
 
         $row = &$championship['stages'][$time]['rows'][$row0['key']];
         $row['player'] = $row0['name'];
+        $row['gender']  = $row0['gender'];
         $row['title']  = $row0['title'];
         $row['total']  = $row0['score'];
         $row['buc1']   = $row0['buc1'];
