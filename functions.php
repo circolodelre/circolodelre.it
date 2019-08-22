@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ *
+ */
 
 /**
  *
@@ -23,6 +27,10 @@ function circolodelre_load_standings_csv($csvPath, $dateFormat)
     $last = 0;
     $csvFiles = scandir_csv($csvPath);
     $standings = [];
+
+    if (empty($csvFiles)) {
+        return $standings;
+    }
 
     foreach ($csvFiles as $file) {
         if (preg_match('/^(.*)-Standing\\.csv$/', $file, $name)) {
@@ -49,6 +57,30 @@ function circolodelre_load_standings_csv($csvPath, $dateFormat)
 }
 
 /**
+ * @param $row0
+ * @param $row1
+ * @return int
+ */
+function circolodelre_standing_sort($row0, $row1)
+{
+    return $row0['total'] > $row1['total'] ? -1 : 1;
+}
+
+/**
+ * @param $standing
+ */
+function circolodelre_apply_rank(&$standing)
+{
+    uasort($standing, 'circolodelre_standing_sort');
+
+    $rank = 1;
+    foreach ($standing as &$row) {
+        $row['rank'] = $rank;
+        $rank++;
+    }
+}
+
+/**
  * @param $csvPath
  * @return array|string
  */
@@ -56,9 +88,11 @@ function scandir_csv($csvPath)
 {
     $csvFiles = [];
 
-    foreach (scandir ($csvPath) as $file) {
-        if ($file[0] != '.' && preg_match('/\.csv$/i', $file)) {
-            $csvFiles[] = $csvPath . '/' . $file;
+    if (is_dir($csvPath)) {
+        foreach (scandir($csvPath) as $file) {
+            if ($file[0] != '.' && preg_match('/\.csv$/i', $file)) {
+                $csvFiles[] = $csvPath . '/' . $file;
+            }
         }
     }
 

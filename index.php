@@ -24,6 +24,7 @@ require __DIR__ . '/vendor/autoload.php';
 session_start();
 
 $settings = circolodelre_load_settings();
+circolodelre_load_language($settings['country']);
 
 $app = new \Slim\App([
     'settings' => [
@@ -48,5 +49,18 @@ $app->get('/', function ($request, $response, $args) use ($settings) {
         'championship' => json_decode(file_get_contents($file), true),
     ]);
 });
+
+$app->get('/'._('standing'), function ($request, $response, $args) use ($settings) {
+    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
+
+    return $this->view->render($response, 'index.phtml', [
+        'settings' => $settings,
+        'championship' => json_decode(file_get_contents($file), true),
+    ]);
+});
+
+function _($a) {
+
+}
 
 $app->run();

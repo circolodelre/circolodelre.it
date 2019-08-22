@@ -1,44 +1,62 @@
+#!/bin/env php
 <?php
 /**
+ * Syncronize script
  *
+ * this script import csv files from Vega Tournaments
+ * and create updated stangings and other files.
  */
+
+if (empty($argv[1]) || $argv[1] < 1990 || $argv[1] > 3000) {
+    die("Syntax error: type a valid year number.\n");
+}
 
 require_once 'vendor/autoload.php';
 
 use Webmozart\Glob\Glob;
 
-$settings = circolodelre_load_settings();
-$csvPath  = 'storage/csv/'.$settings['year'];
-$jsonPath = 'storage/json/'.$settings['year'];
+$year = (int) $argv[1];
 
-is_dir($csvPath) or mkdir($csvPath, 0777, true);
-is_dir($jsonPath) or mkdir($jsonPath, 0777, true);
+echo "Syncronize year: {$year}\n";
+
+$settings = circolodelre_load_settings();
+
+$csvPath  = 'storage/csv/'.$year;
+$jsonPath = 'storage/json/'.$year;
 
 $globCsv = str_replace(
     ['${YEAR}', '~'],
-    [$settings['year'], $_SERVER['HOME']],
+    [$year, $_SERVER['HOME']],
     $settings['tournaments-path'].'/**/*-Standing.csv'
 );
 
 foreach (Glob::glob($globCsv) as $file) {
+    echo "Fetch standing file: {$file}\n";
+    is_dir($csvPath) or mkdir($csvPath, 0777, true);
     copy($file, $csvPath.'/'.basename(dirname($file)).'-Standing.csv');
 }
 
 $globCsv = str_replace(
     ['${YEAR}', '~'],
-    [$settings['year'], $_SERVER['HOME']],
+    [$year, $_SERVER['HOME']],
     $settings['tournaments-path'].'/**/Players.csv'
 );
 
 foreach (Glob::glob($globCsv) as $file) {
+    echo "Fetch players file: {$file}\n";
+    is_dir($csvPath) or mkdir($csvPath, 0777, true);
     copy($file, $csvPath.'/'.basename(dirname($file)).'-Players.csv');
 }
 
 $trends = [];
 $championship = [
-    'year' => $settings['year']
+    'year' => $year
 ];
 $standings = circolodelre_load_standings_csv($csvPath, $settings['date-format']);
+
+if (empty($standings)) {
+    die("File error: Standing files not found.\n");
+}
 
 foreach ($standings as $time => $standing) {
     // general stages championship info
@@ -85,24 +103,6 @@ foreach ($standings as $time => $standing) {
     }
 }
 
-//
-function circolodelre_standing_sort($row0, $row1)
-{
-    return $row0['total'] > $row1['total'] ? -1 : 1;
-}
-
-//
-function circolodelre_apply_rank(&$standing)
-{
-    uasort($standing, 'circolodelre_standing_sort');
-
-    $rank = 1;
-    foreach ($standing as &$row) {
-        $row['rank'] = $rank;
-        $rank++;
-    }
-}
-
 // Update ranks
 circolodelre_apply_rank($trends);
 
@@ -114,13 +114,16 @@ foreach ($championship['general']['rows'] as $key => &$row) {
     $row['trend'] = isset($trends[$key]) ? $trends[$key]['rank'] - $row['rank'] : 0;
 }
 
-//
+// Update ranks
 foreach ($championship['stages'] as &$stage) {
     circolodelre_apply_rank($stage['rows']);
 }
 
+// Sort stages
 ksort($championship['stages']);
 
 // Save file
 $championship['general']['rows'] = array_values($championship['general']['rows']);
-file_put_contents($jsonPath.'/Championship.json', json_encode($championship, JSON_PRETTY_PRINT));
+is_dir($jsonPath) or mkdir($jsonPath, 0777, true);
+$size = file_put_contents($jsonPath.'/Championship.json', json_encode($championship, JSON_PRETTY_PRINT));
+echo "Championship file updated.\n";
