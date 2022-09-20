@@ -1,7 +1,12 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+#error_reporting(E_ALL);
+#ini_set('display_errors', 1);
 date_default_timezone_set('Europe/Rome');
+
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+
 
 if (PHP_SAPI == 'cli-server') {
     $file = __DIR__ . $_SERVER['REQUEST_URI'];
@@ -19,18 +24,15 @@ if ($_SERVER['SERVER_NAME'] != 'localhost'
     exit();
 }
 
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/functions.php';
 
 session_start();
 
 $settings = circolodelre_load_settings();
-circolodelre_load_language($settings['country']);
+#circolodelre_load_language($settings['country']);
 
-$app = new \Slim\App([
-    'settings' => [
-        'displayErrorDetails' => true,
-    ],
-]);
+$app = AppFactory::create();
 
 $container = $app->getContainer();
 $container['view'] = new \Slim\Views\PhpRenderer('./templates');
@@ -58,9 +60,5 @@ $app->get('/'._('standing'), function ($request, $response, $args) use ($setting
         'championship' => json_decode(file_get_contents($file), true),
     ]);
 });
-
-function _($a) {
-
-}
 
 $app->run();

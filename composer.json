@@ -1,11 +1,11 @@
 {
-    "circolodelre/www.circolodelre.it",
+    "name": "circolodelre/www.circolodelre.it",
     "autoload": {
         "files": ["functions.php"]
     },
     "require": {
-        "slim/slim": "^3.9",
-        "slim/php-view": "^2.2",
+        "slim/slim": "^4.10",
+        "slim/php-view": "^3.2",
         "monolog/monolog": "^1.23",
         "webmozart/glob": "^4.1"
     }
