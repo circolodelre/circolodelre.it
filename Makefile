@@ -1,6 +1,6 @@
 
 serve:
-	php -S 0.0.0.0
+	php -S localhost:8080 -t ./src ./src/router.php
 
 build: serve
 	curl -a
