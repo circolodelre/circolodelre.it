@@ -42,7 +42,7 @@ $container['logger'] = function () {
 };
 
 $app->get('/', function ($request, $response, $args) use ($settings) {
-    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
+    $file = __DIR__ . '/storage/json/' .$settings['year'].'/Championship.json';
 
     return $this->view->render($response, 'index.phtml', [
         'settings' => $settings,
@@ -51,7 +51,7 @@ $app->get('/', function ($request, $response, $args) use ($settings) {
 });
 
 $app->get('/'._('standing'), function ($request, $response, $args) use ($settings) {
-    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
+    $file = __DIR__ . '/storage/json/' .$settings['year'].'/Championship.json';
 
     return $this->view->render($response, 'index.phtml', [
         'settings' => $settings,

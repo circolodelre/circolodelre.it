@@ -1,7 +1,9 @@
 {
     "circolodelre/www.circolodelre.it",
     "autoload": {
-        "files": ["functions.php"]
+        "files": [
+          "contrib/functions.php"
+        ]
     },
     "require": {
         "slim/slim": "^3.9",
