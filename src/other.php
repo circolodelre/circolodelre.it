@@ -1,8 +1,6 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-date_default_timezone_set('Europe/Rome');
+
 
 if ($_SERVER['SERVER_NAME'] != 'localhost'
     && (!(isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1)
@@ -13,18 +11,13 @@ if ($_SERVER['SERVER_NAME'] != 'localhost'
     exit();
 }
 
-require __DIR__ . '/../vendor/autoload.php';
+
 
 session_start();
 
 $settings = circolodelre_load_settings();
 circolodelre_load_language($settings['country']);
 
-$app = new \Slim\App([
-    'settings' => [
-        'displayErrorDetails' => true,
-    ],
-]);
 
 $container = $app->getContainer();
 $container['view'] = new \Slim\Views\PhpRenderer('./templates');
