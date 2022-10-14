@@ -1,8 +1,8 @@
 {
-    "circolodelre/www.circolodelre.it",
+    "name": "circolodelre/www.circolodelre.it",
     "autoload": {
         "files": [
-          "contrib/functions.php"
+            "src/functions.php"
         ]
     },
     "require": {
