@@ -17,7 +17,7 @@ if (PHP_SAPI == 'cli-server') {
 
 if ($_SERVER['SERVER_NAME'] != 'localhost'
     && (!(isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1)
-    || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))) {
+        || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))) {
     $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     header('HTTP/1.1 301 Moved Permanently');
     header('Location: ' . $redirect);
@@ -44,7 +44,7 @@ $container['logger'] = function () {
 };
 
 $app->get('/', function ($request, $response, $args) use ($settings) {
-    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
+    $file = __DIR__ . '/storage/json/' .$settings['year'].'/Championship.json';
 
     return $this->view->render($response, 'index.phtml', [
         'settings' => $settings,
@@ -53,7 +53,7 @@ $app->get('/', function ($request, $response, $args) use ($settings) {
 });
 
 $app->get('/'._('standing'), function ($request, $response, $args) use ($settings) {
-    $file = __DIR__.'/storage/json/'.$settings['year'].'/Championship.json';
+    $file = __DIR__ . '/storage/json/' .$settings['year'].'/Championship.json';
 
     return $this->view->render($response, 'index.phtml', [
         'settings' => $settings,
