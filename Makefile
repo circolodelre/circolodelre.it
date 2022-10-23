@@ -8,5 +8,13 @@ build: serve
 install:
 	composer install
 
+update:
+	composer update
+
 start:
 	@php -S localhost:8080
+
+push:
+	git add .
+	git commit -am fix
+	git push
