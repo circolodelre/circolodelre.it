@@ -28,6 +28,7 @@ $app->get('/', function (Request $request, Response $response, $args) {
     ];
     $file = __DIR__ . '/storage/json/' .$settings['year'].'/Championship.json';
 #var_dump($_SERVER);
+
     return $view->render($response, 'index.html', [
         'settings' => $settings,
         #'championship' => json_decode(file_get_contents($file), true),
