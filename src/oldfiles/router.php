@@ -1,7 +1,7 @@
 <?php
 
 if (PHP_SAPI == 'cli-server') {
-    $file = __DIR__ . '/..' . $_SERVER['REQUEST_URI'];
+    $file = __DIR__ . '/circolodelre.it' . $_SERVER['REQUEST_URI'];
     if (is_file($file)) {
         header('Content-Type: '.mime_content_type($file));
         readfile($file);
