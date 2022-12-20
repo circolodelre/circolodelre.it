@@ -1,5 +1,5 @@
 {
-    "name": "circolodelre/www.circolodelre.it",
+    "name": "circolodelre/circolodelre.it",
     "autoload": {
         "files": [
             "src/functions.php"
