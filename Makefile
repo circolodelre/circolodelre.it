@@ -14,7 +14,7 @@ update:
 ## =====
 
 build:
-	@docker compose run --rm php -f src/tasks/build.php
+	@docker compose run --rm php -f vendor/autoload.php -f src/tasks/build.php
 
 ## ====
 ## Misc

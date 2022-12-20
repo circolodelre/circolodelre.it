@@ -2,7 +2,7 @@
     "name": "circolodelre/circolodelre.it",
     "autoload": {
         "files": [
-            "src/functions.php"
+            "src/Services.php"
         ]
     },
     "require": {

@@ -1,1 +1,318 @@
-<h1>Circolo Del Re</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Circolo del Re - Castelvetrano Scacchi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+
+    <<<<<<<< HEAD:src/templates/partials/header.phtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Circolo del Re - Castelvetrano Scacchi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+<link rel="shortcut icon" href="img/favicon.ico"/>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="/docs/assets/css/style.css">
+</head>
+<body>
+========
+
+>>>>>>>> origin/main:src/templates/partials/header.html
+
+<section class="section">
+    <div class="container has-text-centered">
+        <a href="/">
+            <img src="/docs/assets/img/logo.png">
+        </a>
+        <h1 class="is-marginless">
+            <a href="/">
+                <span class="title is-3">
+                    A.S.D. Circolo del Re
+                </span>
+            </a>
+        </h1>
+        <a href="/">
+            <span class="subtitle is-4">
+                Castelvetrano Scacchi
+            </span>
+        </a>
+    </div>
+</section>
+
+    <section class="section">
+        <div class="container has-text-centered">
+            <div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">
+                        <p class="subtitle">
+                            Chi siamo
+                        </p>
+                        <p class="subtitle">
+                        asdasd
+                        </p>
+                        <p>
+                            L'A.S.D. "Circolo del Re" nasce nel 2012
+                        </p>
+                        <a
+                            href="/docs/assets/files/statuto-circolo-del-re-castelvetrano-scacchi.pdf"
+                            target="_blank"
+                            class="button is-dark">
+                            <span class="icon">
+                                <i class="fas fa-file-contract"></i>
+                            </span>
+                            <span>
+                                Statuto
+                            </span>
+                        </a>
+                        <a
+                            href="/docs/assets/files/statuto-circolo-del-re-castelvetrano-scacchi.pdf"
+                            target="_blank"
+                            class="button is-dark">
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>
+                                Contattaci
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="column">
+                        <p>
+                            prova
+                        </p>
+                        <a
+                            href="https://www.facebook.com/groups/castelvetranoscacchi/"
+                            target="_blank"
+                            class="button is-link">
+                            <span class="icon">
+                                <i class="fab fa-facebook"></i>
+                            </span>
+                            <span>
+                                Castelvetrano Scacchi
+                            </span>
+                        </a>
+                        <a
+                            href="https://lichess.org/team/asd-circolo-del-re-castelvetrano-scacchi"
+                            target="_blank"
+                            class="button is-success">
+                            <span class="icon">
+                                <i class="fas fa-chess-knight"></i>
+                            </span>
+                            <span>
+                                Gioca Online
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <h1 class="title is-2"><?=_('Campionato Promozionale')?> <?=$championship['year']?></h1>
+
+                <h2 class="title is-4"><?=_('Classifica Generale')?></h2>
+                <h3 class="subtitle is-6"><?=_('Aggiornata al')?> <?=date($settings['date-format'])?></h3>
+
+                <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th class="has-text-centered">Pos.</th>
+                            <th class="has-text-centered">Cat.</th>
+                            <th>Giocatore</th>
+                            <th class="has-text-centered">Valutazione</th>
+                            <?php foreach ($championship['stages'] as $stage) { ?>
+                                <th class="has-text-centered"><?=_('Torneo')?> <?=$stage['number']?></th>
+                            <?php } ?>
+                            <th class="has-text-centered">Punti</th>
+                            <th class="has-text-centered">Bonus</th>
+                            <th class="has-text-centered">Totale</th>
+                            <th class="has-text-centered">&nbsp;</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="has-text-centered">
+                        <?php foreach ($championship['general']['rows'] as $row) { ?>
+                            <tr>
+                                <th class="has-text-centered">
+                                    <?php if ($row['rank'] == 1) { ?>
+                                        <span class="icon has-text-warning">
+                                            <i class="fas fa-medal"></i>
+                                        </span>
+                                    <!--?php } elseif ($row['rank'] == 2) { ?>
+                                        <span class="icon has-text-grey-lighter">
+                                            <i class="fas fa-medal"></i>
+                                        </span -->
+                                    <!--?php } elseif ($row['rank'] == 3) { ?>
+                                        <span class="icon has-text-grey">
+                                            <i class="fas fa-medal"></i>
+                                        </span -->
+                                    <?php } else { ?>
+                                        <?=$row['rank']?>
+                                    <?php } ?>
+                                </th>
+                                <td class="has-text-centered">
+                                    <?php if ($row['gender'] != 'f') { ?>
+                                        <span class="icon has-text-primary">
+                                            <i class="fas fa-male"></i>
+                                        </span>
+                                    <?php } else { ?>
+                                        <span class="icon has-text-danger">
+                                            <i class="fas fa-female"></i>
+                                        </span>
+                                    <?php } ?>
+                                    <?=$row['title']?>
+                                </td>
+                                <td>
+                                    <?=$row['player']?>
+                                </td>
+                                <td class="has-text-centered"><?=$row['rating']?> (<?=$row['rating-var']?>)</td>
+
+                                <?php foreach ($championship['stages'] as $stage) { ?>
+                                    <td class="has-text-centered"><?=$row[$stage['time']]??'-'?></td>
+                                <?php } ?>
+                                <td class="has-text-centered"><?=$row['score']?></td>
+                                <td class="has-text-centered"><?=$row['bonus']?></td>
+                                <th class="has-text-centered"><?=$row['total']?></th>
+                                <td class="has-text-centered">
+                                    <?php if ($row['trend'] > 0) { ?>
+                                        <span class="icon has-text-success">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </span>
+                                    <?php } elseif ($row['trend'] < 0) { ?>
+                                        <span class="icon has-text-danger">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </span>
+                                    <?php } else { ?>
+                                        <span class="icon has-text-info">
+                                            <i class="fas fa-equals"></i>
+                                        </span>
+                                    <?php } ?>
+                                </td>
+                           </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="columns is-multiline is-mobile">
+    <?php foreach ($championship['stages'] as $stage) { ?>
+        <div class="column is-half">
+            <div class="card is-fullheight">
+                <div class="card-content">
+                    <h2 class="title is-5"><?=_('Classifica Torneo')?> <?=$stage['number']?></h2>
+                    <h3 class="subtitle is-6"><?=_('del')?> <?=$stage['date']?></h3>
+
+                    <div class="table-container">
+                        <table class="table is-fullwidth">
+                            <thead>
+                            <tr>
+                                <th class="has-text-centered">Pos.</th>
+                                <th class="has-text-centered">Cat.</th>
+                                <th>Giocatore</th>
+                                <th class="has-text-centered">Punti</th>
+                                <th class="has-text-centered">Buc1</th>
+                                <th class="has-text-centered">BucT</th>
+                            </tr>
+                            </thead>
+
+                            <?php foreach ($stage['rows'] as $row) { ?>
+                                <tbody class="has-text-centered">
+                                    <th class="has-text-centered"><?=$row['rank']?></th>
+                                    <td class="has-text-centered">
+                                        <?php if ($row['gender'] != 'f') { ?>
+                                            <span class="icon has-text-primary">
+                                                <i class="fas fa-male"></i>
+                                            </span>
+                                        <?php } else { ?>
+                                            <span class="icon has-text-danger">
+                                                <i class="fas fa-female"></i>
+                                            </span>
+                                        <?php } ?>
+                                        <?=$row['title']?>
+                                    </td>
+                                    <td><?=$row['player']?></td>
+                                    <td class="has-text-centered"><?=$row['total']?></td>
+                                    <td class="has-text-centered"><?=$row['buc1']?></td>
+                                    <td class="has-text-centered"><?=$row['buct']?></td>
+                                </tbody>
+                            <?php } ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
+    <div class="column is-half">
+        <div class="card is-fullheight">
+            <div class="card-content">
+                <h2 class="title is-5"><?=_('Informazioni')?></h2>
+                <h3 class="subtitle is-6">asd</h3>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <footer class="footer has-text-centered">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <p class="has-margin-b-1">
+                    <a href="/">
+                        <img src="/docs/assets/img/logo.png" width="100" height="100">
+                    </a>
+                    <a href="/">
+                        <span class="title is-5 is-block">
+                            A.S.D. Circolo del Re
+                        </span>
+                    </a>
+                    <a href="/">
+                        <span class="subtitle is-6">
+                            Castelvetrano Scacchi
+                        </span>
+                    </a>
+                </p>
+            </div>
+            <div class="column is-4">
+                B
+            </div>
+            <div class="column is-4">
+                C
+            </div>
+        </div>
+    </div>
+</footer>
+<<<<<<<< HEAD:src/templates/partials/footer.phtml
+<script type="text/javascript" src="/docs/assets/js/script.js"></script>
+</body>
+</html>
+========
+>>>>>>>> origin/main:src/templates/partials/footer.html
+
+    <script type="text/javascript" src="assets/js/script.js"></script>
+
+</body>
+</html>
