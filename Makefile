@@ -1,16 +1,27 @@
 
-
-serve:
-	php -S localhost:8080 -t ./src ./src/router.php
-
-build:
-	@docker compose run --rm php -f src/tasks/build.php
+## ======
+## Vendor
+## ======
 
 install:
 	composer install
 
 update:
 	composer update
+
+## =====
+## Tasks
+## =====
+
+build:
+	@docker compose run --rm php -f src/tasks/build.php
+
+## ====
+## Misc
+## ====
+
+serve:
+	php -S localhost:8080 -t ./src ./src/router.php
 
 start:
 	@php -S localhost:8080
@@ -21,4 +32,3 @@ push:
 	git push
 
 release: push
-
