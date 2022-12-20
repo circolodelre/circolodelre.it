@@ -4,7 +4,7 @@ serve:
 	php -S localhost:8080 -t ./src ./src/router.php
 
 build:
-	docker compose run --rm php -f src/tasks/build.php
+	@docker compose run --rm php -f src/tasks/build.php
 
 install:
 	composer install
@@ -19,3 +19,6 @@ push:
 	git add .
 	git commit -am fix
 	git push
+
+release: push
+
