@@ -3,9 +3,10 @@
 if (PHP_SAPI == 'cli-server') {
     $file = __DIR__ . '/circolodelre.it' . $_SERVER['REQUEST_URI'];
     if (is_file($file)) {
-        header('Content-Type: '.mime_content_type($file));
+        $contentType = preg_match('/\.css$/i', $file) ? 'text/css' : mime_content_type($file);
+        header('Content-Type: '.$contentType);
         readfile($file);
-        return false;
+        return true;
     }
 }
 
