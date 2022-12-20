@@ -10,4 +10,4 @@ if (PHP_SAPI == 'cli-server') {
     }
 }
 
-require_once __DIR__ . '/index.php';
+echo "Ciao";

@@ -21,7 +21,7 @@ build:
 ## ====
 
 serve:
-	php -S localhost:8080 -t ./src ./src/router.php
+	@docker compose run --rm -p 8080:8080 php -S localhost:8080 src/router.php
 
 start:
 	@php -S localhost:8080
