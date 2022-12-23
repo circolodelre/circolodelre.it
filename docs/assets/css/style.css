@@ -10686,3 +10686,15 @@ label.panel-block:hover {
 
 .has-margin-x-auto {
   margin: 0 auto; }
+
+.has-text-shadow {
+  text-shadow: 1px 1px 2px #aaa; }
+
+.has-image-shadow {
+  filter: drop-shadow(0 0 0.75rem #aaa); }
+
+.is-chesscom-button {
+  background-color: #2c2b29 !important; }
+
+.is-lichess-button {
+  background-color: #dbd7d1 !important; }
