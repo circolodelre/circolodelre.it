@@ -13,7 +13,7 @@ if (PHP_SAPI == 'cli-server') {
     }
 }
 
-var_dump($_SERVER['REQUEST_URI']);
+#var_dump($_SERVER['REQUEST_URI']);
 
 $requestUri = $_SERVER['REQUEST_URI'];
 

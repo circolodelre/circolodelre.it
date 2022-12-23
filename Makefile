@@ -4,10 +4,10 @@
 ## ======
 
 install:
-	composer install
+	@docker compose run --rm php composer install
 
 update:
-	composer update
+	@docker compose run --rm php composer update
 
 ## =====
 ## Tasks
@@ -32,3 +32,10 @@ push:
 	git push
 
 release: push
+
+## ======
+## Docker
+## ======
+
+docker-build:
+	docker compose build
