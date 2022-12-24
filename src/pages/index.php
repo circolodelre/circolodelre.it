@@ -1,6 +1,6 @@
 <?php
 
-$twig = service::get('twig');
+$twig = services::get('twig');
 
 $html = $twig->render('index.html', ['the' => 'variables', 'go' => 'here']);
 
