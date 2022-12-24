@@ -16,6 +16,9 @@ update:
 build:
 	@docker compose run --rm php -f src/tasks/build.php
 
+rank:
+	@docker compose run --rm php -f src/tasks/rank.php
+
 ## ====
 ## Misc
 ## ====
