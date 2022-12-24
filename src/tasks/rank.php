@@ -2,52 +2,24 @@
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
+use App\Season;
+use App\Services;
 use Webmozart\Glob\Glob;
 
 echo "Build... \n";
 
-// index.html
-$html = require_once __DIR__.'/../pages/index.php';
-$file = __DIR__.'/../../docs/index.html';
-file_put_contents($file, $html);
-
 $year = 2018;
+$seasonSettings = Season::getYearSettings($year);
 
 echo "Syncronize year: {$year}\n";
 
-$settings = circolodelre_load_settings();
-
-$csvPath  = 'storage/csv/'.$year;
-$jsonPath = 'storage/json/'.$year;
-
-$globCsv = str_replace(
-    ['${YEAR}', '~'],
-    [$year, $_SERVER['HOME']],
-    $settings['tournaments-path'].'/**/*-Standing.csv'
-);
-
-foreach (Glob::glob($globCsv) as $file) {
-    echo "Fetch standing file: {$file}\n";
-    is_dir($csvPath) or mkdir($csvPath, 0777, true);
-    copy($file, $csvPath.'/'.basename(dirname($file)).'-Standing.csv');
-}
-
-$globCsv = str_replace(
-    ['${YEAR}', '~'],
-    [$year, $_SERVER['HOME']],
-    $settings['tournaments-path'].'/**/Players.csv'
-);
-
-foreach (Glob::glob($globCsv) as $file) {
-    echo "Fetch players file: {$file}\n";
-    is_dir($csvPath) or mkdir($csvPath, 0777, true);
-    copy($file, $csvPath.'/'.basename(dirname($file)).'-Players.csv');
-}
+$settings = Services::get('settings');
 
 $trends = [];
 $championship = [
     'year' => $year
 ];
+
 $standings = circolodelre_load_standings_csv($csvPath, $settings['date-format']);
 
 if (empty($standings)) {

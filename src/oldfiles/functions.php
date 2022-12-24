@@ -4,57 +4,7 @@
  *
  */
 
-/**
- *
- */
-function circolodelre_load_settings()
-{
-    $settings = json_decode(file_get_contents('settings.json'), true);
 
-    $settings['date-format'] = $settings['date-format'] ?? 'd/m/Y';
-    $settings['current-year'] = $settings['current-year'] ?? date('Y');
-
-    return $settings;
-}
-
-/**
- * @param $csvPath
- * @param $dateFormat
- * @return array
- */
-function circolodelre_load_standings_csv($csvPath, $dateFormat)
-{
-    $last = 0;
-    $csvFiles = scandir_csv($csvPath);
-    $standings = [];
-
-    if (empty($csvFiles)) {
-        return $standings;
-    }
-
-    foreach ($csvFiles as $file) {
-        if (preg_match('/^(.*)-Standing\\.csv$/', $file, $name)) {
-            $players = vegachess_get_players_csv($name[1].'-Players.csv');
-            $standing = vegachess_get_standing_csv($file);
-            foreach ($standing['rows'] as &$row) {
-                $row['gender'] = $players['rows'][$row['id']]['gender'];
-            }
-            $time = strtotime_match_format($standing['name'], $dateFormat);
-            preg_match('/#([0-9]+)/', $standing['name'], $number);
-            $standing['last'] = false;
-            $standing['date'] = date($dateFormat, $time);
-            $standing['number'] = isset($number[1]) ? $number[0] : $standing['date'];
-            $standings[$time] = $standing;
-            $last = $time > $last ? $time : $last;
-        }
-    }
-
-    $standings[$last]['last'] = true;
-
-    ksort($standings);
-
-    return $standings;
-}
 
 /**
  * @param $row0
