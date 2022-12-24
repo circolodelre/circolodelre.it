@@ -9,18 +9,18 @@ use Webmozart\Glob\Glob;
 echo "Build... \n";
 
 $year = 2018;
-$seasonSettings = Season::getYearSettings($year);
+$season = Season::getSeason($year);
 
 echo "Syncronize year: {$year}\n";
 
-$settings = Services::get('settings');
+$config = service::get('config');
 
 $trends = [];
 $championship = [
     'year' => $year
 ];
 
-$standings = circolodelre_load_standings_csv($csvPath, $settings['date-format']);
+$standings = Standing::loadSeason($season['csv_dir'], $config['date_format']);
 
 if (empty($standings)) {
     die("File error: Standing files not found.\n");

@@ -1,6 +1,6 @@
 <?php
 
-class Services
+class service
 {
     protected static $services = [];
 
