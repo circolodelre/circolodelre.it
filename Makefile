@@ -9,6 +9,9 @@ install:
 update:
 	@docker compose run --rm php composer update
 
+dump-autoload:
+	@docker compose run --rm php composer dump-autoload
+
 ## =====
 ## Tasks
 ## =====
