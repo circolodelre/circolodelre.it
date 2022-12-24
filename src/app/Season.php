@@ -69,23 +69,17 @@ class Season
             }
         }
 
-// Update ranks
-        circolodelre_apply_rank($trends);
+        Standing::applyRank($trends);
+        Standing::applyRank($championship['general']['rows']);
 
-// Update ranks
-        circolodelre_apply_rank($championship['general']['rows']);
-
-// Apply trends
         foreach ($championship['general']['rows'] as $key => &$row) {
             $row['trend'] = isset($trends[$key]) ? $trends[$key]['rank'] - $row['rank'] : 0;
         }
 
-// Update ranks
         foreach ($championship['stages'] as &$stage) {
-            circolodelre_apply_rank($stage['rows']);
+            Standing::applyRank($stage['rows']);
         }
 
-// Sort stages
         ksort($championship['stages']);
 
         $championship['general']['rows'] = array_values($championship['general']['rows']);

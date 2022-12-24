@@ -48,7 +48,6 @@ class Standing
         return $standings;
     }
 
-
     /**
      * @param $row0
      * @param $row1
