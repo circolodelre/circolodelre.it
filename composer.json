@@ -2,7 +2,7 @@
     "name": "circolodelre/circolodelre.it",
     "autoload": {
         "files": [
-            "src/service.php"
+            "src/services.php"
         ],
         "psr-4": {
             "App\\": "src/app/"

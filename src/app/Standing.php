@@ -15,7 +15,7 @@ class Standing
     public static function loadSeason($csvPath, $dateFormat): array
     {
         $last = 0;
-        $csvFiles = scandir_csv($csvPath);
+        $csvFiles = Functions::scanCsv($csvPath);
         $standings = [];
 
         if (empty($csvFiles)) {
@@ -27,12 +27,12 @@ class Standing
                 continue;
             }
 
-            $players = vegachess_get_players_csv($name[1].'-Players.csv');
-            $standing = vegachess_get_standing_csv($file);
+            $players = Vega::getPlayersFromCsv($name[1].'-Players.csv');
+            $standing = Vega::getStandingFromCsv($file);
             foreach ($standing['rows'] as &$row) {
                 $row['gender'] = $players['rows'][$row['id']]['gender'];
             }
-            $time = strtotime_match_format($standing['name'], $dateFormat);
+            $time = Functions::timeByFormat($standing['name'], $dateFormat);
             preg_match('/#([0-9]+)/', $standing['name'], $number);
             $standing['last'] = false;
             $standing['date'] = date($dateFormat, $time);
@@ -46,5 +46,30 @@ class Standing
         ksort($standings);
 
         return $standings;
+    }
+
+
+    /**
+     * @param $row0
+     * @param $row1
+     * @return int
+     */
+    public static function sortRank($row0, $row1)
+    {
+        return $row0['total'] > $row1['total'] ? -1 : 1;
+    }
+
+    /**
+     * @param $standing
+     */
+    public static function applyRank(&$standing)
+    {
+        uasort($standing, '\\App\\Standing::sortRank');
+
+        $rank = 1;
+        foreach ($standing as &$row) {
+            $row['rank'] = $rank;
+            $rank++;
+        }
     }
 }

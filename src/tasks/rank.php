@@ -3,14 +3,14 @@
 require_once __DIR__.'/../../vendor/autoload.php';
 
 use App\Season;
-use App\Services;
+use App\Standing;
 
 $year = 2018;
 $season = Season::getSeason($year);
 
 echo "Season: {$year}\n";
 
-$config = service::get('config');
+$config = services::get('config');
 
 $standings = Standing::loadSeason($season['csv_dir'], $config['date_format']);
 

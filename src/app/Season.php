@@ -6,10 +6,10 @@ use Webmozart\Glob\Glob;
 
 class Season
 {
-    public static function getYearSettings($year)
+    public static function getSeason($year)
     {
-        $csvDirectory  = 'src/'.$year.'/csv';
-        $jsonDirectory = 'storage/'.$year.'/json';
+        $csvDirectory  = 'src/seasons/'.$year.'/csv';
+        $jsonDirectory = 'src/seasons/'.$year.'/json';
 
         return [
             'csv_dir' => $csvDirectory,
