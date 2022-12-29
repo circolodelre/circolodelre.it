@@ -86,4 +86,11 @@ class Season
 
         return $championship;
     }
+
+    public static function loadRank($year)
+    {
+        $rankFile = __DIR__ . '/../seasons/' .$year.'/json/rank.json';
+
+        return json_decode(file_get_contents($rankFile), true);
+    }
 }

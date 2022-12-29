@@ -2,10 +2,10 @@
     <div class="column">
         <div class="card">
             <div class="card-content">
-                <h1 class="title is-2">{{_('Campionato Promozionale')}} {{$year}}</h1>
+                <h1 class="title is-2">{{ _('Campionato Promozionale') }} {{ year }}</h1>
 
-                <h2 class="title is-4">{{_('Classifica Generale')}}</h2>
-                <h3 class="subtitle is-6"><?=_('Aggiornata al')?> <?=date($settings['date-format'])?></h3>
+                <h2 class="title is-4">{{ _('Classifica Generale') }}</h2>
+                <h3 class="subtitle is-6">{{ _('Aggiornata al') }} {{ today }}</h3>
 
                 <div class="table-container">
                 <table class="table is-fullwidth">
@@ -15,9 +15,9 @@
                             <th class="has-text-centered">Cat.</th>
                             <th>Giocatore</th>
                             <th class="has-text-centered">Valutazione</th>
-                            <?php foreach ($championship['stages'] as $stage) { ?>
-                                <th class="has-text-centered"><?=_('Torneo')?> <?=$stage['number']?></th>
-                            <?php } ?>
+                            {% for stage in rank['stages'] %}
+                                <th class="has-text-centered">{{ _('Torneo') }} {{ stage['number'] }}</th>
+                            {% endfor %}
                             <th class="has-text-centered">Punti</th>
                             <th class="has-text-centered">Bonus</th>
                             <th class="has-text-centered">Totale</th>
@@ -26,65 +26,71 @@
                     </thead>
 
                     <tbody class="has-text-centered">
-                        <?php foreach ($championship['general']['rows'] as $row) { ?>
+                        {% for row in rank['general']['rows'] %}
                             <tr>
                                 <th class="has-text-centered">
-                                    <?php if ($row['rank'] == 1) { ?>
+                                    {% if row['rank'] == 1 %}
                                         <span class="icon has-text-warning">
                                             <i class="fas fa-medal"></i>
                                         </span>
-                                    <!--?php } elseif ($row['rank'] == 2) { ?>
+                                    {% elseif row['rank'] == 2 %}
                                         <span class="icon has-text-grey-lighter">
                                             <i class="fas fa-medal"></i>
-                                        </span -->
-                                    <!--?php } elseif ($row['rank'] == 3) { ?>
+                                        </span>
+                                    {% elseif row['rank'] == 3 %}
                                         <span class="icon has-text-grey">
                                             <i class="fas fa-medal"></i>
-                                        </span -->
-                                    <?php } else { ?>
-                                        <?=$row['rank']?>
-                                    <?php } ?>
+                                        </span>
+                                    {% else %}
+                                        {{ row['rank'] }}
+                                    {% endif %}
                                 </th>
                                 <td class="has-text-centered">
-                                    <?php if ($row['gender'] != 'f') { ?>
+                                    {% if row['gender'] != 'f' %}
                                         <span class="icon has-text-primary">
                                             <i class="fas fa-male"></i>
                                         </span>
-                                    <?php } else { ?>
+                                    {% else %}
                                         <span class="icon has-text-danger">
                                             <i class="fas fa-female"></i>
                                         </span>
-                                    <?php } ?>
-                                    <?=$row['title']?>
+                                    {% endif %}
+                                    {{ row['title'] }}
                                 </td>
                                 <td>
-                                    <?=$row['player']?>
+                                    {{ row['player'] }}
                                 </td>
-                                <td class="has-text-centered"><?=$row['rating']?> (<?=$row['rating-var']?>)</td>
-
-                                <?php foreach ($championship['stages'] as $stage) { ?>
-                                    <td class="has-text-centered"><?=$row[$stage['time']]??'-'?></td>
-                                <?php } ?>
-                                <td class="has-text-centered"><?=$row['score']?></td>
-                                <td class="has-text-centered"><?=$row['bonus']?></td>
-                                <th class="has-text-centered"><?=$row['total']?></th>
                                 <td class="has-text-centered">
-                                    <?php if ($row['trend'] > 0) { ?>
+                                    {{ row['rating'] }} ({{ row['rating-var'] }})
+                                </td>
+
+                                {% for stage in rank['stages'] %}
+                                    <td class="has-text-centered">
+                                        {{ row[stage['time']] ?? '-' }}
+                                    </td>
+                                {% endfor %}
+
+                                <td class="has-text-centered">{{ row['score'] }}</td>
+                                <td class="has-text-centered">{{ row['bonus'] }}</td>
+                                <th class="has-text-centered">{{ row['total'] }}</th>
+
+                                <td class="has-text-centered">
+                                    {% if row['trend'] > 0 %}
                                         <span class="icon has-text-success">
                                             <i class="fas fa-arrow-up"></i>
                                         </span>
-                                    <?php } elseif ($row['trend'] < 0) { ?>
+                                    {% elseif row['trend'] < 0 %}
                                         <span class="icon has-text-danger">
                                             <i class="fas fa-arrow-down"></i>
                                         </span>
-                                    <?php } else { ?>
+                                    {% else %}
                                         <span class="icon has-text-info">
                                             <i class="fas fa-equals"></i>
                                         </span>
-                                    <?php } ?>
+                                    {% endif %}
                                 </td>
                            </tr>
-                        <?php } ?>
+                        {% endfor %}
                     </tbody>
                 </table>
                 </div>
@@ -93,61 +99,3 @@
     </div>
 </div>
 
-<div class="columns is-multiline is-mobile">
-    <?php foreach ($championship['stages'] as $stage) { ?>
-        <div class="column is-half">
-            <div class="card is-fullheight">
-                <div class="card-content">
-                    <h2 class="title is-5"><?=_('Classifica Torneo')?> <?=$stage['number']?></h2>
-                    <h3 class="subtitle is-6"><?=_('del')?> <?=$stage['date']?></h3>
-
-                    <div class="table-container">
-                        <table class="table is-fullwidth">
-                            <thead>
-                            <tr>
-                                <th class="has-text-centered">Pos.</th>
-                                <th class="has-text-centered">Cat.</th>
-                                <th>Giocatore</th>
-                                <th class="has-text-centered">Punti</th>
-                                <th class="has-text-centered">Buc1</th>
-                                <th class="has-text-centered">BucT</th>
-                            </tr>
-                            </thead>
-
-                            <?php foreach ($stage['rows'] as $row) { ?>
-                                <tbody class="has-text-centered">
-                                    <th class="has-text-centered"><?=$row['rank']?></th>
-                                    <td class="has-text-centered">
-                                        <?php if ($row['gender'] != 'f') { ?>
-                                            <span class="icon has-text-primary">
-                                                <i class="fas fa-male"></i>
-                                            </span>
-                                        <?php } else { ?>
-                                            <span class="icon has-text-danger">
-                                                <i class="fas fa-female"></i>
-                                            </span>
-                                        <?php } ?>
-                                        <?=$row['title']?>
-                                    </td>
-                                    <td><?=$row['player']?></td>
-                                    <td class="has-text-centered"><?=$row['total']?></td>
-                                    <td class="has-text-centered"><?=$row['buc1']?></td>
-                                    <td class="has-text-centered"><?=$row['buct']?></td>
-                                </tbody>
-                            <?php } ?>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
-
-    <div class="column is-half">
-        <div class="card is-fullheight">
-            <div class="card-content">
-                <h2 class="title is-5"><?=_('Informazioni')?></h2>
-                <h3 class="subtitle is-6">asd</h3>
-            </div>
-        </div>
-    </div>
-</div>
