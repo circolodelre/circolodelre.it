@@ -11,8 +11,10 @@
                 <table class="table is-fullwidth">
                     <thead>
                         <tr>
+                            <th class="has-text-centered"> </th>
                             <th class="has-text-centered">Pos.</th>
                             <th class="has-text-centered">Cat.</th>
+                            <th class="has-text-centered"> </th>
                             <th>Giocatore</th>
                             <th class="has-text-centered">Valutazione</th>
                             {% for stage in rank['stages'] %}
@@ -21,7 +23,7 @@
                             <th class="has-text-centered">Punti</th>
                             <th class="has-text-centered">Bonus</th>
                             <th class="has-text-centered">Totale</th>
-                            <th class="has-text-centered">&nbsp;</th>
+                            <th class="has-text-centered"> </th>
                         </tr>
                     </thead>
 
@@ -32,6 +34,7 @@
                                     {% if row['rank'] == 1 %}
                                         <span class="icon has-text-warning">
                                             <i class="fas fa-medal"></i>
+                                            <i class="fas fa-trophy"></i>
                                         </span>
                                     {% elseif row['rank'] == 2 %}
                                         <span class="icon has-text-grey-lighter">
@@ -41,25 +44,33 @@
                                         <span class="icon has-text-grey">
                                             <i class="fas fa-medal"></i>
                                         </span>
-                                    {% else %}
-                                        {{ row['rank'] }}
                                     {% endif %}
                                 </th>
+
+                                <th class="has-text-centered">
+                                    {{ row['rank'] }}
+                                </th>
+
+                                <td class="has-text-centered">
+                                    {{ row['title'] }}
+                                </td>
+
                                 <td class="has-text-centered">
                                     {% if row['gender'] != 'f' %}
-                                        <span class="icon has-text-primary">
+                                    <span class="icon has-text-primary">
                                             <i class="fas fa-male"></i>
                                         </span>
                                     {% else %}
-                                        <span class="icon has-text-danger">
+                                    <span class="icon has-text-danger">
                                             <i class="fas fa-female"></i>
                                         </span>
                                     {% endif %}
-                                    {{ row['title'] }}
                                 </td>
+
                                 <td>
                                     {{ row['player'] }}
                                 </td>
+
                                 <td class="has-text-centered">
                                     {{ row['rating'] }} ({{ row['rating-var'] }})
                                 </td>
