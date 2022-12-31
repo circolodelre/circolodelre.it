@@ -31,18 +31,22 @@
                         {% for row in rank['general']['rows'] %}
                             <tr>
                                 <th class="has-text-centered">
-                                    {% if row['rank'] == 1 %}
+                                    {% if row['prize'] == 'gold-medal' %}
                                         <span class="icon has-text-warning">
                                             <i class="fas fa-medal"></i>
-                                            <i class="fas fa-trophy"></i>
+
                                         </span>
-                                    {% elseif row['rank'] == 2 %}
+                                    {% elseif row['prize'] == 'silver-medal' %}
                                         <span class="icon has-text-grey-lighter">
                                             <i class="fas fa-medal"></i>
                                         </span>
-                                    {% elseif row['rank'] == 3 %}
+                                    {% elseif row['prize'] == 'bronze-medal' %}
                                         <span class="icon has-text-grey">
                                             <i class="fas fa-medal"></i>
+                                        </span>
+                                    {% elseif row['prize'] == 'gold-cup' %}
+                                        <span class="icon has-text-warning">
+                                            <i class="fas fa-trophy"></i>
                                         </span>
                                     {% endif %}
                                 </th>

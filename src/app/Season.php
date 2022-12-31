@@ -6,7 +6,14 @@ use Webmozart\Glob\Glob;
 
 class Season
 {
-    public static function getSeason($year)
+    /**
+     * Get season by year.
+     *
+     * @param $year
+     *
+     * @return string[]
+     */
+    public static function getSeason($year): array
     {
         $csvDirectory  = 'src/seasons/'.$year.'/csv';
         $jsonDirectory = 'src/seasons/'.$year.'/json';
@@ -40,9 +47,20 @@ class Season
         Standing::applyRank($rank['trends']);
         Standing::applyRank($rank['general']['rows']);
 
+        $prizedTitle = [];
         foreach ($rank['general']['rows'] as $key => &$row) {
             $row['trend'] = isset($rank['trends'][$key]);
             $row['trend-var'] = isset($rank['trends'][$key]) ? $rank['trends'][$key]['rank'] - $row['rank'] : 0;
+            if ($row['rank'] == 1) {
+                $row['prize'] = 'gold-medal';
+            } elseif ($row['rank'] == 2) {
+                $row['prize'] = 'silver-medal';
+            } elseif ($row['rank'] == 3) {
+                $row['prize'] = 'bronze-medal';
+            } elseif (empty($prizedTitle[$row['title']])) {
+                $prizedTitle[$row['title']] = $row;
+                $row['prize'] = 'gold-cup';
+            }
         }
 
         foreach ($rank['stages'] as &$stage) {

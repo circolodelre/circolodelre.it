@@ -439,7 +439,8 @@
                 "1532822400": "3.5",
                 "rank": 1,
                 "trend": true,
-                "trend-var": 0
+                "trend-var": 0,
+                "prize": "gold-medal"
             },
             {
                 "count": 2,
@@ -455,7 +456,8 @@
                 "1532822400": "4.5",
                 "rank": 2,
                 "trend": true,
-                "trend-var": 4
+                "trend-var": 4,
+                "prize": "silver-medal"
             },
             {
                 "count": 3,
@@ -472,7 +474,8 @@
                 "1532822400": "1.5",
                 "rank": 3,
                 "trend": true,
-                "trend-var": -1
+                "trend-var": -1,
+                "prize": "bronze-medal"
             },
             {
                 "count": 2,
@@ -488,7 +491,8 @@
                 "1532822400": "3.0",
                 "rank": 4,
                 "trend": true,
-                "trend-var": 4
+                "trend-var": 4,
+                "prize": "gold-cup"
             },
             {
                 "count": 3,
@@ -505,7 +509,8 @@
                 "1532822400": "2.0",
                 "rank": 5,
                 "trend": true,
-                "trend-var": 5
+                "trend-var": 5,
+                "prize": "gold-cup"
             },
             {
                 "count": 2,
@@ -521,7 +526,8 @@
                 "1529798400": "3.0",
                 "rank": 6,
                 "trend": true,
-                "trend-var": -3
+                "trend-var": -3,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -536,7 +542,8 @@
                 "rating": 1516,
                 "rank": 7,
                 "trend": true,
-                "trend-var": -3
+                "trend-var": -3,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -566,7 +573,8 @@
                 "rating": 1478,
                 "rank": 9,
                 "trend": true,
-                "trend-var": -2
+                "trend-var": -2,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -581,7 +589,8 @@
                 "rating": 1478,
                 "rank": 10,
                 "trend": false,
-                "trend-var": 0
+                "trend-var": 0,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -656,7 +665,8 @@
                 "rating": 1421,
                 "rank": 15,
                 "trend": true,
-                "trend-var": -1
+                "trend-var": -1,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -671,7 +681,8 @@
                 "rating": 1421,
                 "rank": 16,
                 "trend": true,
-                "trend-var": -1
+                "trend-var": -1,
+                "prize": "gold-cup"
             },
             {
                 "count": 1,
@@ -746,7 +757,8 @@
                 "rating": 1364,
                 "rank": 21,
                 "trend": false,
-                "trend-var": 0
+                "trend-var": 0,
+                "prize": "gold-cup"
             }
         ]
     }
