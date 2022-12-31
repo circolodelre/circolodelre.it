@@ -1038,6 +1038,10 @@ a.has-text-danger:hover, a.has-text-danger:focus {
   background-color: #dbdbdb !important;
 }
 
+.has-background-grey-ultralight {
+  background-color: #fafafa !important;
+}
+
 .has-text-white-ter {
   color: whitesmoke !important;
 }

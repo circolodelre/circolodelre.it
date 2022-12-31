@@ -76,7 +76,7 @@
                                 </td>
 
                                 {% for stage in rank['stages'] %}
-                                    <td class="has-text-centered">
+                                    <td class="has-text-centered has-background-grey-ultralight">
                                         {{ row[stage['time']] ?? '-' }}
                                     </td>
                                 {% endfor %}
@@ -86,18 +86,20 @@
                                 <th class="has-text-centered">{{ row['total'] }}</th>
 
                                 <td class="has-text-centered">
-                                    {% if row['trend-var'] > 0 %}
-                                        <span class="icon has-text-success">
-                                            <i class="fas fa-arrow-up"></i>
-                                        </span>
-                                    {% elseif row['trend-var'] < 0 %}
-                                        <span class="icon has-text-danger">
-                                            <i class="fas fa-arrow-down"></i>
-                                        </span>
-                                    {% else %}
-                                        <span class="icon has-text-info">
-                                            <i class="fas fa-equals"></i>
-                                        </span>
+                                    {% if row['trend'] %}
+                                        {% if row['trend-var'] > 0 %}
+                                            <span class="icon has-text-success">
+                                                <i class="fas fa-arrow-up"></i>
+                                            </span>
+                                        {% elseif row['trend-var'] < 0 %}
+                                            <span class="icon has-text-danger">
+                                                <i class="fas fa-arrow-down"></i>
+                                            </span>
+                                        {% else %}
+                                            <span class="icon has-text-info">
+                                                <i class="fas fa-equals"></i>
+                                            </span>
+                                        {% endif %}
                                     {% endif %}
                                 </td>
                            </tr>
