@@ -25,33 +25,35 @@ class Season
      *
      * @return array
      */
-    public static function createRank($year, $standings)
+    public static function createRank($year, $standings): array
     {
-        $trends = [];
-        $championship = [
-            'year' => $year
+        $rank = [
+            'year' => $year,
+            'season' => $year,
+            'trends' => []
         ];
 
         foreach ($standings as $time => $standing) {
-            Standing::applyStandingToRank($championship, $standing, $time);
+            Standing::applyStandingToRank($rank, $standing, $time);
         }
 
-        Standing::applyRank($trends);
-        Standing::applyRank($championship['general']['rows']);
+        Standing::applyRank($rank['trends']);
+        Standing::applyRank($rank['general']['rows']);
 
-        foreach ($championship['general']['rows'] as $key => &$row) {
-            $row['trend'] = isset($trends[$key]) ? $trends[$key]['rank'] - $row['rank'] : 0;
+        foreach ($rank['general']['rows'] as $key => &$row) {
+            $row['trend'] = isset($rank['trends'][$key]);
+            $row['trend-var'] = isset($rank['trends'][$key]) ? $rank['trends'][$key]['rank'] - $row['rank'] : 0;
         }
 
-        foreach ($championship['stages'] as &$stage) {
+        foreach ($rank['stages'] as &$stage) {
             Standing::applyRank($stage['rows']);
         }
 
-        ksort($championship['stages']);
+        ksort($rank['stages']);
 
-        $championship['general']['rows'] = array_values($championship['general']['rows']);
+        $rank['general']['rows'] = array_values($rank['general']['rows']);
 
-        return $championship;
+        return $rank;
     }
 
     public static function loadRank($year)

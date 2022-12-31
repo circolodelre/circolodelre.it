@@ -75,10 +75,10 @@ class Standing
     /**
      *
      */
-    public static function applyStandingToRank(&$championship, $standing, $time)
+    public static function applyStandingToRank(&$rank, $standing, $time)
     {
         // general stages championship info
-        $championship['stages'][$time] = [
+        $rank['stages'][$time] = [
             'time'   => $time,
             'date'   => $standing['date'],
             'number' => $standing['number'],
@@ -87,7 +87,7 @@ class Standing
 
         // loop through standing rows
         foreach ($standing['rows'] as $row0) {
-            $row = &$championship['general']['rows'][$row0['key']];
+            $row = &$rank['general']['rows'][$row0['key']];
             $row['count']  = isset($row['count']) ? $row['count'] + 1 : 1;
             $row['player'] = $row0['name'];
             $row['gender'] = $row0['gender'];
@@ -106,7 +106,7 @@ class Standing
             $row['rating-var'] = sprintf('%+d', isset($row['rating']) ? $rating - $row['rating'] : $rating - 1440);
             $row['rating'] = $rating;
 
-            $row = &$championship['stages'][$time]['rows'][$row0['key']];
+            $row = &$rank['stages'][$time]['rows'][$row0['key']];
             $row['player'] = $row0['name'];
             $row['gender']  = $row0['gender'];
             $row['title']  = $row0['title'];
@@ -115,7 +115,7 @@ class Standing
             $row['buct']   = $row0['buct'];
 
             if (!$standing['last']) {
-                $row = &$trends[$row0['key']];
+                $row = &$rank['trends'][$row0['key']];
                 $row['count']  = isset($row['count']) ? $row['count'] + 1 : 1;
                 $row['score']  = number_format(isset($row['score']) ? $row['score'] + $row0['score'] : $row0['score'], 1);
                 $row['bonus']  = number_format($row['count'] > 3 ? $row['count'] + 3 : $row['count'], 1);

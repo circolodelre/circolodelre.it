@@ -86,11 +86,11 @@
                                 <th class="has-text-centered">{{ row['total'] }}</th>
 
                                 <td class="has-text-centered">
-                                    {% if row['trend'] > 0 %}
+                                    {% if row['trend-var'] > 0 %}
                                         <span class="icon has-text-success">
                                             <i class="fas fa-arrow-up"></i>
                                         </span>
-                                    {% elseif row['trend'] < 0 %}
+                                    {% elseif row['trend-var'] < 0 %}
                                         <span class="icon has-text-danger">
                                             <i class="fas fa-arrow-down"></i>
                                         </span>
