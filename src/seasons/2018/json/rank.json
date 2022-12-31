@@ -3,7 +3,7 @@
     "stages": {
         "1527379200": {
             "time": 1527379200,
-            "date": "27\/05\/2018",
+            "date": "27/05/2018",
             "number": "#1",
             "rows": {
                 "93b762b0c002c3244d0db89520212f23": {
@@ -82,7 +82,7 @@
         },
         "1529798400": {
             "time": 1529798400,
-            "date": "24\/06\/2018",
+            "date": "24/06/2018",
             "number": "#2",
             "rows": {
                 "06eafe2944f35ec9cbb5d77db0740b09": {
@@ -215,7 +215,7 @@
         },
         "1532822400": {
             "time": 1532822400,
-            "date": "29\/07\/2018",
+            "date": "29/07/2018",
             "number": "#3",
             "rows": {
                 "6efc4534ae57ab7d20642a5fe9b774b7": {
@@ -324,7 +324,7 @@
                 "rating": 1573,
                 "1532822400": "4.5",
                 "rank": 2,
-                "trend": 4
+                "trend": 0
             },
             {
                 "count": 3,
@@ -340,7 +340,7 @@
                 "1529798400": "3.0",
                 "1532822400": "1.5",
                 "rank": 3,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 2,
@@ -355,7 +355,7 @@
                 "rating": 1497,
                 "1532822400": "3.0",
                 "rank": 4,
-                "trend": 4
+                "trend": 0
             },
             {
                 "count": 3,
@@ -371,7 +371,7 @@
                 "1529798400": "0.0",
                 "1532822400": "2.0",
                 "rank": 5,
-                "trend": 5
+                "trend": 0
             },
             {
                 "count": 2,
@@ -386,7 +386,7 @@
                 "rating": 1440,
                 "1529798400": "3.0",
                 "rank": 6,
-                "trend": -3
+                "trend": 0
             },
             {
                 "count": 1,
@@ -400,7 +400,7 @@
                 "rating-var": "+76",
                 "rating": 1516,
                 "rank": 7,
-                "trend": -3
+                "trend": 0
             },
             {
                 "count": 1,
@@ -414,7 +414,7 @@
                 "rating-var": "+57",
                 "rating": 1497,
                 "rank": 8,
-                "trend": -3
+                "trend": 0
             },
             {
                 "count": 1,
@@ -428,7 +428,7 @@
                 "rating-var": "+38",
                 "rating": 1478,
                 "rank": 9,
-                "trend": -2
+                "trend": 0
             },
             {
                 "count": 1,
@@ -456,7 +456,7 @@
                 "rating-var": "+19",
                 "rating": 1459,
                 "rank": 11,
-                "trend": -2
+                "trend": 0
             },
             {
                 "count": 1,
@@ -470,7 +470,7 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 12,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -484,7 +484,7 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 13,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -498,7 +498,7 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 14,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -512,7 +512,7 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 15,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -526,7 +526,7 @@
                 "rating-var": "-19",
                 "rating": 1421,
                 "rank": 16,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -554,7 +554,7 @@
                 "rating-var": "-57",
                 "rating": 1383,
                 "rank": 18,
-                "trend": -2
+                "trend": 0
             },
             {
                 "count": 1,
@@ -568,7 +568,7 @@
                 "rating-var": "-57",
                 "rating": 1383,
                 "rank": 19,
-                "trend": -1
+                "trend": 0
             },
             {
                 "count": 1,
@@ -582,7 +582,7 @@
                 "rating-var": "-57",
                 "rating": 1383,
                 "rank": 20,
-                "trend": -3
+                "trend": 0
             },
             {
                 "count": 1,
