@@ -1,8 +1,23 @@
 <?php
 
-$settings = json_decode(file_get_contents('src/config.json'), true);
+use Webmozart\Glob\Glob;
 
-$settings['date_format'] = $settings['date_format'] ?? 'd/m/Y';
-$settings['current_year'] = $settings['current_year'] ?? date('Y');
+$config = json_decode(file_get_contents('src/config.json'), true);
 
-return $settings;
+$config['date_format'] = $config['date_format'] ?? 'd/m/Y';
+$config['current_year'] = $config['current_year'] ?? date('Y');
+
+if (empty($config['pages'])) {
+    $config['pages'] = [];
+}
+
+// PHP-based pages
+$pagesDir = realpath(__DIR__.'/../pages');
+$globPages = $pagesDir.'/**/*.php';
+foreach (Glob::glob($globPages) as $file) {
+    $path = '/'.substr($file, strlen($pagesDir) + 1);
+    $page = rtrim(dirname($path), '/').'/'.basename($path, '.php').'.html';
+    $config['pages'][$page] = $file;
+}
+
+return $config;

@@ -2,21 +2,16 @@
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-use Webmozart\Glob\Glob;
+$config = services::get('config');
 
 echo "Build... \n";
 
-$pagesDir = realpath(__DIR__.'/../pages');
-$globPages = $pagesDir.'/**/*.php';
-
-foreach (Glob::glob($globPages) as $file) {
-    $relativeFile = substr($file, strlen($pagesDir) + 1);
-    $relativeName = basename($relativeFile, '.php');
-    $relativePath = dirname($relativeFile);
+foreach ($config['pages'] as $page => $file) {
+    $_SERVER['REQUEST_URI'] = $page;
 
     $html = require_once $file;
-    $page = __DIR__.'/../../docs/'.$relativePath.'/'.$relativeName.'.html';
+    $path = __DIR__.'/../../docs/'.$page;
 
-    is_dir(dirname($page)) or mkdir(dirname($page), 0777, true);
-    file_put_contents($page, $html);
+    is_dir(dirname($path)) or mkdir(dirname($path), 0777, true);
+    file_put_contents($path, $html);
 }

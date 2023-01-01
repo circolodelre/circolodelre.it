@@ -18,7 +18,8 @@ if (PHP_SAPI == 'cli-server') {
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$path = rtrim(__DIR__.'/pages'.parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-$html = require_once is_dir($path) ? $path.'/index.php' : $path.'.php';
+$page = __DIR__.'/pages'.parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = preg_replace('/.html$/', '.php', rtrim($page, '/'));
+$file = is_dir($path) ? $path.'/index.php' : (is_file($path) ? $path : dirname($path).'/index.php');
 
-echo $html;
+$html = require_once $file;
