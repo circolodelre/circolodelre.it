@@ -23,3 +23,5 @@ $path = preg_replace('/.html$/', '.php', rtrim($page, '/'));
 $file = is_dir($path) ? $path.'/index.php' : (is_file($path) ? $path : dirname($path).'/index.php');
 
 $html = require_once $file;
+
+echo $html;
