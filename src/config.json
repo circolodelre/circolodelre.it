@@ -1,4 +1,5 @@
 {
+  "year": 2022,
   "country": "it",
   "date_format": "d/m/Y",
   "tournaments_path": "~/Dropbox/Tornei/${YEAR}"

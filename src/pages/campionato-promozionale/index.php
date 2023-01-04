@@ -2,10 +2,7 @@
 
 $twig = services::get('twig');
 $config = services::get('config');
-$year = $_SERVER['REQUEST_URI'];
-
-var_dump($year);
-die();
+$year = intval(basename($_SERVER['REQUEST_URI'], '.html')) ?: $config['year'];
 
 return $twig->render('season.html', [
     'year' => $year,
