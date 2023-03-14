@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container has-text-centered">
+
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content tournament-registration" data-tournament="{{tournament}}">
+                        <h1 class="title">Campionato Provinciale 2023</h1>
+
+                        <h3 class="title is-3">Giocatori Registrati</h3>
+                        <ul>
+                            <li>Francesco Bianco</li>
+                        </ul>
+
+                        {% block page %}{% endblock %}
+
+                        <h3 class="title is-3">Iscriviti al Torneo</h3>
+
+                        <form id="myForm">
+                            <label>tournament</label>
+                            <input name="tournament" type="hidden" value="{{tournament}}"/>
+                            <br/>
+                            <label>nickname</label>
+                            <input name="nickname" />
+                            <br/>
+                        </form>
+                        <button onclick='SubForm()'>Submit</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
