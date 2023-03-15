@@ -1,21 +1,13 @@
 
+const SHEET_API = "https://api.apispreadsheets.com/data/NQrCKaNLm8SVlYSZ/?query="
 
-$('.tournament-registration').each((tournament) => {
-    $(tournament).data('tournament')
+$('.tournament-registration').each(tournament => {
+    const tournamentName = $(tournament).data('tournament')
 
-    fetch("https://api.apispreadsheets.com/data/NQrCKaNLm8SVlYSZ/?query=select * from NQrCKaNLm8SVlYSZ where tournament='ciao'").then(res=>{
-        if (res.status === 200){
-            // SUCCESS
-            res.json().then(data=>{
-                const yourData = data.data
-                console.log(yourData)
-            }).catch(err => console.log(err))
-        }
-        else{
-            // ERROR
-        }
+    const url = SHEET_API + "select * from NQrCKaNLm8SVlYSZ where tournament='"+tournamentName+"'"
+    $.fetch(url, (data) => {
+        console.log("DATA:", data);
     })
-
 })
 
 
