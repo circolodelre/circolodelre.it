@@ -10702,3 +10702,15 @@ label.panel-block:hover {
 
 .is-lichess-button {
   background-color: #dbd7d1 !important; }
+
+.is-button-selectable {
+  padding: 4px;
+  border-radius: 5px;
+  display: inline-block;
+  border: 4px dashed #fff; }
+
+.is-button-selected {
+  padding: 4px;
+  border-radius: 5px;
+  display: inline-block;
+  border: 4px dashed #000; }

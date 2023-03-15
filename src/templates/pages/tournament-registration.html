@@ -20,14 +20,33 @@
                         <h3 class="title is-3">Iscriviti al Torneo</h3>
 
                         <form id="myForm">
-                            <label>tournament</label>
-                            <input name="tournament" type="hidden" value="{{tournament}}"/>
+
+                            <p>
+                                Sgegli il portale su cui sei registrato
+                            </p>
+
+                            <span class="is-button-selected">
+                                <button onclick="" class="button button is-black is-outlined is-medium is-chesscom-button">
+                                    <img src="/assets/img/logo-chesscom.png">
+                                </button>
+                            </span>
+
+                            <span class="is-button-selectable">
+                                <button onclick="" class="button is-black is-outlined is-medium is-lichess-button">
+                                    <img src="/assets/img/logo-lichess.png">
+                                </button>
+                            </span>
+
                             <br/>
-                            <label>nickname</label>
+
+                            <input name="tournament" type="hidden" value="{{tournament}}"/>
+
+                            <br/>
+                            <label>Inserisci il tuo nome utente</label><br>
                             <input name="nickname" />
                             <br/>
                         </form>
-                        <button onclick='SubForm()'>Submit</button>
+                        <button onclick='SubForm()'>Iscriviti</button>
 
                     </div>
                 </div>

@@ -1,6 +1,12 @@
 (function ( $ ) {
-
-    $.fn.fetch = function(url, cb) {
+    /**
+     *
+     *
+     * @param url
+     * @param cb
+     * @returns {jQuery}
+     */
+    $.fetch = function(url, cb) {
         fetch(url).then(res=>{
             if (res.status === 200){
                 // SUCCESS
@@ -15,5 +21,20 @@
         return this;
     };
 
-}( jQuery ));
+    /**
+     *
+     *
+     * @param url
+     * @param cb
+     * @returns {jQuery}
+     */
+    $.fn.getPayload = function() {
+        const fields = this.serializeArray()
+        let payload = {};
+        for (let i in fields) {
+            payload[fields[i].name] = fields[i].value
+        }
+        return payload;
+    };
 
+}( jQuery ));
