@@ -7,6 +7,10 @@ $('.tournament-registration').each((index, element) => {
     const url = SHEET_API + "select * from NQrCKaNLm8SVlYSZ where tournament='"+tournament+"'"
     $.fetch(url, (data) => {
         console.log("DATA:", data);
+        for (let i in data.data) {
+            let user = data.data[i];
+            $('tbody', element).append(`<tr><td>${user.nickname}</td></tr>`)
+        }
     })
 })
 

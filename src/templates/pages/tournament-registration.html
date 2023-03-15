@@ -8,45 +8,75 @@
             <div class="column">
                 <div class="card">
                     <div class="card-content tournament-registration" data-tournament="{{tournament}}">
+
                         <h1 class="title">Campionato Provinciale 2023</h1>
 
-                        <h3 class="title is-3">Giocatori Registrati</h3>
-                        <ul>
-                            <li>Francesco Bianco</li>
-                        </ul>
+                        <div class="columns">
+                            <div class="column">
+                                <h3 class="title is-3">Giocatori Registrati</h3>
 
-                        {% block page %}{% endblock %}
+                                <table class="table is-fullwidth is-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="has-text-centered"> </th>
+                                        <th class="has-text-centered">Pos.</th>
+                                        <th class="has-text-centered">Cat.</th>
+                                        <th class="has-text-centered"> </th>
+                                        <th>Giocatore</th>
+                                        <th class="has-text-centered">Valutazione</th>
+                                        {% for stage in rank['stages'] %}
+                                        <th class="has-text-centered">{{ _('Torneo') }} {{ stage['number'] }}</th>
+                                        {% endfor %}
+                                        <th class="has-text-centered">Punti</th>
+                                        <th class="has-text-centered">Bonus</th>
+                                        <th class="has-text-centered">Totale</th>
+                                        <th class="has-text-centered"> </th>
+                                    </tr>
+                                    </thead>
 
-                        <h3 class="title is-3">Iscriviti al Torneo</h3>
+                                    <tbody class="has-text-centered"></tbody>
+                                </table>
 
-                        <form id="myForm">
 
-                            <p>
-                                Sgegli il portale su cui sei registrato
-                            </p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-3">Iscriviti al Torneo</h3>
 
-                            <span class="is-button-selected">
+                                <form id="myForm">
+
+                                    <p>
+                                        Sgegli il portale su cui sei registrato
+                                    </p>
+
+                                    <span class="is-button-selected">
                                 <button onclick="" class="button button is-black is-outlined is-medium is-chesscom-button">
                                     <img src="/assets/img/logo-chesscom.png">
                                 </button>
                             </span>
 
-                            <span class="is-button-selectable">
+                                    <span class="is-button-selectable">
                                 <button onclick="" class="button is-black is-outlined is-medium is-lichess-button">
                                     <img src="/assets/img/logo-lichess.png">
                                 </button>
                             </span>
 
-                            <br/>
+                                    <br/>
 
-                            <input name="tournament" type="hidden" value="{{tournament}}"/>
+                                    <input name="tournament" type="hidden" value="{{tournament}}"/>
 
-                            <br/>
-                            <label>Inserisci il tuo nome utente</label><br>
-                            <input name="nickname" />
-                            <br/>
-                        </form>
-                        <button onclick='SubForm()'>Iscriviti</button>
+                                    <br/>
+                                    <label>Inserisci il tuo nome utente</label><br>
+                                    <input name="nickname" />
+                                    <br/>
+                                </form>
+                                <button onclick='SubForm()'>Iscriviti</button>
+
+                            </div>
+                        </div>
+
+
+                        {% block page %}{% endblock %}
+
 
                     </div>
                 </div>
