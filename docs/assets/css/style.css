@@ -10707,10 +10707,10 @@ label.panel-block:hover {
   padding: 4px;
   border-radius: 5px;
   display: inline-block;
-  border: 4px dashed #fff; }
+  border: 2px dashed #fff; }
 
 .is-button-selected {
-  padding: 4px;
+  padding: 2px;
   border-radius: 5px;
   display: inline-block;
-  border: 4px dashed #000; }
+  border: 2px dashed #000; }
