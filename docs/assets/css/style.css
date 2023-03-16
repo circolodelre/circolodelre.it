@@ -10703,14 +10703,19 @@ label.panel-block:hover {
 .is-lichess-button {
   background-color: #dbd7d1 !important; }
 
-.is-button-selectable {
+.select-portal-button {
   padding: 4px;
   border-radius: 5px;
   display: inline-block;
   border: 2px dashed #fff; }
 
-.is-button-selected {
-  padding: 2px;
-  border-radius: 5px;
-  display: inline-block;
+.select-portal-button.selected {
   border: 2px dashed #000; }
+
+
+.select-portal-button button,
+.select-portal-button button:active,
+.select-portal-button button:focus,
+.select-portal-button button:hover {
+  outline: none !important;
+  box-shadow: none !important; }
