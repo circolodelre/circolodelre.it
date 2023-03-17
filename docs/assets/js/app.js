@@ -23,6 +23,15 @@
 
     /**
      *
+     * @param country
+     * @returns {string}
+     */
+    $.countryFlag = function (country) {
+        return String.fromCodePoint(...[...country.toUpperCase()].map(c => c.charCodeAt() + 0x1F1A5));
+    }
+
+    /**
+     *
      *
      * @param url
      * @param cb

@@ -4689,7 +4689,7 @@ a.box:active {
   border: 1px solid #dbdbdb;
   border-width: 0 0 1px;
   padding: 0.5em 0.75em;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .table td.is-white,
