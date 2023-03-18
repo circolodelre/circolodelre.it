@@ -10704,7 +10704,8 @@ label.panel-block:hover {
   background-color: #dbd7d1 !important; }
 
 .select-portal-button {
-  padding: 4px;
+  padding: 2px;
+  margin: 2px;
   border-radius: 5px;
   display: inline-block;
   border: 2px dashed #fff; }

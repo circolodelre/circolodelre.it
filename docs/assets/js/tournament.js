@@ -6,6 +6,10 @@ $('.tournament-registration').each((index, element) => {
     console.log('T:', tournament);
 
     LoadUsers(tournament, element);
+    $('form', element).on('submit', event => {
+        event.preventDefault();
+        RegisterUser(event.currentTarget)
+    });
     $('.select-portal-button button', element).click((event) => {
         const button = $(event.currentTarget);
         const portal = button.parent().data('portal');
@@ -46,10 +50,24 @@ function LoadUsers(tournament, element) {
     });
 }
 
-function SubForm (){
-    let data = $("#myForm").getPayload();
-
-
+/**
+ *
+ * @param form
+ * @constructor
+ */
+function RegisterUser(form) {
+    console.log("form:", form)
+    let data = $(form).getPayload();
+    data.nickname = (data.nickname + "").trim()
+    data.portal = (data.portal + "").trim().toLowerCase()
+    if (!data.portal) {
+        ErrorMessage(form, 'Devi scegliere un portale, clicca sul tuo portale preferito.');
+        return;
+    }
+    if (!data.nickname) {
+        ErrorMessage(form, 'Devi inserire un nickname valido con il quale giochi online.');
+        return;
+    }
 
     console.log("NICK:", data.nickname)
 
@@ -62,6 +80,9 @@ function SubForm (){
             data: data,
             success: function(){
                 //alert("Form Data Submitted :)")
+
+                $('input[name=nickname]', form).val('');
+
             },
             error: function(){
                 //alert("There was an error :(")
@@ -70,6 +91,12 @@ function SubForm (){
     })
 }
 
+/**
+ *
+ * @param data
+ * @param cb
+ * @constructor
+ */
 function GetProfile(data, cb) {
     if (data.portal == 'chess-com') {
         $.fetch("https://api.chess.com/pub/player/"+data.nickname, resp =>{
@@ -105,4 +132,12 @@ function GetProfile(data, cb) {
             cb(data)
         })
     }
+}
+
+function ErrorMessage(form, message) {
+    $('div.error-message', form).html(`
+        <div class="notification is-danger is-light has-padding-bt-7 has-margin-b-7">
+            ${message}
+        </div>
+    `);
 }

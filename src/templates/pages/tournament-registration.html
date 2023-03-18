@@ -2,69 +2,83 @@
 
 {% block content %}
 <section class="section">
-    <div class="container has-text-centered">
+    <div class="container has-text-centered tournament-registration" data-tournament="{{tournament}}">
 
         <div class="columns">
             <div class="column">
                 <div class="card">
-                    <div class="card-content tournament-registration" data-tournament="{{tournament}}">
-
+                    <div class="card-content" >
                         <h1 class="title">Campionato Provinciale 2023</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                        <div class="columns">
-                            <div class="column">
-                                <h3 class="title is-3">Giocatori Registrati</h3>
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <div class="card">
+                    <div class="card-content" >
 
-                                <table class="table is-fullwidth is-striped">
-                                    <thead>
-                                    <tr>
-                                        <th class="has-text-centered">N°</th>
-                                        <th> </th>
-                                        <th>Nome</th>
-                                        <th> </th>
-                                        <th class="has-text-centered">Punteggio</th>
-                                        <th class="has-text-centered"> </th>
-                                    </tr>
-                                    </thead>
+                    <h3 class="title is-3">Giocatori Registrati</h3>
 
-                                    <tbody class="has-text-centered"></tbody>
-                                </table>
+                        <table class="table is-fullwidth is-striped">
+                            <thead>
+                            <tr>
+                                <th class="has-text-centered">N°</th>
+                                <th> </th>
+                                <th>Nome</th>
+                                <th> </th>
+                                <th class="has-text-centered">Punteggio</th>
+                                <th class="has-text-centered"> </th>
+                            </tr>
+                            </thead>
+
+                            <tbody class="has-text-centered"></tbody>
+                        </table>
 
 
-                            </div>
-                            <div class="column">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                        <div class="card">
+                            <div class="card-content" >
+
                                 <h3 class="title is-3">Iscriviti al Torneo</h3>
 
                                 <form id="myForm">
 
-                                    <p>
-                                        Sgegli il portale su cui sei registrato
+                                    <p class="has-padding-b-7">
+                                        <label class="is-block">
+                                            Scegli il portale su cui sei registrato
+                                        </label>
+
+                                        <span class="select-portal-button" data-portal="chess-com">
+                                            <button type="button" class="button button is-black is-outlined is-medium is-chesscom-button">
+                                                <img src="/assets/img/logo-chesscom.png">
+                                            </button>
+                                        </span>
+
+                                        <span class="select-portal-button" data-portal="lichess-org">
+                                            <button type="button" class="button is-black is-outlined is-medium is-lichess-button">
+                                                <img src="/assets/img/logo-lichess.png">
+                                            </button>
+                                        </span>
                                     </p>
-
-                                    <span class="select-portal-button" data-portal="chess-com">
-                                        <button type="button" class="button button is-black is-outlined is-medium is-chesscom-button">
-                                            <img src="/assets/img/logo-chesscom.png">
-                                        </button>
-                                    </span>
-
-                                    <span class="select-portal-button" data-portal="lichess-org">
-                                        <button type="button" class="button is-black is-outlined is-medium is-lichess-button">
-                                            <img src="/assets/img/logo-lichess.png">
-                                        </button>
-                                    </span>
 
                                     <input type="hidden" name="portal" value="">
 
-                                    <br/>
+                                    <div class="error-message"></div>
 
                                     <input name="tournament" type="hidden" value="{{tournament}}"/>
 
-                                    <br/>
-                                    <label>Inserisci il tuo nome utente</label><br>
-                                    <input name="nickname" />
-                                    <br/>
+                                    <p class="has-padding-b-7">
+                                        <label>Inserisci il tuo nome utente</label><br>
+                                        <input name="nickname" class="input is-primary" style="width: 290px" />
+                                    </p>
+
+                                    <button class="button is-primary is-medium" type="submit">Iscriviti</button>
                                 </form>
-                                <button onclick='SubForm()'>Iscriviti</button>
 
                             </div>
                         </div>
@@ -74,10 +88,7 @@
 
 
                     </div>
-                </div>
-            </div>
         </div>
-
     </div>
 </section>
 {% endblock %}
