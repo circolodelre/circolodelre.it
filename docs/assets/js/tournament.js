@@ -8,7 +8,7 @@ $('.tournament-registration').each((index, element) => {
     LoadUsers(tournament, element);
     $('form', element).on('submit', event => {
         event.preventDefault();
-        RegisterUser(event.currentTarget)
+        RegisterUser(event.currentTarget, tournament, element)
     });
     $('.select-portal-button button', element).click((event) => {
         const button = $(event.currentTarget);
@@ -36,7 +36,7 @@ function LoadUsers(tournament, element) {
                     <th class="has-text-centered">${number}</th>
                     <td>
                         <figure class="image is-32x32">
-                            <img class="is-rounded" src="${user.avatar}"/>
+                            <img height="32" class="is-rounded" src="${user.avatar}"/>
                         </figure>
                     </td>
                     <td><a href="${user.url}" target="_blank">${user.nickname}</a></td>
@@ -57,7 +57,7 @@ function LoadUsers(tournament, element) {
  * @param form
  * @constructor
  */
-function RegisterUser(form) {
+function RegisterUser(form, tournament, element) {
     console.log("form:", form)
     let data = $(form).getPayload();
     data.nickname = (data.nickname + "").trim()
@@ -84,7 +84,7 @@ function RegisterUser(form) {
                 //alert("Form Data Submitted :)")
 
                 $('input[name=nickname]', form).val('');
-
+                LoadUsers(tournament, element);
             },
             error: function(){
                 //alert("There was an error :(")
@@ -111,9 +111,11 @@ function GetProfile(data, cb) {
                 console.log("Chess.com STATS:", resp)
                 const gameType = ['chess_blitz'];
                 for (let i in gameType) {
-                    const gameRating = parseInt(resp[gameType[i]].last.rating);
-                    if (gameRating > data.rating) {
-                        data.rating = gameRating
+                    if (resp.hasOwnProperty(gameType[i])) {
+                        const gameRating = parseInt(resp[gameType[i]].last.rating);
+                        if (gameRating > data.rating) {
+                            data.rating = gameRating
+                        }
                     }
                 }
                 cb(data)
@@ -123,6 +125,7 @@ function GetProfile(data, cb) {
         $.fetch("https://lichess.org/api/user/"+data.nickname, resp => {
             console.log("lichess.org:", resp)
             data.rating = 0
+            data.avatar = "/assets/img/lichess-org-icon.png";
             const gameType = ['blitz', 'bullet', 'classical', 'correspondence', 'rapid'];
             for (let i in gameType) {
                 const gameCount = parseInt(resp.perfs[gameType[i]].games);

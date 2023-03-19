@@ -10713,6 +10713,12 @@ label.panel-block:hover {
 .select-portal-button.selected {
   border: 2px dashed #000; }
 
+.is-portal-icon {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle; }
 
 .select-portal-button button,
 .select-portal-button button:active,

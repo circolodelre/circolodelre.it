@@ -41,53 +41,48 @@
                 </div>
             </div>
             <div class="column">
-                        <div class="card">
-                            <div class="card-content" >
+                <div class="card">
+                    <div class="card-content" >
 
-                                <h3 class="title is-3">Iscriviti al Torneo</h3>
+                        <h3 class="title is-3">Iscriviti al Torneo</h3>
 
-                                <form id="myForm">
+                        <form id="myForm">
 
-                                    <p class="has-padding-b-7">
-                                        <label class="is-block">
-                                            Scegli il portale su cui sei registrato
-                                        </label>
+                            <p class="has-padding-b-7">
+                                <label class="is-block">
+                                    Scegli il portale su cui sei registrato
+                                </label>
 
-                                        <span class="select-portal-button" data-portal="chess-com">
-                                            <button type="button" class="button button is-black is-outlined is-medium is-chesscom-button">
-                                                <img src="/assets/img/logo-chesscom.png">
-                                            </button>
-                                        </span>
+                                <span class="select-portal-button" data-portal="chess-com">
+                                    <button type="button" class="button button is-black is-outlined is-medium is-chesscom-button">
+                                        <img src="/assets/img/logo-chesscom.png">
+                                    </button>
+                                </span>
 
-                                        <span class="select-portal-button" data-portal="lichess-org">
-                                            <button type="button" class="button is-black is-outlined is-medium is-lichess-button">
-                                                <img src="/assets/img/logo-lichess.png">
-                                            </button>
-                                        </span>
-                                    </p>
+                                <span class="select-portal-button" data-portal="lichess-org">
+                                    <button type="button" class="button is-black is-outlined is-medium is-lichess-button">
+                                        <img src="/assets/img/logo-lichess.png">
+                                    </button>
+                                </span>
+                            </p>
 
-                                    <input type="hidden" name="portal" value="">
+                            <input type="hidden" name="portal" value="">
 
-                                    <div class="error-message"></div>
+                            <div class="error-message has-margin-x-auto" style="width: 290px"></div>
 
-                                    <input name="tournament" type="hidden" value="{{tournament}}"/>
+                            <input name="tournament" type="hidden" value="{{tournament}}"/>
 
-                                    <p class="has-padding-b-7">
-                                        <label>Inserisci il tuo nome utente</label><br>
-                                        <input name="nickname" class="input is-primary" style="width: 290px" />
-                                    </p>
+                            <p class="has-padding-b-7">
+                                <label>Inserisci il tuo nome utente</label><br>
+                                <input name="nickname" class="input is-primary" style="width: 290px" />
+                            </p>
 
-                                    <button class="button is-primary is-medium" type="submit">Iscriviti</button>
-                                </form>
-
-                            </div>
-                        </div>
-
-
-                        {% block page %}{% endblock %}
-
+                            <button class="button is-primary is-medium" type="submit">Iscriviti</button>
+                        </form>
 
                     </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
