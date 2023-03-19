@@ -34,13 +34,13 @@ function LoadUsers(tournament, element) {
             $('tbody', element).append(`
                 <tr>
                     <th class="has-text-centered">${number}</th>
-                    <td>
-                        <figure class="image is-32x32">
+                    <td class="has-text-centered">
+                        <figure class="image is-32x32 has-margin-x-auto">
                             <img height="32" class="is-rounded" src="${user.avatar}"/>
                         </figure>
                     </td>
                     <td><a href="${user.url}" target="_blank">${user.nickname}</a></td>
-                    <td>${user.countryFlag}</td>
+                    <td class="has-text-centered">${user.countryFlag}</td>
                     <td class="has-text-centered">${user.rating}</td>           
                     <td class="has-text-centered">
                         <img src="/assets/img/${user.portal}-icon.png" class="is-portal-icon" />    
