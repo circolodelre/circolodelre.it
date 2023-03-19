@@ -42,7 +42,9 @@ function LoadUsers(tournament, element) {
                     <td><a href="${user.url}" target="_blank">${user.nickname}</a></td>
                     <td>${user.countryFlag}</td>
                     <td class="has-text-centered">${user.rating}</td>           
-                    <td class="has-text-centered">${user.portal}</td>           
+                    <td class="has-text-centered">
+                        <img src="/assets/img/${user.portal}-icon.png" class="is-portal-icon" />    
+                    </td>           
                 </tr>
             `)
             number++;
