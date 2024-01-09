@@ -1,0 +1,59 @@
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <h1 class="title is-3">{{ _('Prossimi eventi') }}</h1>
+
+                <!--h2 class="title is-4">{{ _('Classifica Generale') }}</h2-->
+                <!--h3 class="subtitle is-6">{{ _('Aggiornata al') }} {{ today }}</h3-->
+
+                <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th class="has-text-centered"> </th>
+                            <!--th class="has-text-centered">Pos.</th-->
+                            <th>Evento</th>
+                            <th class="has-text-centered">Data</th>
+                            <th class="has-text-centered"> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="has-text-centered">
+                        {% for row in events %}
+                            <tr>
+                                <th class="has-text-centered">
+                                    {% if row['type'] == 'lesson' %}
+                                        <span class="icon has-text-grey">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </span>
+                                    {% elseif row['type'] == 'tournament' %}
+                                        <span class="icon has-text-warning">
+                                            <i class="fas fa-trophy"></i>
+                                        </span>
+                                    {% endif %}
+                                </th>
+
+                                <td class="has-text-left">
+                                    {{ row['title'] }}
+                                </td>
+
+                                <td class="has-text-centered">
+                                    {{ row['time']|date("d/m/Y") }}
+                                </td>
+
+                                <td class="has-text-centered">
+                                    <a href="/iscrizione-torneo" class="button is-small">
+                                        Iscriviti
+                                    </a>
+                                </td>
+                           </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
