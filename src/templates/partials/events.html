@@ -15,7 +15,7 @@
                             <!--th class="has-text-centered">Pos.</th-->
                             <th>Evento</th>
                             <th class="has-text-centered">Data</th>
-                            <th class="has-text-centered"> </th>
+                            <th class="has-text-centered is-hidden-mobile"> </th>
                         </tr>
                     </thead>
 
@@ -40,9 +40,12 @@
 
                                 <td class="has-text-centered">
                                     {{ row['time']|date("d/m/Y") }}
+                                    <a href="/iscrizione-torneo" class="button is-small is-hidden-tablet">
+                                        Iscriviti
+                                    </a>
                                 </td>
 
-                                <td class="has-text-centered">
+                                <td class="has-text-centered is-hidden-mobile">
                                     <a href="/iscrizione-torneo" class="button is-small">
                                         Iscriviti
                                     </a>
