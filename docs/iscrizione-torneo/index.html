@@ -38,10 +38,43 @@
                 <div class="card">
                     <div class="card-content" >
                         <h1 class="title">Campionato Provinciale 2023</h1>
+
+                        <table class="table is-fullwidth is-striped">
+                            <thead>
+                            <tr>
+                                <th class="has-text-centered">N°</th>
+                                <th> </th>
+                                <th>Nome</th>
+                                <th> </th>
+                                <th class="has-text-centered">Punteggio</th>
+                                <th class="has-text-centered"> </th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="joined"  class="has-text-centered"></tbody>
+                        </table>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
+                .then(response => response.text())
+                .then(text => {
+                    text.split("\n").forEach((line, index) => {
+                        const [timestamp, event, name] = line.split(",")
+                        const row = document.createElement("tr")
+                        row.innerHTML = `
+                            <td>${timestamp}</td>
+                            <td>${event}</td>
+                            <td>${name}</td>
+                        `;
+                        document.getElementById("joined").appendChild(row)
+                    })
+                })
+        </script>
 
         <div class="columns">
             <div class="column">
