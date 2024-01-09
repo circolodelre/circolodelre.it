@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Vega;
+
 class Standing
 {
     /**

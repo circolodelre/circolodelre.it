@@ -1,20 +1,17 @@
 <?php
 
-namespace App;
-
-use Webmozart\Glob\Glob;
 
 class Vega
 {
     /**
      * @param $file
      * @return array
-     * @throws Exception
+     * @throws \App\Exception
      */
     public static function getStandingFromCsv($file)
     {
         if (!file_exists($file)) {
-            throw new Exception("file not found.\n");
+            throw new \App\Exception("file not found.\n");
         }
 
         $page = [];
@@ -52,12 +49,12 @@ class Vega
     /**
      * @param $file
      * @return array
-     * @throws Exception
+     * @throws \App\Exception
      */
     public static function getPlayersFromCsv($file)
     {
         if (!file_exists($file)) {
-            throw new Exception("file not found.\n");
+            throw new \App\Exception("file not found.\n");
         }
 
         $page = [];
