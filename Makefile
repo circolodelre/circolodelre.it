@@ -19,9 +19,6 @@ dump-autoload:
 build:
 	@docker compose run --rm php -f src/tasks/build.php
 
-rank:
-	@docker compose run --rm php -f src/tasks/rank.php
-
 ## ====
 ## Misc
 ## ====
@@ -29,8 +26,7 @@ rank:
 serve:
 	@docker compose run --rm -p 8080:8080 php -S 0.0.0.0:8080 src/router.php
 
-start:
-	@php -S localhost:8080
+start: serve
 
 push:
 	git add .

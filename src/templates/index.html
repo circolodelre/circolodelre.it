@@ -3,11 +3,17 @@
 {% block content %}
     <section class="section">
         <div class="container has-text-centered">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
 
-            {% include 'partials/banner.html' %}
+                    {#% include 'partials/banner.html' %#}
 
-            {% include 'partials/welcome.html' %}
-            {% include 'partials/standing.html' %}
+                    {% include 'partials/welcome.html' %}
+
+                    {% include 'partials/standing.html' %}
+
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}
