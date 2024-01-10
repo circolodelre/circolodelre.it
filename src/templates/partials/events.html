@@ -1,7 +1,7 @@
 <div class="columns">
     <div class="column">
 
-        <div class="card">
+        <div id="events" class="card">
             <div class="card-content">
                 <h1 class="title is-3">{{ _('Prossimi eventi') }}</h1>
 
@@ -41,13 +41,13 @@
 
                                 <td class="has-text-centered">
                                     {{ row['time']|date("d/m/Y") }}
-                                    <a href="/iscrizione-torneo/{{ row['slug'] }}.html" class="button is-small is-hidden-tablet">
+                                    <a href="/iscrizione-torneo/{{ row['slug'] }}.html" class="button is-small is-dark is-outlined is-hidden-tablet">
                                         Iscriviti
                                     </a>
                                 </td>
 
                                 <td class="has-text-centered is-hidden-mobile">
-                                    <a href="/iscrizione-torneo/{{ row['slug'] }}.html" class="button is-small" >
+                                    <a href="/iscrizione-torneo/{{ row['slug'] }}.html" class="button is-small is-dark is-outlined" >
                                         Iscriviti
                                     </a>
                                 </td>

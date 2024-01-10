@@ -10726,3 +10726,7 @@ label.panel-block:hover {
 .select-portal-button button:hover {
   outline: none !important;
   box-shadow: none !important; }
+
+.container {
+  max-width: 600px !important;
+}
