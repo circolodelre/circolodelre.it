@@ -11,7 +11,7 @@ echo "Build... \n";
 foreach ($config['pages'] as $page => $file) {
     $_SERVER['REQUEST_URI'] = $page;
 
-    $html = require_once $file;
+    $html = require $file;
     $path = __DIR__.'/../../docs/'.$page;
 
     is_dir(dirname($path)) or mkdir(dirname($path), 0777, true);
@@ -24,7 +24,7 @@ foreach ($events as $event) {
     $page = '/iscrizione-torneo/'.$event['slug'].'.html';
     $_SERVER['REQUEST_URI'] = $page;
 
-    $html = require_once $file;
+    $html = require $file;
     $path = __DIR__.'/../../docs/'.$page;
 
     is_dir(dirname($path)) or mkdir(dirname($path), 0777, true);
