@@ -16,6 +16,7 @@ class Events
     public static function loadEvents()
     {
         $events = [];
+        $eventsBySeason = [];
 
         foreach (scandir(__DIR__.'/../events') as $file) {
             if (substr($file, -4) == '.csv') {
@@ -24,7 +25,21 @@ class Events
             }
         }
 
-        return $events;
+        $today = time();
+        foreach ($events as $event) {
+            if ($event['time'] < $today) {
+                continue;
+            }
+
+            $season = $event['season'];
+            if (empty($eventsBySeason[$season])) {
+                $eventsBySeason[$season] = [];
+            }
+
+            $eventsBySeason[$season][] = $event;
+        }
+
+        return $eventsBySeason;
     }
 
     public static function loadEventBySlug($eventSlug)
@@ -36,47 +51,17 @@ class Events
         }
     }
 
-    public static function parseSeason($season)
+    public static function getSeason($date)
     {
-        if (preg_match('/[0-9]{4}\/[0-9]{2}/', $season, $matches)) {
-            $season = $matches[0];
-        }
-
-        $season = explode('/', $season);
-
-        if (strlen($season[1]) == 2) {
-            $season[1] = '20'.$season[1];
-        }
-
-        return $season;
-    }
-
-    public static function convertDate($date, $season)
-    {
-        $date = strtolower($date);
-
-        $date = str_replace(['gen'], 'january', $date);
-        $date = str_replace(['feb'], 'february', $date);
-        $date = str_replace(['mar'], 'march', $date);
-        $date = str_replace(['apr'], 'april', $date);
-        $date = str_replace(['mag'], 'may', $date);
-        $date = str_replace(['giu'], 'june', $date);
-        $date = str_replace(['lug'], 'july', $date);
-        $date = str_replace(['ago'], 'august', $date);
-        $date = str_replace(['set'], 'september', $date);
-        $date = str_replace(['ott'], 'october', $date);
-        $date = str_replace(['nov'], 'november', $date);
-        $date = str_replace(['dic'], 'december', $date);
-
         $time = strtotime($date);
+        $year = date('Y', $time);
         $month = date('m', $time);
-        $day = date('d', $time);
 
-        if (date('m', $time) > 8) {
-            return $season[0].'-'.$month.'-'.$day;
+        if ($month > 8) {
+            return $year.'/'.($year + 1);
         }
 
-        return $season[1].'-'.$month.'-'.$day;
+        return ($year - 1).'/'.$year;
     }
 
     public static function parseCsvEvents($csv)
@@ -97,22 +82,25 @@ class Events
                 continue;
             }
 
-            $title =  $csv[$row][3];
             $date = $csv[$row][0];
+            $title =  $csv[$row][3];
+            $season = self::getSeason($date);
             $event = [
-                'slug' => self::eventSlug($season[0].'-'.$season[1].'-'.$title),
+                'slug' => self::getEventSlug($season.'-'.$title),
                 'type' => 'tournament',
                 'season' => $season,
                 'title' => $title,
                 'date' => $date,
                 'time' => strtotime($date),
             ];
+
+            $events[] = $event;
         }
 
         return $events;
     }
 
-    public static function eventSlug($text)
+    public static function getEventSlug($text)
     {
         // replace non letter or digits by -
         $text = preg_replace('~[^\pL\d]+~u', '-', $text);
