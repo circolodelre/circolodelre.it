@@ -24,12 +24,6 @@ class Events
             }
         }
 
-        /*
-        $rankFile = __DIR__ . '/../seasons/' .$year.'/json/rank.json';
-
-        return json_decode(file_get_contents($rankFile), true);
-        */
-
         return $events;
     }
 
@@ -95,27 +89,24 @@ class Events
 */
 
         $events = [];
-        $season = self::parseSeason($csv[2][0]);
+        //$season = self::parseSeason($csv[2][0]);
 
-        for ($row = 4; $row < count($csv); $row++) {
-            for ($col = 1; $col < count($csv[$row]); $col = $col + 3) {
-                if (empty($csv[$row][$col]) || empty($csv[$row][$col + 1])) {
-                    continue;
-                }
-
-                $title =  $csv[$row][$col + 1];
-                $date = self::convertDate($csv[$row][$col], $season);
-                $event = [
-                    'slug' => self::eventSlug($season[0].'-'.$season[1].'-'.$title),
-                    'type' => 'tournament',
-                    'season' => $season,
-                    'title' => $title,
-                    'date' => $date,
-                    'time' => strtotime($date),
-                ];
-
-                $events[] = $event;
+        for ($row = 1; $row < count($csv); $row++) {
+            if (empty($csv[$row][0]) || empty($csv[$row][3]) ||
+                !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $csv[$row][0])) {
+                continue;
             }
+
+            $title =  $csv[$row][3];
+            $date = $csv[$row][0];
+            $event = [
+                'slug' => self::eventSlug($season[0].'-'.$season[1].'-'.$title),
+                'type' => 'tournament',
+                'season' => $season,
+                'title' => $title,
+                'date' => $date,
+                'time' => strtotime($date),
+            ];
         }
 
         return $events;
