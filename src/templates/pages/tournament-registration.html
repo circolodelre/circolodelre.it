@@ -3,133 +3,84 @@
 {% block content %}
 <section class="section">
     <div class="container has-text-centered tournament-registration" data-tournament="{{tournament}}">
-
         <div class="columns">
-            <div class="column">
+            <div class="column is-half is-offset-one-quarter">
                 <div class="card">
-                    <div class="card-content" >
-                        <h1 class="title">Campionato Provinciale 2023</h1>
+                    <div class="card-content">
+                        <h1 class="title">{{ event['title'] }}</h1>
+                        <h2 class="subtitle has-text-grey">Stagione {{ event['season'][0] }}/{{ event['season'][1] }}</h2>
+
+                        <a
+                            href="https://docs.google.com/document/d/e/2PACX-1vSmHUhDSuoVePctWswrFaRaKc04Sx48Rva8iVVBP9jNYDN7uR8FUJEAwgl-N6p61rgNCx-WQxvIJQWM/pub"
+                            target="_blank"
+                            class="button is-medium is-primary is-outlined has-margin-lr-7"
+                        >
+                     <span class="icon">
+                          <i class="fas fa-scroll"></i>
+                        </span>
+                                                <span>BANDO</span>
+
+
+                        </a>
+
+                        <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSem0MNr7ZsE2pFS8AnkoH3aZ9KUgokrI1ZIVSX7FgftWERidw/viewform?entry.2098685718=cavallo"
+                                target="_blank"
+                                class="button is-medium is-success is-outlined has-margin-lr-7"
+                        >
+                            <span class="icon">
+                         <i class="fas fa-hand-pointer"></i>
+                        </span>
+                            <span>ISCRIVITI QUI!</span>
+
+
+
+
+                        </a>
+
+
 
                         <table class="table is-fullwidth is-striped">
                             <thead>
-                            <tr>
-                                <th class="has-text-centered">N°</th>
-                                <th> </th>
-                                <th>Nome</th>
-                                <th> </th>
-                                <th class="has-text-centered">Punteggio</th>
-                                <th class="has-text-centered"> </th>
-                            </tr>
+                                <tr>
+                                    <th class="has-text-centered">N°</th>
+                                    <th>Cognome e Nome</th>
+                                    <th class="has-text-centered">Categoria</th>
+                                    <th class="has-text-centered">ELO</th>
+                                </tr>
                             </thead>
-
-                            <tbody id="joined"  class="has-text-centered"></tbody>
+                            <tbody id="joined" class="has-text-centered">
+                                <!-- -->
+                            </tbody>
                         </table>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
-                .then(response => response.text())
-                .then(text => {
-                    text.split("\n").forEach((line, index) => {
-                        const [timestamp, event, name] = line.split(",")
-                        const row = document.createElement("tr")
-                        row.innerHTML = `
-                            <td>${timestamp}</td>
-                            <td>${event}</td>
-                            <td>${name}</td>
-                        `;
-                        document.getElementById("joined").appendChild(row)
-                    })
-                })
-        </script>
-
-        <div class="columns">
-            <div class="column">
-                <div class="card">
-                    <div class="card-content is-paddingless">
-
-                        <!--
-                        <h3 class="title is-3">Giocatori Registrati</h3>
-
-                        <table class="table is-fullwidth is-striped">
-                            <thead>
-                            <tr>
-                                <th class="has-text-centered">N°</th>
-                                <th> </th>
-                                <th>Nome</th>
-                                <th> </th>
-                                <th class="has-text-centered">Punteggio</th>
-                                <th class="has-text-centered"> </th>
-                            </tr>
-                            </thead>
-
-                            <tbody class="has-text-centered"></tbody>
-                        </table>
-                        -->
-
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSem0MNr7ZsE2pFS8AnkoH3aZ9KUgokrI1ZIVSX7FgftWERidw/viewform?embedded=true&entry.2098685718=cavallo"
-                                width="360" height="800" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
-
-
-                    </div>
-
-                </div>
+                        <script>
+                            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
+                                .then(response => response.text())
+                                .then(text => {
+                                    text.split("\n").forEach((line, index) => {
+                                        const [timestamp, event, name, category, elo] = line.split(",")
+                                        const row = document.createElement("tr")
+                                        row.innerHTML = `
+                                            <td class="has-text-centered">${index+1}</td>
+                                            <td>${name}</td>
+                                            <td class="has-text-centered">${category}</td>
+                                            <td class="has-text-centered">${elo}</td>
+                                        `;
+                                        document.getElementById("joined").appendChild(row)
+                                    })
+                                })
+                        </script>
 
 
 
 
-            </div>
 
-            <!--
-            <div class="column">
-                <div class="card">
-                    <div class="card-content" >
 
-                        <h3 class="title is-3">Iscriviti al Torneo</h3>
-
-                        <form id="myForm">
-
-                            <p class="has-padding-b-7">
-                                <label class="is-block">
-                                    Scegli il portale su cui sei registrato
-                                </label>
-
-                                <span class="select-portal-button" data-portal="chess-com">
-                                    <button type="button" class="button button is-black is-outlined is-medium is-chesscom-button">
-                                        <img src="/assets/img/logo-chesscom.png">
-                                    </button>
-                                </span>
-
-                                <span class="select-portal-button" data-portal="lichess-org">
-                                    <button type="button" class="button is-black is-outlined is-medium is-lichess-button">
-                                        <img src="/assets/img/logo-lichess.png">
-                                    </button>
-                                </span>
-                            </p>
-
-                            <input type="hidden" name="portal" value="">
-
-                            <div class="error-message has-margin-x-auto" style="width: 290px"></div>
-
-                            <input name="tournament" type="hidden" value="{{tournament}}"/>
-
-                            <p class="has-padding-b-7">
-                                <label>Inserisci il tuo nome utente</label><br>
-                                <input name="nickname" class="input is-primary" style="width: 290px" />
-                            </p>
-
-                            <button class="button is-primary is-medium" type="submit">Iscriviti</button>
-                        </form>
 
                     </div>
                 </div>
             </div>
-            -->
-
         </div>
     </div>
 </section>

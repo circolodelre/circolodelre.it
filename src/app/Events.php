@@ -33,6 +33,15 @@ class Events
         return $events;
     }
 
+    public static function loadEventBySlug($eventSlug)
+    {
+        foreach (self::loadEvents() as $event) {
+            if ($event['slug'] == $eventSlug) {
+                return $event;
+            }
+        }
+    }
+
     public static function parseSeason($season)
     {
         if (preg_match('/[0-9]{4}\/[0-9]{2}/', $season, $matches)) {
@@ -94,11 +103,13 @@ class Events
                     continue;
                 }
 
+                $title =  $csv[$row][$col + 1];
                 $date = self::convertDate($csv[$row][$col], $season);
                 $event = [
+                    'slug' => self::eventSlug($season[0].'-'.$season[1].'-'.$title),
                     'type' => 'tournament',
                     'season' => $season,
-                    'title' => $csv[$row][$col + 1],
+                    'title' => $title,
                     'date' => $date,
                     'time' => strtotime($date),
                 ];
@@ -109,4 +120,25 @@ class Events
 
         return $events;
     }
+
+    public static function eventSlug($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        // trim
+        $text = trim($text, '-');
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+        // lowercase
+        $text = strtolower($text);
+        if (empty($text)) {
+            return 'n-a';
+        }
+        return $text;
+    }
+
 }
