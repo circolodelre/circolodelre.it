@@ -44,9 +44,11 @@ class Events
 
     public static function loadEventBySlug($eventSlug)
     {
-        foreach (self::loadEvents() as $event) {
-            if ($event['slug'] == $eventSlug) {
-                return $event;
+        foreach (self::loadEvents() as $seasonEvents) {
+            foreach ($seasonEvents as $event) {
+                if ($event['slug'] == $eventSlug) {
+                    return $event;
+                }
             }
         }
     }
