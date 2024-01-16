@@ -1,6 +1,12 @@
 (function ( $ ) {
     /**
      *
+     * @type {{}}
+     */
+    $.app = {};
+
+    /**
+     *
      *
      * @param url
      * @param cb
@@ -45,5 +51,130 @@
         }
         return payload;
     };
+
+    /**
+     *
+     * @param strData
+     * @returns {*[][]}
+     */
+    $.parseCsv = function (strData){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+        );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                (strMatchedDelimiter != strDelimiter)
+            ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                var strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                );
+
+            } else {
+
+                // We found a non-quoted value.
+                var strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+
+    /**
+     *
+     * @param component
+     */
+    $.app.loadEventJonied = function (component) {
+        let countJoined = 0;
+        const eventName = component.dataset.event
+        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
+            .then(response => response.text())
+            .then(text => {
+                $.parseCsv(text).forEach((line) => {
+                    const [timestamp, currentEventName, name, category, elo] = line
+                    if (currentEventName == eventName) {
+                        if (!countJoined) {
+                            document.getElementById("joined").innerHTML = ""
+                        }
+                        const row = document.createElement("tr")
+                        const index = document.getElementById("joined").childElementCount + 1;
+                        row.innerHTML = `<td class="has-text-centered">${index}</td><td>${name}</td><td class="has-text-centered">${category}</td><td class="has-text-centered">${elo}</td>`;
+                        document.getElementById("joined").appendChild(row)
+                        countJoined++;
+                    }
+                })
+                if (!countJoined) {
+                    document.getElementById("joined").innerHTML = `<tr><td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td></tr>`;
+                }
+            });
+    };
+
+    /**
+     * Loop through all components and call the function
+     */
+    $(document).ready(() => {
+        document.querySelectorAll("[app-component]").forEach((component) => {
+            $.app[component.getAttribute("app-component")].call(component)
+        });
+    });
 
 }( jQuery ));
