@@ -92,6 +92,7 @@ class Events
                 'type' => 'tournament',
                 'season' => $season,
                 'title' => $title,
+                'uniqueName' => $title.' - Stagione '.$season,
                 'date' => $date,
                 'time' => strtotime($date),
             ];
