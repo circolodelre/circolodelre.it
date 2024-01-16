@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="section">
-    <div class="container has-text-centered tournament-registration" data-event="{{ event['uniqueName'] }}">
+    <div class="container has-text-centered tournament-registration">
         <div class="columns">
             <div class="column">
                 <div class="card">
@@ -55,7 +55,7 @@
                             <span>ISCRIVITI QUI!</span>
                         </a>
 
-                        <div class="table-container" app-component="loadEventJonied">
+                        <div class="table-container">
                             <table class="table is-fullwidth is-striped">
                                 <thead>
                                     <tr>
@@ -65,7 +65,12 @@
                                         <th class="has-text-centered">ELO</th>
                                     </tr>
                                 </thead>
-                                <tbody id="joined" class="has-text-centered">
+                                <tbody
+                                    class="has-text-centered"
+                                    app-component="loadEventJonied"
+                                    event-name="{{ event['uniqueName'] }}"
+                                    csv-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv"
+                                >
                                     <td class="has-text-centered has-text-grey" colspan="4">Caricamento iscritti...</td>
                                 </tbody>
                             </table>

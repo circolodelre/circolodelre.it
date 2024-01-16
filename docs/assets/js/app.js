@@ -57,7 +57,7 @@
      * @param strData
      * @returns {*[][]}
      */
-    $.parseCsv = function (strData){
+    $.parseCsv = function (strData, strDelimiter) {
         // Check to see if the delimiter is defined. If not,
         // then default to comma.
         strDelimiter = (strDelimiter || ",");
@@ -145,25 +145,26 @@
      */
     $.app.loadEventJonied = function (component) {
         let countJoined = 0;
-        const eventName = component.dataset.event
-        fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
+        const eventName = component.getAttribute("event-name")
+        const csvUrl = component.getAttribute("csv-url")
+        fetch(csvUrl)
             .then(response => response.text())
             .then(text => {
                 $.parseCsv(text).forEach((line) => {
                     const [timestamp, currentEventName, name, category, elo] = line
                     if (currentEventName == eventName) {
                         if (!countJoined) {
-                            document.getElementById("joined").innerHTML = ""
+                            component.innerHTML = ""
                         }
                         const row = document.createElement("tr")
-                        const index = document.getElementById("joined").childElementCount + 1;
+                        const index = component.childElementCount + 1;
                         row.innerHTML = `<td class="has-text-centered">${index}</td><td>${name}</td><td class="has-text-centered">${category}</td><td class="has-text-centered">${elo}</td>`;
-                        document.getElementById("joined").appendChild(row)
+                        component.appendChild(row)
                         countJoined++;
                     }
                 })
                 if (!countJoined) {
-                    document.getElementById("joined").innerHTML = `<tr><td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td></tr>`;
+                    component.innerHTML = `<tr><td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td></tr>`;
                 }
             });
     };
@@ -173,7 +174,7 @@
      */
     $(document).ready(() => {
         document.querySelectorAll("[app-component]").forEach((component) => {
-            $.app[component.getAttribute("app-component")].call(component)
+            $.app[component.getAttribute("app-component")].call(null, component)
         });
     });
 

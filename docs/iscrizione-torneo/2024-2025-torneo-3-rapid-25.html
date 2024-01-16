@@ -31,7 +31,7 @@
 </section>
 
 <section class="section">
-    <div class="container has-text-centered tournament-registration" data-event="Torneo #3 - Rapid 25&#039; - Stagione 2024/2025">
+    <div class="container has-text-centered tournament-registration">
         <div class="columns">
             <div class="column">
                 <div class="card">
@@ -88,38 +88,16 @@
                                         <th class="has-text-centered">ELO</th>
                                     </tr>
                                 </thead>
-                                <tbody id="joined" class="has-text-centered">
-                                    <!-- -->
+                                <tbody
+                                    class="has-text-centered"
+                                    app-component="loadEventJonied"
+                                    event-name="Torneo #3 - Rapid 25&#039; - Stagione 2024/2025"
+                                    csv-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv"
+                                >
+                                    <td class="has-text-centered has-text-grey" colspan="4">Caricamento iscritti...</td>
                                 </tbody>
                             </table>
                         </div>
-
-                        <script>
-                            const eventName = document.querySelector(".tournament-registration").dataset.event
-                            fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv")
-                                .then(response => response.text())
-                                .then(text => {
-                                    text.split("\n").forEach((line) => {
-                                        const [timestamp, currentEventName, name, category, elo] = line.split(",")
-                                        if (currentEventName == eventName) {
-                                            const row = document.createElement("tr")
-                                            const index = document.getElementById("joined").childElementCount + 1;
-                                            row.innerHTML = `
-                                                <td class="has-text-centered">${index}</td>
-                                                <td>${name}</td>
-                                                <td class="has-text-centered">${category}</td>
-                                                <td class="has-text-centered">${elo}</td>
-                                            `;
-                                            document.getElementById("joined").appendChild(row)
-                                        }
-                                    })
-                                    if (!document.getElementById("joined").childElementCount) {
-                                        const row = document.createElement("tr")
-                                        row.innerHTML = `<td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td>`;
-                                        document.getElementById("joined").appendChild(row)
-                                    }
-                                })
-                        </script>
 
                         <p class="has-margin-b-7">
                             <a href="/#events" class="button">
@@ -204,7 +182,6 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/js/app.js"></script>
-<script type="text/javascript" src="/assets/js/tournament.js"></script>
 
 </body>
 </html>
