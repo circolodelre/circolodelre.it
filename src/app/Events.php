@@ -66,6 +66,19 @@ class Events
         return ($year - 1).'/'.$year;
     }
 
+    public static function getType($type)
+    {
+        $type = strtolower($type);
+
+        if (in_array($type, ['torneo', 'gara'])) {
+            return 'tournament';
+        } elseif (in_array($type, ['lezione', 'scuola'])) {
+            return 'lesson';
+        }
+
+        return $type;
+    }
+
     public static function parseCsvEvents($csv)
     {
 /*
@@ -85,16 +98,18 @@ class Events
             }
 
             $date = $csv[$row][0];
+            $time = strtotime($date);
             $title =  $csv[$row][3];
             $season = self::getSeason($date);
             $event = [
                 'slug' => self::getEventSlug($season.'-'.$title),
-                'type' => 'tournament',
+                'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,
                 'uniqueName' => $title.' - Stagione '.$season,
                 'date' => $date,
-                'time' => strtotime($date),
+                'deadline' => $time - (24 * 60 * 60),
+                'time' => $time,
             ];
 
             $events[] = $event;
