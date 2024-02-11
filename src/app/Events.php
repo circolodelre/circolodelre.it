@@ -70,7 +70,7 @@ class Events
     {
         $type = strtolower($type);
 
-        if (in_array($type, ['torneo', 'gara'])) {
+        if (empty($type) || in_array($type, ['torneo', 'gara'])) {
             return 'tournament';
         } elseif (in_array($type, ['lezione', 'scuola'])) {
             return 'lesson';
