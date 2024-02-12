@@ -16,3 +16,9 @@ php -S localhost:8080
 ## Testing
 
 - http://0.0.0.0:8080/iscrizione-torneo/campionato-provinciale-2023.html
+
+## AA
+
+- https://docs.google.com/document/d/1lJXaa1-5j8RnPjMvjWvgH7cyd-PC0vGthONmmzWOYqM/export?format=pdf
+
+- https://gdoc.pub/
