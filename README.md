@@ -26,4 +26,4 @@ php -S localhost:8080
 ## TODO
 
 - MEttere nell'homepage sotto la sezione "Aggiornameti" un box con titolo "Vienici a trovare" che contiene la mappa di google per raggiungerci
-
+- mettere questo link sul bottone whatzapp https://chat.whatsapp.com/Bapqpc7zUxwEXXIhF6pOJF 
