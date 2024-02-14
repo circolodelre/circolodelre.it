@@ -22,3 +22,8 @@ php -S localhost:8080
 - https://docs.google.com/document/d/1lJXaa1-5j8RnPjMvjWvgH7cyd-PC0vGthONmmzWOYqM/export?format=pdf
 
 - https://gdoc.pub/
+
+## TODO
+
+- MEttere nell'homepage sotto la sezione "Aggiornameti" un box con titolo "Vienici a trovare" che contiene la mappa di google per raggiungerci
+
