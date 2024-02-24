@@ -100,12 +100,19 @@ class Events
             $date = $csv[$row][0];
             $time = strtotime($date);
             $title =  $csv[$row][3];
+            $link = $csv[$row][4] ?? null;
+
+            if (empty($link)) {
+                continue;
+            }
+
             $season = self::getSeason($date);
             $event = [
                 'slug' => self::getEventSlug($season.'-'.$title),
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,
+                'link' => $link,
                 'uniqueName' => $title.' - Stagione '.$season,
                 'date' => $date,
                 'deadline' => $time - (24 * 60 * 60),
