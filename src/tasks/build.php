@@ -19,10 +19,11 @@ foreach ($config['pages'] as $page => $file) {
 }
 
 $events = Events::loadEvents();
+$eventSlug = $config['event_slug'];
 foreach ($events as $season => $seasonEvents) {
     foreach ($seasonEvents as $event) {
         $file = './src/pages/event.php';
-        $page = '/iscrizione-torneo/'.$event['slug'].'.html';
+        $page = '/'.$eventSlug.'/'.$event['slug'].'.html';
         $_SERVER['REQUEST_URI'] = $page;
 
         $html = require $file;
