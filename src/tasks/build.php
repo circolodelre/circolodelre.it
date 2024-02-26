@@ -1,6 +1,7 @@
 <?php
 
 use App\Events;
+use App\Services;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
@@ -19,11 +20,10 @@ foreach ($config['pages'] as $page => $file) {
 }
 
 $events = Events::loadEvents();
-$eventSlug = $config['event_slug'];
 foreach ($events as $season => $seasonEvents) {
     foreach ($seasonEvents as $event) {
         $file = './src/pages/event.php';
-        $page = '/'.$eventSlug.'/'.$event['slug'].'.html';
+        $page = '/'.$event['slug'].'.html';
         $_SERVER['REQUEST_URI'] = $page;
 
         $html = require $file;

@@ -3,7 +3,8 @@
 require_once __DIR__.'/../../vendor/autoload.php';
 
 use App\Season;
-use App\Standing;
+use App\Services;
+use bak\Standing;
 
 $config = services::get('config');
 

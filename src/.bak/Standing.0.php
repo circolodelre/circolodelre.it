@@ -1,8 +1,6 @@
 <?php
 
-namespace App;
-
-use Vega;
+namespace bak;
 
 class Standing
 {
@@ -63,7 +61,7 @@ class Standing
      */
     public static function applyRank(&$standing)
     {
-        uasort($standing, '\\App\\Standing::sortRank');
+        uasort($standing, '\\.bak\\Standing');
 
         $rank = 1;
         foreach ($standing as &$row) {

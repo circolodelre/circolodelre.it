@@ -1,8 +1,6 @@
 {
-  "year": 2022,
   "country": "it",
   "date_format": "d/m/Y",
-  "tournaments_path": "~/Dropbox/Tornei/${YEAR}",
   "event_slug": "eventi",
   "events": [
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRep6yAoWEnVBarWb0Y-JccakeRrD68JWdAqPy0H9-zXu5YB0SX4lZzLy5EfeOlduBpyLMGTbfD0-Ux/pub?gid=40524250&single=true&output=csv",

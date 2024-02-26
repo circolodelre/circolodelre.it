@@ -1,6 +1,6 @@
 <?php
 
-use App\Events;
+use App\Services;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 

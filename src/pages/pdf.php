@@ -1,6 +1,7 @@
 <?php
 
 use App\Events;
+use App\Services;
 
 $twig = services::get('twig');
 $config = services::get('config');

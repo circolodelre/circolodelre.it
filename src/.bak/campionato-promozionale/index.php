@@ -1,5 +1,7 @@
 <?php
 
+use App\Services;
+
 $twig = services::get('twig');
 $config = services::get('config');
 $year = intval(basename($_SERVER['REQUEST_URI'], '.html')) ?: $config['year'];
