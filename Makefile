@@ -41,3 +41,10 @@ release: push
 
 docker-build:
 	docker compose build
+
+## =====
+## Tests
+## =====
+
+test-docs: build
+	@docker compose run --rm -p 8080:8080 php -S 0.0.0.0:8080 -t docs

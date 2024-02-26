@@ -53,6 +53,19 @@ class Events
         }
     }
 
+    public static function loadEventByUrl($eventUrl)
+    {
+        $allEvents = self::loadEvents();
+
+        foreach ($allEvents as $seasonEvents) {
+            foreach ($seasonEvents as $event) {
+                if ($event['url'] == $eventUrl) {
+                    return $event;
+                }
+            }
+        }
+    }
+
     public static function getSeason($date)
     {
         $time = strtotime($date);
@@ -109,8 +122,10 @@ class Events
 
             $season = self::getSeason($date);
             $eventSlug = $config['event_slug'].'/'.Functions::getSlug($season).'/'.Functions::getSlug($title);
+            $eventUrl = '/'.$eventSlug.'.html';
             $event = [
                 'slug' => $eventSlug,
+                'url' => $eventUrl,
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,

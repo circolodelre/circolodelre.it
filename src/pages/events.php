@@ -5,8 +5,8 @@ use App\Services;
 
 $twig = services::get('twig');
 $config = services::get('config');
-$eventSlug = basename($_SERVER['REQUEST_URI'], '.html');
-$event = Events::loadEventBySlug($eventSlug);
+$eventUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$event = Events::loadEventByUrl($eventUrl);
 
 return $twig->render('event.html', [
     'year' => '2024',
