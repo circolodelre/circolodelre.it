@@ -9,5 +9,5 @@ $year = intval(basename($_SERVER['REQUEST_URI'], '.html')) ?: $config['year'];
 return $twig->render('season.html', [
     'year' => $year,
     'today' => date($config['date_format']),
-    'rank' => \App\Season::loadRank($year)
+    'rank' => bak\Season::loadRank($year)
 ]);

@@ -2,8 +2,8 @@
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-use App\Season;
 use App\Services;
+use bak\Season;
 use bak\Standing;
 
 $config = services::get('config');

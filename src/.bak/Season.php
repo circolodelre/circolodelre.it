@@ -1,11 +1,7 @@
 <?php
 
-namespace App;
+namespace bak;
 
-use;
-use;
-use;
-use;
 
 class Season
 {
