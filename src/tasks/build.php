@@ -5,7 +5,7 @@ use App\Services;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-$config = services::get('config');
+$config = Services::get('config');
 
 echo "Build... \n";
 
@@ -22,7 +22,7 @@ foreach ($config['pages'] as $page => $file) {
 $events = Events::loadEvents();
 foreach ($events as $season => $seasonEvents) {
     foreach ($seasonEvents as $event) {
-        $file = './src/pages/event.php';
+        $file = './src/pages/events.php';
         $page = '/'.$event['slug'].'.html';
         $_SERVER['REQUEST_URI'] = $page;
 

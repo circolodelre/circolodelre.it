@@ -81,6 +81,7 @@ class Events
 
     public static function parseCsvEvents($csv)
     {
+        $config = Services::get('config');
 /*
         echo "<pre>";
         var_dump($csv);
@@ -107,8 +108,9 @@ class Events
             }
 
             $season = self::getSeason($date);
+            $eventSlug = $config['event_slug'].'/'.Functions::getSlug($season).'/'.Functions::getSlug($title);
             $event = [
-                'slug' => self::getEventSlug($season.'-'.$title),
+                'slug' => $eventSlug,
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,
@@ -123,26 +125,6 @@ class Events
         }
 
         return $events;
-    }
-
-    public static function getEventSlug($text)
-    {
-        // replace non letter or digits by -
-        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
-        // transliterate
-        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        // remove unwanted characters
-        $text = preg_replace('~[^-\w]+~', '', $text);
-        // trim
-        $text = trim($text, '-');
-        // remove duplicate -
-        $text = preg_replace('~-+~', '-', $text);
-        // lowercase
-        $text = strtolower($text);
-        if (empty($text)) {
-            return 'n-a';
-        }
-        return $text;
     }
 
 }
