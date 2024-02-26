@@ -1,0 +1,23 @@
+name: Update
+
+on:
+  schedule:
+    - cron:  '5 8 * * 0'
+      branches:
+        - main
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Update'
+        default: 'Update'
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make install
+      - run: make download-events
+      - run: make build
+      - uses: stefanzweifel/git-auto-commit-action@v4

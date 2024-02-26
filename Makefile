@@ -19,6 +19,9 @@ dump-autoload:
 build:
 	@docker compose run --rm php -f src/tasks/build.php
 
+download-events:
+	@docker compose run --rm php -f src/tasks/download-events.php
+
 ## ====
 ## Misc
 ## ====

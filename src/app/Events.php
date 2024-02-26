@@ -123,9 +123,11 @@ class Events
             $season = self::getSeason($date);
             $eventSlug = $config['event_slug'].'/'.Functions::getSlug($season).'/'.Functions::getSlug($title);
             $eventUrl = '/'.$eventSlug.'.html';
+            $flyerUrl = '/'.$eventSlug.'.pdf';
             $event = [
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
+                'flyerUrl' => $flyerUrl,
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,
