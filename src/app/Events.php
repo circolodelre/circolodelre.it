@@ -25,8 +25,6 @@ class Events
             }
         }
 
-        var_dump($events);
-        die();
         $today = time();
         foreach ($events as $event) {
             if ($event['time'] < $today) {
@@ -98,11 +96,12 @@ class Events
     {
         $config = Services::get('config');
 
+        /*
         echo "<pre>";
         var_dump($csv);
         echo "</pre>";
         die();
-
+        */
 
         $events = [];
         //$season = self::parseSeason($csv[2][0]);
@@ -116,7 +115,11 @@ class Events
             $date = $csv[$row][0];
             $time = strtotime($date);
             $title =  $csv[$row][3];
-            $link = $csv[$row][4] ?? null;
+            $link = trim($csv[$row][4] ?? '');
+
+            if (str_starts_with($link, 'https://docs.google.com/document/d/')) {
+                $link = preg_replace('/.*\/d\/([^\/]+)\/.*/', 'https://docs.google.com/document/d/$1/export?format=pdf', $link);
+            }
 
             if (empty($link)) {
                 continue;

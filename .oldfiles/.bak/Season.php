@@ -1,9 +1,6 @@
 <?php
 
-namespace .bak;
-
-
-use use use use class Season
+class Season
 {
     /**
      * Get season by year.

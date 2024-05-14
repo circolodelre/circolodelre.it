@@ -22,13 +22,8 @@ if (empty($allEvents)) {
 }
 foreach ($allEvents as $seasonEvents) {
     foreach ($seasonEvents as $event) {
-        if (empty($event['link'])) {
-            echo 'Ignore '.$event['name']."\n";
-            continue;
-        }
-
+        echo 'Download '.$event['link']."\n";
         $pdf = file_get_contents($event['link']);
-
         file_put_contents(__DIR__.'/../../docs'.$event['flyerUrl'], $pdf);
     }
 }
