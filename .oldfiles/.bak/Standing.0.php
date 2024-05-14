@@ -1,6 +1,6 @@
 <?php
 
-namespace bak;
+namespace .bak;
 
 class Standing
 {

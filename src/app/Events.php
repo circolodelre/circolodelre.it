@@ -25,6 +25,8 @@ class Events
             }
         }
 
+        var_dump($events);
+        die();
         $today = time();
         foreach ($events as $event) {
             if ($event['time'] < $today) {
@@ -95,12 +97,12 @@ class Events
     public static function parseCsvEvents($csv)
     {
         $config = Services::get('config');
-/*
+
         echo "<pre>";
         var_dump($csv);
         echo "</pre>";
         die();
-*/
+
 
         $events = [];
         //$season = self::parseSeason($csv[2][0]);

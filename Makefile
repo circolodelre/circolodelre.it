@@ -22,6 +22,8 @@ build:
 download-events:
 	@docker compose run --rm php -f src/tasks/download-events.php
 
+sync: download-events
+
 ## ====
 ## Misc
 ## ====

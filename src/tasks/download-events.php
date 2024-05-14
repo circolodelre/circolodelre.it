@@ -3,22 +3,27 @@
 use App\Events;
 use App\Services;
 
-
 require_once __DIR__.'/../../vendor/autoload.php';
 
 $config = Services::get('config');
 
-echo "Download events\n";
+echo "Download Events\n";
 foreach ($config['events'] as $key => $file) {
-    #$csv = file_get_contents($file);
-    #file_put_contents(__DIR__.'/../events/config-'.$key.'.csv', $csv);
+    echo 'Download '.$file."\n";
+    $csv = file_get_contents($file);
+    file_put_contents(__DIR__.'/../events/config-'.$key.'.csv', $csv);
 }
 
-echo "Download event flyers\n";
+echo "Download Flyers\n";
 $allEvents = Events::loadEvents();
+if (empty($allEvents)) {
+    echo "No events found\n";
+    exit;
+}
 foreach ($allEvents as $seasonEvents) {
     foreach ($seasonEvents as $event) {
         if (empty($event['link'])) {
+            echo 'Ignore '.$event['name']."\n";
             continue;
         }
 

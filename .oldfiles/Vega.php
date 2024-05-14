@@ -24,8 +24,8 @@ class Vega
         fclose($read);
 
         $standing = [
-            'name'   => trim($page[0][0]),
-            'rows'   => [],
+            'name' => trim($page[0][0]),
+            'rows' => [],
         ];
 
         foreach ($page[3] as &$field) {
@@ -39,7 +39,7 @@ class Vega
                 $row[$field] = trim($page[$i][$c]);
             }
 
-            $row['key'] = md5($row['name'].'|'.$row['birth']);
+            $row['key'] = md5($row['name'] . '|' . $row['birth']);
             $standing['rows'][$row['key']] = $row;
         }
 
@@ -67,8 +67,8 @@ class Vega
         fclose($read);
 
         $players = [
-            'name'   => trim($page[0][0]),
-            'rows'   => [],
+            'name' => trim($page[0][0]),
+            'rows' => [],
         ];
 
         foreach ($page[2] as &$field) {
