@@ -126,18 +126,21 @@ class Events
             }
 
             $season = self::getSeason($date);
+            $eventUniqueName = $title.' - Stagione '.$season;
             $eventSlug = $config['event_slug'].'/'.Functions::getSlug($season).'/'.Functions::getSlug($title);
             $eventUrl = '/'.$eventSlug.'.html';
             $flyerUrl = '/'.$eventSlug.'.pdf';
+            $subscribeUrl = str_replace('{event}', urlencode($eventUniqueName), $config['subscribe']);
             $event = [
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
                 'flyerUrl' => $flyerUrl,
+                'subscribeUrl' => $subscribeUrl,
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,
                 'title' => $title,
                 'link' => $link,
-                'uniqueName' => $title.' - Stagione '.$season,
+                'uniqueName' => $eventUniqueName,
                 'date' => $date,
                 'deadline' => $time - (24 * 60 * 60),
                 'time' => $time,
