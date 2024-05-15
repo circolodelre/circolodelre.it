@@ -25,7 +25,11 @@
                                 Data evento: <strong>{{ event['time']|date("d/m/Y") }}</strong>
                             </span>
                             <span class="is-block-mobile has-margin-lr-7 has-margin-b-7">
-                                Iscriviti entro il: <strong>{{ event['deadline']|date("d/m/Y") }}</strong>
+                                {% if event['status'] == 'open' %}
+                                    Iscriviti entro il: <strong>{{ event['deadline']|date("d/m/Y") }}</strong>
+                                {% else %}
+                                    Iscrizioni aperte il: <strong>{{ event['opening']|date("d/m/Y") }}</strong>
+                                {% endif %}
                             </span>
                         </p>
 

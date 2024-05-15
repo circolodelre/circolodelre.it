@@ -95,6 +95,7 @@ class Events
     public static function parseCsvEvents($csv)
     {
         $config = Services::get('config');
+        $now = time();
 
         /*
         echo "<pre>";
@@ -131,6 +132,7 @@ class Events
             $eventUrl = '/'.$eventSlug.'.html';
             $flyerUrl = '/'.$eventSlug.'.pdf';
             $subscribeUrl = str_replace('{event}', urlencode($eventUniqueName), $config['subscribe']);
+            $opening = $time - (40 * 24 * 60 * 60);
             $event = [
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
@@ -142,6 +144,8 @@ class Events
                 'link' => $link,
                 'uniqueName' => $eventUniqueName,
                 'date' => $date,
+                'status' => $now >= $opening ? 'open' : 'close',
+                'opening' => $opening,
                 'deadline' => $time - (24 * 60 * 60),
                 'time' => $time,
             ];
