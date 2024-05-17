@@ -57,7 +57,7 @@
      * @param strData
      * @returns {*[][]}
      */
-    $.parseCsv = function (strData, strDelimiter) {
+    $.parseCsv = function (strData) {
         // Check to see if the delimiter is defined. If not,
         // then default to comma.
         strDelimiter = (strDelimiter || ",");
@@ -143,7 +143,7 @@
      *
      * @param component
      */
-    $.app.loadEventJonied = function (component) {
+    $.app.loadEventJoined = function (component) {
         let countJoined = 0;
         const eventName = component.getAttribute("event-name")
         const csvUrl = component.getAttribute("csv-url")
@@ -152,7 +152,7 @@
             .then(text => {
                 $.parseCsv(text).forEach((line) => {
                     const [timestamp, currentEventName, name, category, elo] = line
-                    if (currentEventName == eventName) {
+                    if (currentEventName === eventName) {
                         if (!countJoined) {
                             component.innerHTML = ""
                         }

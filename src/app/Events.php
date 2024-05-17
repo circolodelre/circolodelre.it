@@ -137,6 +137,7 @@ class Events
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
                 'flyerUrl' => $flyerUrl,
+                'joinersUrl' => $config['joiners'],
                 'subscribeUrl' => $subscribeUrl,
                 'type' => self::getType($csv[$row][2]),
                 'season' => $season,

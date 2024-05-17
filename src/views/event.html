@@ -28,7 +28,7 @@
                                 {% if event['status'] == 'open' %}
                                     Iscriviti entro il: <strong>{{ event['deadline']|date("d/m/Y") }}</strong>
                                 {% else %}
-                                    Iscrizioni aperte il: <strong>{{ event['opening']|date("d/m/Y") }}</strong>
+                                    Iscrizioni aperte dal: <strong>{{ event['opening']|date("d/m/Y") }}</strong>
                                 {% endif %}
                             </span>
                         </p>
@@ -48,37 +48,39 @@
                             <span>LEGGI BANDO</span>
                         </a>
 
-                        <a
-                            href="{{ event['subscribeUrl'] }}"
-                            target="_blank"
-                            class="button is-medium is-dark is-outlined is-block-mobile has-margin-lr-7 has-margin-b-7"
-                        >
-                            <span class="icon">
-                                <i class="fas fa-user-plus"></i>
-                            </span>
-                            <span>ISCRIVITI QUI!</span>
-                        </a>
+                        {% if event['status'] == 'open' %}
+                            <a
+                                href="{{ event['subscribeUrl'] }}"
+                                target="_blank"
+                                class="button is-medium is-dark is-outlined is-block-mobile has-margin-lr-7 has-margin-b-7"
+                            >
+                                <span class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </span>
+                                <span>ISCRIVITI QUI!</span>
+                            </a>
 
-                        <div class="table-container">
-                            <table class="table is-fullwidth is-striped">
-                                <thead>
-                                    <tr>
-                                        <th class="has-text-centered">N°</th>
-                                        <th>Nome</th>
-                                        <th class="has-text-centered">Cat.</th>
-                                        <th class="has-text-centered">ELO</th>
-                                    </tr>
-                                </thead>
-                                <tbody
-                                    class="has-text-centered"
-                                    app-component="loadEventJonied"
-                                    event-name="{{ event['uniqueName'] }}"
-                                    csv-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv"
-                                >
-                                    <td class="has-text-centered has-text-grey" colspan="4">Caricamento iscritti...</td>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="table-container">
+                                <table class="table is-fullwidth is-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="has-text-centered">N°</th>
+                                            <th>Nome</th>
+                                            <th class="has-text-centered">Cat.</th>
+                                            <th class="has-text-centered">ELO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody
+                                        class="has-text-centered"
+                                        app-component="loadEventJoined"
+                                        event-name="{{ event['uniqueName'] }}"
+                                        csv-url="{{ event['joinersUrl'] }}"
+                                    >
+                                        <td class="has-text-centered has-text-grey" colspan="4">Caricamento iscritti...</td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% endif %}
 
                         <p class="has-margin-b-7">
                             <a href="/#events" class="button">
