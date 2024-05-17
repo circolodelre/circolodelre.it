@@ -1,6 +1,6 @@
 {
   "country": "it",
-  "date_format": "d/m/Y",
+  "date_format": "%e %b %Y",
   "collections": [
     "events"
   ],

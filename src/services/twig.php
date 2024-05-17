@@ -7,4 +7,8 @@ $twig->addFunction(new \Twig\TwigFunction('_', function ($message) {
     return _($message);
 }));
 
+$twig->addFilter(new \Twig\TwigFilter('strftime', function ($date, $format) {
+    return @strftime($format, $date);
+}));
+
 return $twig;

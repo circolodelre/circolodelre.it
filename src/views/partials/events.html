@@ -48,7 +48,7 @@
                                         </td>
 
                                         <td class="has-text-centered">
-                                            {{ row['time']|date("d/m/Y") }}
+                                            {{ row['time'] | strftime("%e %b %Y") }}
                                             <a href="/{{ row['slug'] }}.html" class="button is-rounded is-small is-dark is-outlined is-hidden-tablet">
                                                 Iscriviti
                                             </a>
