@@ -22,13 +22,13 @@
 
                         <p class="has-margin-b-7">
                             <span class="is-block-mobile has-margin-lr-7 has-margin-b-7">
-                                Data evento: <strong>{{ event['time']|date("d/m/Y") }}</strong>
+                                Data evento: <strong>{{ event['time'] | strftime }}</strong>
                             </span>
                             <span class="is-block-mobile has-margin-lr-7 has-margin-b-7">
                                 {% if event['status'] == 'open' %}
-                                    Iscriviti entro il: <strong>{{ event['deadline']|date("d/m/Y") }}</strong>
+                                    Iscriviti entro il: <strong>{{ event['deadline'] | strftime }}</strong>
                                 {% else %}
-                                    Iscrizioni aperte dal: <strong>{{ event['opening']|date("d/m/Y") }}</strong>
+                                    Iscrizioni aperte dal: <strong>{{ event['opening'] | strftime }}</strong>
                                 {% endif %}
                             </span>
                         </p>

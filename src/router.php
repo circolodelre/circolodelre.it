@@ -14,11 +14,14 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 use App\Services;
+use App\System;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $config = Services::get('config');
 $eventSlug = $config['event_slug'];
+
+System::setLocale();
 
 $item = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

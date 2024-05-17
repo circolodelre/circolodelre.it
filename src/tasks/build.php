@@ -2,10 +2,13 @@
 
 use App\Events;
 use App\Services;
+use App\System;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
 $config = Services::get('config');
+
+System::setLocale();
 
 echo "Build... \n";
 
