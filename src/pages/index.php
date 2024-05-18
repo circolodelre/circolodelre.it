@@ -13,5 +13,6 @@ System::setLocale();
 return $twig->render('index.html', [
     'year' => $year,
     'today' => date($config['date_format']),
-    'events' => Events::loadEvents()
+    'events' => Events::loadEvents(),
+    'config' => $config,
 ]);

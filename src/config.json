@@ -5,6 +5,7 @@
     "events"
   ],
   "event_slug": "eventi",
+  "tournaments": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKw7KEjRQcWDrLCaDllKboB4I9p_EpiqOPxlVg-iznhnTpqqEM9jDPzAVFSCFShldwEeQ_ZuWxYjLj/pubhtml",
   "joiners": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSVu7GEpsgToOS33SlmXHGFKZEMZWlYc3wusravf5_Oo5tNc-E-ndzEU-guJ3k7jmArRekKXs1uMdFf/pub?gid=751790970&single=true&output=csv",
   "subscribe": "https://docs.google.com/forms/d/e/1FAIpQLSem0MNr7ZsE2pFS8AnkoH3aZ9KUgokrI1ZIVSX7FgftWERidw/viewform?entry.2098685718={event}",
   "events": [
