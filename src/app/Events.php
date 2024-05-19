@@ -157,4 +157,18 @@ class Events
         return $events;
     }
 
+    public static function loadNextTournament()
+    {
+        $events = self::loadEvents();
+
+        foreach ($events as $season => $seasonEvents) {
+            if (count($seasonEvents) > 0) {
+                foreach ($seasonEvents as $event) {
+                    if ($event['type'] == 'tournament') {
+                        return $event;
+                    }
+                }
+            }
+        }
+    }
 }

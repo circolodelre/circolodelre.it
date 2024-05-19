@@ -14,5 +14,6 @@ return $twig->render('index.html', [
     'year' => $year,
     'today' => date($config['date_format']),
     'events' => Events::loadEvents(),
+    'nextTournament' => Events::loadNextTournament(),
     'config' => $config,
 ]);
