@@ -132,7 +132,7 @@ class Events
             $eventUrl = '/'.$eventSlug.'.html';
             $flyerUrl = '/'.$eventSlug.'.pdf';
             $subscribeUrl = str_replace('{event}', urlencode($eventUniqueName), $config['subscribe']);
-            $opening = $time - (40 * 24 * 60 * 60);
+            $opening = $time - (60 * 24 * 60 * 60);
             $event = [
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
