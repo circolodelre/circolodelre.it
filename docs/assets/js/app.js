@@ -153,7 +153,7 @@
             .then(response => response.text())
             .then(text => {
                 $.parseCsv(text).forEach((line) => {
-                    const [timestamp, currentEventName, name, category, elo] = line
+                    const [timestamp, name, category, elo, currentEventName] = line
                     if (currentEventName === eventName) {
                         if (!countJoined) {
                             component.innerHTML = ""
