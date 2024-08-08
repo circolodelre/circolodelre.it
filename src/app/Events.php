@@ -20,8 +20,10 @@ class Events
 
         foreach (scandir(__DIR__.'/../events') as $file) {
             if (substr($file, -4) == '.csv') {
-                $csv = array_map('str_getcsv', file(__DIR__.'/../events/'.$file));
+                $csv = Functions::loadCsv(__DIR__.'/../events/'.$file);
                 $events = array_merge($events, self::parseCsvEvents($csv));
+                var_dump($events);
+                die();
             }
         }
 
@@ -96,27 +98,21 @@ class Events
     {
         $config = Services::get('config');
         $now = time();
-
-        /*
-        echo "<pre>";
-        var_dump($csv);
-        echo "</pre>";
-        die();
-        */
-
         $events = [];
         //$season = self::parseSeason($csv[2][0]);
 
-        for ($row = 1; $row < count($csv); $row++) {
-            if (empty($csv[$row][0]) || empty($csv[$row][3]) ||
-                !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $csv[$row][0])) {
+        foreach ($csv as $row => $data) {
+            if (empty($csv[$row]['Data']) ||
+                empty($csv[$row]['Titolo']) ||
+                $csv[$row]['Titolo'][0] == '!' ||
+                !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $csv[$row]['Data'])) {
                 continue;
             }
 
-            $date = $csv[$row][0];
+            $date = $csv[$row]['Data'];
             $time = strtotime($date);
-            $title =  $csv[$row][3];
-            $link = trim($csv[$row][4] ?? '');
+            $title =  $csv[$row]['Titolo'];
+            $link = trim($csv[$row]['Bando PDF'] ?? '');
 
             if (str_starts_with($link, 'https://docs.google.com/document/d/')) {
                 $link = preg_replace('/.*\/d\/([^\/]+)\/.*/', 'https://docs.google.com/document/d/$1/export?format=pdf', $link);
@@ -139,7 +135,7 @@ class Events
                 'flyerUrl' => $flyerUrl,
                 'joinersUrl' => $config['joiners'],
                 'subscribeUrl' => $subscribeUrl,
-                'type' => self::getType($csv[$row][2]),
+                'type' => self::getType($csv[$row]['Tipo']),
                 'season' => $season,
                 'title' => $title,
                 'link' => $link,
