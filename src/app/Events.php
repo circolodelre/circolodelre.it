@@ -22,8 +22,6 @@ class Events
             if (substr($file, -4) == '.csv') {
                 $csv = Functions::loadCsv(__DIR__.'/../events/'.$file);
                 $events = array_merge($events, self::parseCsvEvents($csv));
-                var_dump($events);
-                die();
             }
         }
 
