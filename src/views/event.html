@@ -23,7 +23,7 @@
                         <p class="has-margin-b-7">
                             <span class="is-block-mobile has-margin-lr-7 has-margin-b-7">
                                 {% if event['status'] == 'open' %}
-                                    Iscriviti entro il: <strong>{{ event['deadline'] | strftime }}</strong>
+                                    Chiusura iscrizioni: <strong>{{ event['deadline'] | strftime }}</strong>
                                 {% else %}
                                     <!--i class="fas fa-calendar"></i-->
                                     Iscrizioni aperte dal: <strong>{{ event['opening'] | strftime }}</strong>
