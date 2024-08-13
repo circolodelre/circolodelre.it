@@ -62,5 +62,21 @@ class Functions
         return $text;
     }
 
+    public static function loadCsv($file)
+    {
+        $rows = array_map('str_getcsv', file($file));
 
+        // Estrae la prima riga come intestazione (nomi delle colonne)
+        $header = array_shift($rows);
+
+        // Inizializza l'array per contenere i dati formattati
+        $csv = [];
+
+        // Associa ogni riga alle chiavi corrispondenti prese dall'intestazione
+        foreach ($rows as $row) {
+            $csv[] = array_combine($header, $row);
+        }
+
+        return $csv;
+    }
 }
