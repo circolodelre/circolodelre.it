@@ -1,0 +1,74 @@
+***** Pairing round 5
+The colors are not yet assigned
+ The MEDIAN group is group 4 with 2 points
+
+---------------------------------------------------------------
+      Process the groups DOWNWARD up to the median group
+---------------------------------------------------------------
+
+================================
+ Pairing group 1
+================================
+
+ Found 2 floater(s): 10,  3, 
+    > moving player 10 from group 1 to group 2
+    > moving player 3 from group 1 to group 2
+
+================================
+ Pairing group 2
+================================
+
+ Found 1 floater(s): 3, 
+    > moving player 3 from group 2 to group 3
+ pair 1 : (downfloater) 10 try opponent 9
+
+ Standard pairing with 2 players
+  10 -   9
+
+================================
+ Pairing group 3
+================================
+
+ Found 2 floater(s): 12,  3, 
+    > moving player 12 from group 3 to group 4
+    > moving player 3 from group 3 to group 4
+
+---------------------------------------------------------------
+      Process the groups UPWARD up to the median group
+---------------------------------------------------------------
+
+================================
+ Pairing group 7
+================================
+
+ The group is odd:     > moving player 2 from group 7 to group 6
+
+================================
+ Pairing group 6
+================================
+
+ Found 1 floater(s): 2, 
+    > moving player 2 from group 6 to group 5
+ pair 1 : 11 try opponent 8
+
+ Standard pairing with 2 players
+  11 -   8
+
+================================
+ Pairing group 5
+================================
+
+ pair 1 : (upfloater) 2 try opponent 6
+
+ Standard pairing with 2 players
+   2 -   6
+
+---------------------------------------------------------------
+      Process the MEDIAN group
+---------------------------------------------------------------
+ pair 1 : (downfloater) 3 try opponent 4
+ pair 2 : (downfloater) 12 try opponent 1
+ pair 3 : 5 try opponent 7
+   3 -   4
+  12 -   1
+   5 -   7

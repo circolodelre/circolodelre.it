@@ -1,0 +1,92 @@
+Scacchi per tutti! - Semilampo 15'
+Castelvetrano (TP) - 20/10/2013, 20/10/2013
+
+Rated Player Group at round 5
+
+
+Group limits:  0 <= rating <= 0
+Pos score ID NAME                 | Rtg   T  Fed |   Buc1    BucT  
+----------------------------------------------------------------------------
+  1  4.0   9 Mirasolo Davide      |    0  NC --- |    13.0    15.0 
+  2  3.5  10 Pandolfo Sergio      |    0  NC --- |    13.5    16.0 
+  3  3.5   3 Bianco Francesco     |    0  NC --- |    13.0    14.0 
+  4  3.0   4 D'Anna Gaspare       |    0  NC --- |    13.5    13.5 
+  5  3.0   1 Agate Domenico       |    0  NC --- |    11.5    12.5 
+  6  3.0   5 Errante Parrino Ales |    0  NC --- |    11.0    13.0 
+  7  2.5  12 Tilotta Baldassare   |    0  NC --- |    12.0    12.0 
+  8  2.5   6 Guirreri Filippo     |    0  NC --- |    11.0    11.0 
+  9  2.0   7 Lombardino Sebastian |    0  NC --- |    12.0    13.0 
+ 10  2.0  11 Panicola Francesco   |    0  NC --- |     8.5     8.5 
+ 11  1.0   8 Mangiaracina Andrea  |    0  NC --- |    10.5    10.5 
+ 12  0.0   2 Aramescu Alessandro  |    0  NC --- |    10.0    11.0 
+
+
+Group limits:  0 <= rating <= 0
+Pos score ID NAME                 | Rtg   T  Fed |   Buc1    BucT  
+----------------------------------------------------------------------------
+  1  4.0   9 Mirasolo Davide      |    0  NC --- |    13.0    15.0 
+  2  3.5  10 Pandolfo Sergio      |    0  NC --- |    13.5    16.0 
+  3  3.5   3 Bianco Francesco     |    0  NC --- |    13.0    14.0 
+  4  3.0   4 D'Anna Gaspare       |    0  NC --- |    13.5    13.5 
+  5  3.0   1 Agate Domenico       |    0  NC --- |    11.5    12.5 
+  6  3.0   5 Errante Parrino Ales |    0  NC --- |    11.0    13.0 
+  7  2.5  12 Tilotta Baldassare   |    0  NC --- |    12.0    12.0 
+  8  2.5   6 Guirreri Filippo     |    0  NC --- |    11.0    11.0 
+  9  2.0   7 Lombardino Sebastian |    0  NC --- |    12.0    13.0 
+ 10  2.0  11 Panicola Francesco   |    0  NC --- |     8.5     8.5 
+ 11  1.0   8 Mangiaracina Andrea  |    0  NC --- |    10.5    10.5 
+ 12  0.0   2 Aramescu Alessandro  |    0  NC --- |    10.0    11.0 
+
+
+Group limits:  0 <= rating <= 0
+Pos score ID NAME                 | Rtg   T  Fed |   Buc1    BucT  
+----------------------------------------------------------------------------
+  1  4.0   9 Mirasolo Davide      |    0  NC --- |    13.0    15.0 
+  2  3.5  10 Pandolfo Sergio      |    0  NC --- |    13.5    16.0 
+  3  3.5   3 Bianco Francesco     |    0  NC --- |    13.0    14.0 
+  4  3.0   4 D'Anna Gaspare       |    0  NC --- |    13.5    13.5 
+  5  3.0   1 Agate Domenico       |    0  NC --- |    11.5    12.5 
+  6  3.0   5 Errante Parrino Ales |    0  NC --- |    11.0    13.0 
+  7  2.5  12 Tilotta Baldassare   |    0  NC --- |    12.0    12.0 
+  8  2.5   6 Guirreri Filippo     |    0  NC --- |    11.0    11.0 
+  9  2.0   7 Lombardino Sebastian |    0  NC --- |    12.0    13.0 
+ 10  2.0  11 Panicola Francesco   |    0  NC --- |     8.5     8.5 
+ 11  1.0   8 Mangiaracina Andrea  |    0  NC --- |    10.5    10.5 
+ 12  0.0   2 Aramescu Alessandro  |    0  NC --- |    10.0    11.0 
+
+
+Group limits:  0 <= rating <= 0
+Pos score ID NAME                 | Rtg   T  Fed |   Buc1    BucT  
+----------------------------------------------------------------------------
+  1  4.0   9 Mirasolo Davide      |    0  NC --- |    13.0    15.0 
+  2  3.5  10 Pandolfo Sergio      |    0  NC --- |    13.5    16.0 
+  3  3.5   3 Bianco Francesco     |    0  NC --- |    13.0    14.0 
+  4  3.0   4 D'Anna Gaspare       |    0  NC --- |    13.5    13.5 
+  5  3.0   1 Agate Domenico       |    0  NC --- |    11.5    12.5 
+  6  3.0   5 Errante Parrino Ales |    0  NC --- |    11.0    13.0 
+  7  2.5  12 Tilotta Baldassare   |    0  NC --- |    12.0    12.0 
+  8  2.5   6 Guirreri Filippo     |    0  NC --- |    11.0    11.0 
+  9  2.0   7 Lombardino Sebastian |    0  NC --- |    12.0    13.0 
+ 10  2.0  11 Panicola Francesco   |    0  NC --- |     8.5     8.5 
+ 11  1.0   8 Mangiaracina Andrea  |    0  NC --- |    10.5    10.5 
+ 12  0.0   2 Aramescu Alessandro  |    0  NC --- |    10.0    11.0 
+
+
+Group limits:  0 <= rating <= 0
+Pos score ID NAME                 | Rtg   T  Fed |   Buc1    BucT  
+----------------------------------------------------------------------------
+  1  4.0   9 Mirasolo Davide      |    0  NC --- |    13.0    15.0 
+  2  3.5  10 Pandolfo Sergio      |    0  NC --- |    13.5    16.0 
+  3  3.5   3 Bianco Francesco     |    0  NC --- |    13.0    14.0 
+  4  3.0   4 D'Anna Gaspare       |    0  NC --- |    13.5    13.5 
+  5  3.0   1 Agate Domenico       |    0  NC --- |    11.5    12.5 
+  6  3.0   5 Errante Parrino Ales |    0  NC --- |    11.0    13.0 
+  7  2.5  12 Tilotta Baldassare   |    0  NC --- |    12.0    12.0 
+  8  2.5   6 Guirreri Filippo     |    0  NC --- |    11.0    11.0 
+  9  2.0   7 Lombardino Sebastian |    0  NC --- |    12.0    13.0 
+ 10  2.0  11 Panicola Francesco   |    0  NC --- |     8.5     8.5 
+ 11  1.0   8 Mangiaracina Andrea  |    0  NC --- |    10.5    10.5 
+ 12  0.0   2 Aramescu Alessandro  |    0  NC --- |    10.0    11.0 
+
+Generated by Vega - www.vegachess.com
+(copy licensed to: unregistered)
