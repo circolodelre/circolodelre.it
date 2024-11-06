@@ -7,7 +7,7 @@
   },
   "require": {
     "ext-json": "*",
-    "twig/twig": "^2.0",
+    "twig/twig": "^3.11",
     "monolog/monolog": "^1.23",
     "webmozart/glob": "^4.1"
   }
