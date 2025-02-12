@@ -32,7 +32,7 @@
                 </p>
 
                 <p class="has-margin-7 has-padding-b-0">
-                    Gioca dal vivo, iscriviti al prossimo tonero
+                    <span class="has-text-weight-bold">Gioca dal vivo</span>, iscriviti al prossimo tonero
                 </p>
 
                 <p class="subtitle has-text-weight-bold has-margin-7 has-padding-b-0">
@@ -45,13 +45,17 @@
                 <a
                         href="/{{ nextTournament['slug'] }}.html"
                         target="_blank"
-                        class="button is-outlined is-medium has-margin-lr-7 is-inline-block-tablet-only is-block-mobile has-margin-b-7"
+                        class="button is-outlined has-margin-lr-7 is-medium is-inline-block-tablet-only is-block-mobile has-margin-b-0"
                 >
                     <span class="icon">
                         <i class="fas fa-flag-checkered"></i>
                     </span>
                     <span>ISCRIVITI AL TORNEO!</span>
                 </a>
+
+                <p class="has-margin-0 has-padding-0 has-text-grey">
+                    Si gioca il <span class="has-text-weight-bold">{{ nextTournament['time'] | strftime }}</span>
+                </p>
 
             </div>
         </div>
