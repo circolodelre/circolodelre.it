@@ -35,9 +35,9 @@ serve:
 start: serve
 
 push:
-	git add .
-	git commit -am fix || true
-	git push
+	@git add .
+	@git commit -am fix || true
+	@git push
 
 release: push
 
