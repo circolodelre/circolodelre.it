@@ -79,4 +79,11 @@ class Functions
 
         return $csv;
     }
+
+    public static function loadJson($file)
+    {
+        $json = json_decode(file_get_contents($file), true);
+
+        return $json;
+    }
 }
