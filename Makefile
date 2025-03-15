@@ -39,7 +39,7 @@ push:
 	@git commit -am fix || true
 	@git push
 
-release: push
+release: build download-events push
 
 ## ======
 ## Docker
