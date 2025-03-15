@@ -6,7 +6,7 @@ use Webmozart\Glob\Glob;
 
 class Events
 {
-/**
+	/**
      * Parse events from CSV.
      *
      * @param $csv
@@ -22,6 +22,13 @@ class Events
             if (substr($file, -4) == '.csv') {
                 $csv = Functions::loadCsv(__DIR__.'/../events/'.$file);
                 $events = array_merge($events, self::parseCsvEvents($csv));
+            }
+        }
+
+		foreach (scandir(__DIR__.'/../events') as $file) {
+            if (substr($file, -5) == '.json') {
+                $json = Functions::loadJson(__DIR__.'/../events/'.$file);
+                $events = array_merge($events, self::parseJsonEvents($json));
             }
         }
 
@@ -134,6 +141,71 @@ class Events
                 'joinersUrl' => $config['joiners'],
                 'subscribeUrl' => $subscribeUrl,
                 'type' => self::getType($csv[$row]['Tipo']),
+                'season' => $season,
+                'title' => $title,
+                'link' => $link,
+                'uniqueName' => $eventUniqueName,
+                'date' => $date,
+                'status' => $now >= $opening ? 'open' : 'close',
+                'opening' => $opening,
+                'deadline' => $time - (24 * 60 * 60),
+                'time' => $time,
+            ];
+
+            $events[] = $event;
+        }
+
+        return $events;
+    }
+
+	public static function parseJsonEvents($json)
+    {
+        $config = Services::get('config');
+        $now = time();
+        $events = [];
+        //$season = self::parseSeason($csv[2][0]);
+
+		if (empty($json["events"])) {
+			return $events;
+		}
+
+        foreach ($json["events"] as $event) {
+
+            if (empty($event['date']) ||
+                empty($event['title']) ||
+                $event['title'][0] == '!' ||
+                !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $event['date'])) {
+                continue;
+            }
+
+
+            $date = $event['date'];
+            $time = strtotime($date);
+            $title =  $event['title'];
+            $link = trim($event['flyer'] ?? '');
+
+            if (str_starts_with($link, 'https://docs.google.com/document/d/')) {
+                $link = preg_replace('/.*\/d\/([^\/]+)\/.*/', 'https://docs.google.com/document/d/$1/export?format=pdf', $link);
+            }
+
+            if (empty($link)) {
+                continue;
+            }
+
+            $season = self::getSeason($date);
+            $eventUniqueName = $title.' - Stagione '.$season;
+            $eventSlug = $config['event_slug'].'/'.Functions::getSlug($season).'/'.Functions::getSlug($title);
+            $eventUrl = '/'.$eventSlug.'.html';
+            $flyerUrl = '/'.$eventSlug.'.pdf';
+            $subscribeUrl = str_replace('{event}', urlencode($eventUniqueName), $config['subscribe']);
+            $opening = $time - (60 * 24 * 60 * 60);
+            $event = [
+                'slug' => $eventSlug,
+                'url' => $eventUrl,
+                'flyerUrl' => $flyerUrl,
+                'joinersUrl' => $config['joiners'],
+                'subscribeUrl' => $subscribeUrl,
+                'type' => self::getType($event['type'] ?? "tournament"),
                 'season' => $season,
                 'title' => $title,
                 'link' => $link,

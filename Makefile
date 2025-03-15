@@ -29,14 +29,15 @@ sync: download-events
 ## ====
 
 serve:
+	@docker compose build php
 	@docker compose run --rm -p 8080:8080 php -S 0.0.0.0:8080 src/router.php
 
 start: serve
 
 push:
-	git add .
-	git commit -am fix
-	git push
+	@git add .
+	@git commit -am fix || true
+	@git push
 
 release: push
 
