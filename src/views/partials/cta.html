@@ -31,32 +31,37 @@
                     oppure
                 </p>
 
-                <p class="has-margin-7 has-padding-b-0">
-                    <span class="has-text-weight-bold">Gioca dal vivo</span>, iscriviti al prossimo tonero
-                </p>
+                {% if nextTournament['title'] %}
+                    <p class="has-margin-7 has-padding-b-0">
+                        <span class="has-text-weight-bold">Gioca dal vivo</span>, iscriviti al prossimo tonero
+                    </p>
 
-                <p class="subtitle has-text-weight-bold has-margin-7 has-padding-b-0">
-                    <span class="icon has-text-warning">
-                        <i class="fas fa-trophy"></i>
-                    </span>
-                    {{ nextTournament['title'] }}
-                </p>
+                    <p class="subtitle has-text-weight-bold has-margin-7 has-padding-b-0">
+                        <span class="icon has-text-warning">
+                            <i class="fas fa-trophy"></i>
+                        </span>
+                        {{ nextTournament['title'] }}
+                    </p>
 
-                <a
-                        href="/{{ nextTournament['slug'] }}.html"
-                        target="_blank"
-                        class="button is-outlined has-margin-lr-7 is-dark is-medium is-inline-block-tablet-only is-block-mobile has-margin-b-0"
-                >
-                    <span class="icon">
-                        <i class="fas fa-flag-checkered"></i>
-                    </span>
-                    <span>ISCRIVITI AL TORNEO!</span>
-                </a>
+                    <a
+                            href="/{{ nextTournament['slug'] }}.html"
+                            target="_blank"
+                            class="button is-outlined has-margin-lr-7 is-dark is-medium is-inline-block-tablet-only is-block-mobile has-margin-b-0"
+                    >
+                        <span class="icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </span>
+                        <span>ISCRIVITI AL TORNEO!</span>
+                    </a>
 
-                <p class="has-margin-0 has-padding-0 has-text-grey">
-                    Si gioca il <span class="has-text-weight-bold">{{ nextTournament['time'] | strftime }}</span>
-                </p>
-
+                    <p class="has-margin-0 has-padding-0 has-text-grey">
+                        Si gioca il <span class="has-text-weight-bold">{{ nextTournament['time'] | strftime }}</span>
+                    </p>
+                {% else %}
+                    <p class="has-margin-0 has-padding-0 has-text-grey">
+                        Contattaci al 320/0466987 per scoprire i prossimi eventi in programma!
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>
