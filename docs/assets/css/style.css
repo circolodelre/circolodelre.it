@@ -10730,3 +10730,7 @@ label.panel-block:hover {
 .container {
   max-width: 600px !important;
 }
+
+.no-wrap {
+    white-space: nowrap;
+}
