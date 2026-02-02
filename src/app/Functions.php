@@ -44,6 +44,8 @@ class Functions
 
     public static function getSlug($text)
     {
+        // replace accented characters
+        $text = str_replace(['ì'], ['i'], $text);
         // replace non letter or digits by -
         $text = preg_replace('~[^\pL\d]+~u', '-', $text);
         // transliterate
