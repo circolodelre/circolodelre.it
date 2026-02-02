@@ -149,26 +149,101 @@
         let countJoined = 0;
         const eventName = component.getAttribute("event-name")
         const csvUrl = component.getAttribute("csv-url")
-        fetch(csvUrl, { redirect: "follow" })
-            .then(response => response.text())
-            .then(text => {
-                $.parseCsv(text).forEach((line) => {
-                    const [timestamp, name, category, elo, currentEventName] = line
-                    if (currentEventName === eventName) {
-                        if (!countJoined) {
-                            component.innerHTML = ""
+        const eventSource = component.getAttribute("event-source")
+        const noSubscribe = `<tr><td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td></tr>`
+
+        if (eventSource === "vesus") {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.worker.min.mjs';
+            fetch('https://api.vesus.org/webhooks/exports/tournamentData?requestedBy=public&dataType=registrations&shortKey=UGoq3QSo')
+                .then(response => response.arrayBuffer())
+                .then(arrayBuffer => {
+                    console.log("PDF scaricato:", arrayBuffer.byteLength, "bytes");
+                    return window.pdfjsLib.getDocument(arrayBuffer).promise;
+                })
+                .then(pdf => {
+                    console.log("PDF caricato:", pdf.numPages, "pagine");
+                    return pdf.getPage(1); // Prima pagina per test
+                })
+                .then(page => {
+                    return page.getTextContent();
+                })
+                .then(textContent => {
+                    const players = [];
+                    let playerIndex = -1;
+                    let fieldIndex = 0;
+                    textContent.items.forEach(item => {
+                        let text = (item.str + '').trim();
+                        if (playerIndex === -1 && text === "Registered players") {
+                            playerIndex = 0;
+                        } else if (playerIndex >= 0) {
+                            if (fieldIndex >= 18) {
+                                fieldIndex = fieldIndex % 18;
+                                playerIndex++;
+                            }
+                            if (!players[playerIndex]) {
+                                players.push({});
+                            }
+                            if (fieldIndex === 1 && playerIndex > 0) {
+                                if (text.length < 3) {
+                                    players[playerIndex]['category'] = text;
+                                } else {
+                                    players[playerIndex]['category'] = 'NC';
+                                    fieldIndex = 3;
+                                }
+                            }
+                            if (fieldIndex === 3) {
+                                players[playerIndex]['name'] = text;
+                            }
+                            if (fieldIndex === 15) {
+                                players[playerIndex]['elo'] = text;
+                            }
+                            //console.log("Elemento di testo:", playerIndex, fieldIndex ,text);
+                            fieldIndex++;
                         }
-                        const row = document.createElement("tr")
-                        const index = component.childElementCount + 1;
-                        row.innerHTML = `<td class="has-text-centered">${index}</td><td>${name}</td><td class="has-text-centered">${category}</td><td class="has-text-centered">${elo}</td>`;
-                        component.appendChild(row)
-                        countJoined++;
+                    });
+                    players.shift();
+                    if (players[players.length-1]['name'] === 'Vesus.org') {
+                        players.pop();
+                    }
+                    console.log("Giocatori trovati:", players);
+                    component.innerHTML = ""
+                    if (players.length > 0) {
+                        players.forEach((player) => {
+                            const row = document.createElement("tr")
+                            const index = component.childElementCount + 1;
+                            row.innerHTML = `<td class="has-text-centered">${index}</td><td>${player.name}</td><td class="has-text-centered">${player.category}</td><td class="has-text-centered">${player.elo}</td>`;
+                            component.appendChild(row)
+                            countJoined++;
+                        })
+                    } else {
+                        component.innerHTML = noSubscribe;
                     }
                 })
-                if (!countJoined) {
-                    component.innerHTML = `<tr><td class="has-text-centered has-text-grey" colspan="4">Nessun iscritto</td></tr>`;
-                }
-            });
+                .catch(error => {
+                    console.error('Errore:', error);
+                });
+        } else {
+            fetch(csvUrl, { redirect: "follow" })
+                .then(response => response.text())
+                .then(text => {
+                    $.parseCsv(text).forEach((line) => {
+                        const [timestamp, name, category, elo, currentEventName] = line
+                        if (currentEventName === eventName) {
+                            if (!countJoined) {
+                                component.innerHTML = ""
+                            }
+                            const row = document.createElement("tr")
+                            const index = component.childElementCount + 1;
+                            row.innerHTML = `<td class="has-text-centered">${index}</td><td>${name}</td><td class="has-text-centered">${category}</td><td class="has-text-centered">${elo}</td>`;
+                            component.appendChild(row)
+                            countJoined++;
+                        }
+                    })
+                    if (!countJoined) {
+                        component.innerHTML = noSubscribe;
+                    }
+                });
+        }
     };
 
     /**

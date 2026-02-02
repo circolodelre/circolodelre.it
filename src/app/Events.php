@@ -71,6 +71,8 @@ class Events
                 }
             }
         }
+
+        return null;
     }
 
     public static function getSeason($date)
@@ -79,11 +81,16 @@ class Events
         $year = date('Y', $time);
         $month = date('m', $time);
 
+        return $year;
+
+        /*
+         // vecchia logica che calcola la sessione con i mesi estivi tipo 2023/2024
         if ($month > 8) {
             return $year.'/'.($year + 1);
         }
 
         return ($year - 1).'/'.$year;
+        */
     }
 
     public static function getType($type)
@@ -133,6 +140,7 @@ class Events
             $eventUrl = '/'.$eventSlug.'.html';
             $flyerUrl = '/'.$eventSlug.'.pdf';
             $subscribeUrl = str_replace('{event}', urlencode($eventUniqueName), $config['subscribe']);
+            $eventSource = strtolower(substr($subscribeUrl, 0, 20)) == 'https://vesus.org/' ? 'vesus' : 'spreadsheet';
             $opening = $time - (60 * 24 * 60 * 60);
             $event = [
                 'slug' => $eventSlug,
@@ -140,6 +148,7 @@ class Events
                 'flyerUrl' => $flyerUrl,
                 'joinersUrl' => $config['joiners'],
                 'subscribeUrl' => $subscribeUrl,
+                'eventSource' => $eventSource,
                 'type' => self::getType($csv[$row]['Tipo']),
                 'season' => $season,
                 'title' => $title,
@@ -202,12 +211,14 @@ class Events
             	$subscribeUrl = $event["vesus"];
 			}
             $opening = $time - (60 * 24 * 60 * 60);
+            $eventSource = strtolower(substr($subscribeUrl, 0, 18)) == 'https://vesus.org/' ? 'vesus' : 'spreadsheet';
             $event = [
                 'slug' => $eventSlug,
                 'url' => $eventUrl,
                 'flyerUrl' => $flyerUrl,
                 'joinersUrl' => $config['joiners'],
                 'subscribeUrl' => $subscribeUrl,
+                'eventSource' => $eventSource,
                 'type' => self::getType($event['type'] ?? "tournament"),
                 'season' => $season,
                 'title' => $title,
