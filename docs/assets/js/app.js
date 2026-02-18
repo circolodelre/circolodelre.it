@@ -194,15 +194,27 @@
                             if (fieldIndex === 3) {
                                 players[playerIndex]['name'] = text;
                             }
-                            if (fieldIndex === 15) {
-                                players[playerIndex]['elo'] = text;
+                            if (fieldIndex === 11) {
+                                if (text.length === 6 && parseInt(text) < 800000) {
+                                    fieldIndex = 13;
+                                } else if (text === "0") {
+                                    fieldIndex = 15;
+                                }
                             }
-                            //console.log("Elemento di testo:", playerIndex, fieldIndex ,text);
+                            if (fieldIndex === 13) {
+                                if (parseInt(text) > 0 && parseInt(text) < 4000) {
+                                    fieldIndex = 15;
+                                }
+                            }
+                            if (fieldIndex === 15) {
+                                players[playerIndex]['elo'] = parseInt(text);
+                            }
+                            console.log("Elemento di testo:", playerIndex, fieldIndex ,text);
                             fieldIndex++;
                         }
                     });
                     players.shift();
-                    if (players[players.length-1]['name'] === 'Vesus.org') {
+                    if (players[players.length-1]['name'] === 'Vesus.org' || players[players.length-1]['name'].startsWith('Generated on ')) {
                         players.pop();
                     }
                     console.log("Giocatori trovati:", players);
@@ -211,6 +223,10 @@
                         players.forEach((player) => {
                             const row = document.createElement("tr")
                             const index = component.childElementCount + 1;
+                            if (player.elo === 0) {
+                                player.category = '-';
+                                player.elo = '-';
+                            }
                             row.innerHTML = `<td class="has-text-centered">${index}</td><td>${player.name}</td><td class="has-text-centered">${player.category}</td><td class="has-text-centered">${player.elo}</td>`;
                             component.appendChild(row)
                             countJoined++;
