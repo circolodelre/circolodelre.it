@@ -25,8 +25,10 @@ const years = Object.keys(SEASONS).sort().reverse();
 const GP = {};
 for (const [year, data] of Object.entries(SEASONS)) {
     const standings = {};
+    const played = {};
     for (const t of data.tournaments) {
         for (const p of t.players) {
+            played[p.name] = (played[p.name] || 0) + 1;
             if (p.gp_points > 0) {
                 if (!standings[p.name]) standings[p.name] = { name: p.name, total: 0, results: [] };
                 standings[p.name].total += p.gp_points;
@@ -34,7 +36,9 @@ for (const [year, data] of Object.entries(SEASONS)) {
             }
         }
     }
-    GP[year] = Object.values(standings).sort((a, b) => b.total - a.total);
+    GP[year] = Object.values(standings)
+        .map(s => ({ ...s, played: played[s.name] || s.results.length }))
+        .sort((a, b) => b.total - a.total);
 }
 
 function route() {
@@ -84,7 +88,7 @@ function renderGP(year) {
                        <td class="has-text-centered">${i + 1}</td>
                        <td><a href="#gp/${year}/${encodeURIComponent(s.name)}">${s.name}</a></td>
                        <td class="has-text-centered"><strong>${s.total}</strong></td>
-                       <td class="has-text-centered">${s.results.length}</td>
+                       <td class="has-text-centered">${s.played}</td>
                    </tr>`
                ).join('')}</tbody>
            </table></div>`
@@ -134,7 +138,7 @@ function renderPlayer(year, name) {
     app.innerHTML =
         nav(year, null) +
         `<h1 class="title">${name}</h1>
-        <p class="subtitle">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.results.length} torneo/i</p>
+        <p class="subtitle">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.played} torneo/i</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
             <thead><tr>
