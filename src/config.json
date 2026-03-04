@@ -12,6 +12,6 @@
     "src/events/events.json"
   ],
   "pages": {
-
+    "/grandprix.html": "src/pages/grandprix.php"
   }
 }

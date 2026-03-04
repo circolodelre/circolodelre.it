@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="title is-3">Grand Prix</h2>
+        <div id="gp-app"></div>
+    </div>
+</section>
+
+<script>
+const SEASONS = {{ seasons|json_encode|raw }};
+
+const app = document.getElementById('gp-app');
+const years = Object.keys(SEASONS).sort().reverse();
+
+// Pre-compute GP standings per year
+const GP = {};
+for (const [year, data] of Object.entries(SEASONS)) {
+    const standings = {};
+    for (const t of data.tournaments) {
+        for (const p of t.players) {
+            if (p.gp_points > 0) {
+                if (!standings[p.name]) standings[p.name] = { name: p.name, total: 0, results: [] };
+                standings[p.name].total += p.gp_points;
+                standings[p.name].results.push({ id: t.id, name: t.name, pts: p.gp_points });
+            }
+        }
+    }
+    GP[year] = Object.values(standings).sort((a, b) => b.total - a.total);
+}
+
+function route() {
+    const hash = location.hash.slice(1) || ('gp/' + years[0]);
+    const parts = hash.split('/');
+    const view = parts[0];
+    if (view === 'gp' && parts[2]) renderPlayer(parts[1] || years[0], decodeURIComponent(parts[2]));
+    else if (view === 'gp') renderGP(parts[1] || years[0]);
+    else if (view === 't' && parts[3]) renderPlayerMatches(parts[1], parts[2], parseInt(parts[3]));
+    else if (view === 't') renderTournament(parts[1], parts[2]);
+    else renderGP(years[0]);
+}
+
+function yearTabs(active) {
+    return '<div class="tabs"><ul>' +
+        years.map(y => `<li class="${y === active ? 'is-active' : ''}"><a href="#gp/${y}">${y}</a></li>`).join('') +
+        '</ul></div>';
+}
+
+function renderGP(year) {
+    const standings = GP[year] || [];
+    const tournaments = (SEASONS[year] || {}).tournaments || [];
+
+    const standingsHtml = standings.length > 0
+        ? `<h3 class="title is-5">Classifica</h3>
+           <div class="table-container">
+           <table class="table is-fullwidth is-striped is-hoverable">
+               <thead><tr><th>#</th><th>Giocatore</th><th>Punti GP</th><th>Tornei</th></tr></thead>
+               <tbody>${standings.map((s, i) =>
+                   `<tr>
+                       <td>${i + 1}</td>
+                       <td><a href="#gp/${year}/${encodeURIComponent(s.name)}"><strong>${s.name}</strong></a></td>
+                       <td><strong>${s.total}</strong></td>
+                       <td>${s.results.length}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '<p class="has-text-grey">Nessun punteggio Grand Prix registrato per questo anno.</p>';
+
+    const tournamentsHtml = tournaments.length > 0
+        ? `<h3 class="title is-5 mt-5">Tornei</h3>
+           <div class="table-container">
+           <table class="table is-fullwidth is-striped is-hoverable">
+               <thead><tr><th>Torneo</th><th>Luogo</th><th>Data</th></tr></thead>
+               <tbody>${tournaments.map(t =>
+                   `<tr>
+                       <td><a href="#t/${year}/${t.id}">${t.name}</a></td>
+                       <td>${t.location}</td>
+                       <td>${t.date}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '';
+
+    app.innerHTML = yearTabs(year) + standingsHtml + tournamentsHtml;
+}
+
+function renderPlayer(year, name) {
+    const standings = GP[year] || [];
+    const s = standings.find(x => x.name === name);
+    if (!s) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const rows = s.results.map(r => {
+        // Find this player in that tournament for extra stats
+        const t = (SEASONS[year] || {}).tournaments.find(x => x.id === r.id);
+        const p = t ? t.players.find(x => x.name === name) : null;
+        const tournPts = p ? p.pts : '—';
+        const pos = p ? p.pos : '—';
+        return `<tr>
+            <td><a href="#t/${year}/${r.id}">${r.name}</a></td>
+            <td>${pos}</td>
+            <td>${tournPts}</td>
+            <td><strong>${r.pts}</strong></td>
+        </tr>`;
+    });
+
+    app.innerHTML =
+        `<div class="mb-4"><a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a></div>
+        <h3 class="title is-5">${name}</h3>
+        <p class="subtitle is-6">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.results.length} torneo/i</p>
+        <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+            <thead><tr><th>Torneo</th><th>Pos</th><th>Punti torneo</th><th>Punti GP</th></tr></thead>
+            <tbody>${rows.join('')}</tbody>
+        </table></div>`;
+}
+
+function tournamentHeader(year, t, extra) {
+    return `<div class="mb-4">
+        <a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a>
+        ${extra ? `<a href="#t/${year}/${t.id}" class="button is-small is-light ml-2">← ${t.name}</a>` : ''}
+    </div>
+    <h3 class="title is-5">${t.name}</h3>
+    <p class="subtitle is-6">${t.location} &middot; ${t.date}</p>`;
+}
+
+function renderTournament(year, id) {
+    const data = SEASONS[year] || {};
+    const t = (data.tournaments || []).find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const byPos = {};
+    for (const p of t.players) byPos[p.pos] = p.name;
+
+    const rows = t.players.map(p => {
+        const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
+        return `<tr>
+            <td>${p.pos}</td>
+            <td><a href="#t/${year}/${id}/${p.pos}">${p.name}</a>${gpBadge}</td>
+            <td>${p.rating || '-'}</td>
+            <td><strong>${p.pts}</strong></td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML = tournamentHeader(year, t, false) +
+        `<div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow is-hoverable">
+            <thead><tr><th>Pos</th><th>Nome</th><th>Rtg</th><th>Pts</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+function renderPlayerMatches(year, id, pos) {
+    const data = SEASONS[year] || {};
+    const t = (data.tournaments || []).find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const p = t.players.find(x => x.pos === pos);
+    if (!p) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const byPos = {};
+    for (const pl of t.players) byPos[pl.pos] = pl;
+
+    const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
+
+    const rows = p.rounds.map((r, i) => {
+        if (r === '--') {
+            return `<tr><td>${i + 1}</td><td><span class="tag is-light">Bye</span></td><td>—</td><td>—</td></tr>`;
+        }
+        const res = r[0], col = r[1], oppPos = parseInt(r.slice(2));
+        const opp = byPos[oppPos];
+        const cls = res === '+' ? 'is-success' : res === '-' ? 'is-danger' : 'is-warning';
+        const label = res === '+' ? 'Vittoria' : res === '-' ? 'Sconfitta' : 'Patta';
+        const colLabel = col === 'B' ? 'Nero' : 'Bianco';
+        const oppLink = opp
+            ? `<a href="#t/${year}/${id}/${oppPos}">${opp.name}</a> <small class="has-text-grey">(${opp.pts} pt)</small>`
+            : oppPos;
+        return `<tr>
+            <td>${i + 1}</td>
+            <td><span class="tag ${cls}">${label}</span></td>
+            <td>${colLabel}</td>
+            <td>${oppLink}</td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML = tournamentHeader(year, t, true) +
+        `<h4 class="title is-6 mt-4">${p.name}${gpBadge} — ${p.pts} punti</h4>
+        <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+            <thead><tr><th>Turno</th><th>Risultato</th><th>Colore</th><th>Avversario</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+window.addEventListener('hashchange', route);
+route();
+</script>
+{% endblock %}

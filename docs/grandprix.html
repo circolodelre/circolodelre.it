@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Circolo del Re - Castelvetrano Scacchi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.4.0/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+
+<section class="section is-marginless-b is-paddingless-b">
+    <div class="container has-text-centered">
+        <a href="/">
+            <img src="/assets/img/logo.png" class="has-image-shadow">
+        </a>
+        <h1 class="is-marginless">
+            <a href="/">
+                <span class="title is-3 has-text-shadow">
+                    A.S.D. Circolo del Re
+                </span>
+            </a>
+        </h1>
+        <a href="/">
+            <span class="subtitle is-4 has-text-shadow">
+                Castelvetrano Scacchi
+            </span>
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="title is-3">Grand Prix</h2>
+        <div id="gp-app"></div>
+    </div>
+</section>
+
+<script>
+const SEASONS = {"2026":{"tournaments":[{"id":"1","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]},{"id":"2","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]}]}};
+
+const app = document.getElementById('gp-app');
+const years = Object.keys(SEASONS).sort().reverse();
+
+// Pre-compute GP standings per year
+const GP = {};
+for (const [year, data] of Object.entries(SEASONS)) {
+    const standings = {};
+    for (const t of data.tournaments) {
+        for (const p of t.players) {
+            if (p.gp_points > 0) {
+                if (!standings[p.name]) standings[p.name] = { name: p.name, total: 0, results: [] };
+                standings[p.name].total += p.gp_points;
+                standings[p.name].results.push({ id: t.id, name: t.name, pts: p.gp_points });
+            }
+        }
+    }
+    GP[year] = Object.values(standings).sort((a, b) => b.total - a.total);
+}
+
+function route() {
+    const hash = location.hash.slice(1) || ('gp/' + years[0]);
+    const parts = hash.split('/');
+    const view = parts[0];
+    if (view === 'gp' && parts[2]) renderPlayer(parts[1] || years[0], decodeURIComponent(parts[2]));
+    else if (view === 'gp') renderGP(parts[1] || years[0]);
+    else if (view === 't' && parts[3]) renderPlayerMatches(parts[1], parts[2], parseInt(parts[3]));
+    else if (view === 't') renderTournament(parts[1], parts[2]);
+    else renderGP(years[0]);
+}
+
+function yearTabs(active) {
+    return '<div class="tabs"><ul>' +
+        years.map(y => `<li class="${y === active ? 'is-active' : ''}"><a href="#gp/${y}">${y}</a></li>`).join('') +
+        '</ul></div>';
+}
+
+function renderGP(year) {
+    const standings = GP[year] || [];
+    const tournaments = (SEASONS[year] || {}).tournaments || [];
+
+    const standingsHtml = standings.length > 0
+        ? `<h3 class="title is-5">Classifica</h3>
+           <div class="table-container">
+           <table class="table is-fullwidth is-striped is-hoverable">
+               <thead><tr><th>#</th><th>Giocatore</th><th>Punti GP</th><th>Tornei</th></tr></thead>
+               <tbody>${standings.map((s, i) =>
+                   `<tr>
+                       <td>${i + 1}</td>
+                       <td><a href="#gp/${year}/${encodeURIComponent(s.name)}"><strong>${s.name}</strong></a></td>
+                       <td><strong>${s.total}</strong></td>
+                       <td>${s.results.length}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '<p class="has-text-grey">Nessun punteggio Grand Prix registrato per questo anno.</p>';
+
+    const tournamentsHtml = tournaments.length > 0
+        ? `<h3 class="title is-5 mt-5">Tornei</h3>
+           <div class="table-container">
+           <table class="table is-fullwidth is-striped is-hoverable">
+               <thead><tr><th>Torneo</th><th>Luogo</th><th>Data</th></tr></thead>
+               <tbody>${tournaments.map(t =>
+                   `<tr>
+                       <td><a href="#t/${year}/${t.id}">${t.name}</a></td>
+                       <td>${t.location}</td>
+                       <td>${t.date}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '';
+
+    app.innerHTML = yearTabs(year) + standingsHtml + tournamentsHtml;
+}
+
+function renderPlayer(year, name) {
+    const standings = GP[year] || [];
+    const s = standings.find(x => x.name === name);
+    if (!s) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const rows = s.results.map(r => {
+        // Find this player in that tournament for extra stats
+        const t = (SEASONS[year] || {}).tournaments.find(x => x.id === r.id);
+        const p = t ? t.players.find(x => x.name === name) : null;
+        const tournPts = p ? p.pts : '—';
+        const pos = p ? p.pos : '—';
+        return `<tr>
+            <td><a href="#t/${year}/${r.id}">${r.name}</a></td>
+            <td>${pos}</td>
+            <td>${tournPts}</td>
+            <td><strong>${r.pts}</strong></td>
+        </tr>`;
+    });
+
+    app.innerHTML =
+        `<div class="mb-4"><a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a></div>
+        <h3 class="title is-5">${name}</h3>
+        <p class="subtitle is-6">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.results.length} torneo/i</p>
+        <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+            <thead><tr><th>Torneo</th><th>Pos</th><th>Punti torneo</th><th>Punti GP</th></tr></thead>
+            <tbody>${rows.join('')}</tbody>
+        </table></div>`;
+}
+
+function tournamentHeader(year, t, extra) {
+    return `<div class="mb-4">
+        <a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a>
+        ${extra ? `<a href="#t/${year}/${t.id}" class="button is-small is-light ml-2">← ${t.name}</a>` : ''}
+    </div>
+    <h3 class="title is-5">${t.name}</h3>
+    <p class="subtitle is-6">${t.location} &middot; ${t.date}</p>`;
+}
+
+function renderTournament(year, id) {
+    const data = SEASONS[year] || {};
+    const t = (data.tournaments || []).find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const byPos = {};
+    for (const p of t.players) byPos[p.pos] = p.name;
+
+    const rows = t.players.map(p => {
+        const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
+        return `<tr>
+            <td>${p.pos}</td>
+            <td><a href="#t/${year}/${id}/${p.pos}">${p.name}</a>${gpBadge}</td>
+            <td>${p.rating || '-'}</td>
+            <td><strong>${p.pts}</strong></td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML = tournamentHeader(year, t, false) +
+        `<div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow is-hoverable">
+            <thead><tr><th>Pos</th><th>Nome</th><th>Rtg</th><th>Pts</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+function renderPlayerMatches(year, id, pos) {
+    const data = SEASONS[year] || {};
+    const t = (data.tournaments || []).find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const p = t.players.find(x => x.pos === pos);
+    if (!p) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const byPos = {};
+    for (const pl of t.players) byPos[pl.pos] = pl;
+
+    const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
+
+    const rows = p.rounds.map((r, i) => {
+        if (r === '--') {
+            return `<tr><td>${i + 1}</td><td><span class="tag is-light">Bye</span></td><td>—</td><td>—</td></tr>`;
+        }
+        const res = r[0], col = r[1], oppPos = parseInt(r.slice(2));
+        const opp = byPos[oppPos];
+        const cls = res === '+' ? 'is-success' : res === '-' ? 'is-danger' : 'is-warning';
+        const label = res === '+' ? 'Vittoria' : res === '-' ? 'Sconfitta' : 'Patta';
+        const colLabel = col === 'B' ? 'Nero' : 'Bianco';
+        const oppLink = opp
+            ? `<a href="#t/${year}/${id}/${oppPos}">${opp.name}</a> <small class="has-text-grey">(${opp.pts} pt)</small>`
+            : oppPos;
+        return `<tr>
+            <td>${i + 1}</td>
+            <td><span class="tag ${cls}">${label}</span></td>
+            <td>${colLabel}</td>
+            <td>${oppLink}</td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML = tournamentHeader(year, t, true) +
+        `<h4 class="title is-6 mt-4">${p.name}${gpBadge} — ${p.pts} punti</h4>
+        <div class="table-container">
+        <table class="table is-fullwidth is-striped is-narrow">
+            <thead><tr><th>Turno</th><th>Risultato</th><th>Colore</th><th>Avversario</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+window.addEventListener('hashchange', route);
+route();
+</script>
+
+<footer class="footer has-text-centered">
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
+                &nbsp;
+            </div>
+
+            <div class="column">
+                <p class="has-margin-b-4">
+                    <a href="/">
+                        <img src="/assets/img/logo.png" width="100" height="100">
+                    </a>
+                    <a href="/">
+                        <span class="title is-5 is-block">
+                            A.S.D. Circolo del Re
+                        </span>
+                    </a>
+                    <a href="/">
+                        <span class="subtitle is-6">
+                            Castelvetrano Scacchi
+                        </span>
+                    </a>
+                </p>
+
+                <p class="has-margin-b-4 content is-small">
+                    Via delle Due Sicilie, 36<br>
+                    91022 Castelvetrano (TP)
+                </p>
+
+                <p class="content is-small">
+                    Codice Fiscale: 90019450817<br>
+                    Email: info@circolodelre.it<br>
+                    PEC: circolodelre@pec.it<br>
+                </p>
+
+                <p class="content is-small">
+                    Presidente: Francesco Bianco<br>
+                    Responsabile Safeguarding: Francesco Bianco<br>
+                </p>
+
+                <!--p class="content is-small">
+                    <a href="https://docs.google.com/spreadsheets/d/1D3OvxciyEkAsyZ4xywO4anElUglhHwLXgU8lXpaCXYg/edit?gid=1878576470#gid=1878576470" target="_blank">Gestione Tornei</a>
+                </p-->
+
+                <p class="content is-small">
+                    <a href="https://github.com/circolodelre/statuto?tab=readme-ov-file#statuto-sociale" target="_blank">Leggi lo Statuto Sociale</a>
+                </p>
+
+
+            </div>
+
+            <div class="column is-3">
+                &nbsp;
+                <!--
+                <img src="/assets/img/trophy.png" width="100" height="100">
+                <p class="title is-5 has-margin-b-7">
+                    Campionato Promozionale
+                </p>
+                <ul class="has-margin-b-4">
+                    <li><a href="/campionato-promozionale/regolamento.html">Regolamento</a></li>
+                    <li><a href="/campionato-promozionale/categorie.html">Categorie</a></li>
+                </ul>
+                <p class="title is-6 has-margin-b-7">
+                    Tutte le Stagioni
+                </p>
+                <ul class="has-margin-b-4">
+                    <li><a href="/campionato-promozionale/2022.html">2022</a></li>
+                    <li><a href="/campionato-promozionale/2021.html">2021</a></li>
+                    <li><a href="/campionato-promozionale/2020.html">2020</a></li>
+                </ul>
+                -->
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.min.mjs">
+    window.pdfjsLib = pdfjsLib
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/assets/js/app.js"></script>
+
+<!-- 100% privacy-first analytics -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>

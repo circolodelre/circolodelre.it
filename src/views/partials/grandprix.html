@@ -1,0 +1,45 @@
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <h2 class="title is-3 has-margin-b-4">
+                    Grand Prix {{ gpYear }}
+                </h2>
+
+                {% if gpStandings %}
+                    <table class="table is-fullwidth is-striped is-narrow">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Giocatore</th>
+                                <th>Punti GP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in gpStandings %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>
+                                        <a href="/grandprix.html#gp/{{ gpYear }}/{{ entry.name|url_encode }}">
+                                            {{ entry.name }}
+                                        </a>
+                                    </td>
+                                    <td><strong>{{ entry.total }}</strong></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="has-text-grey">Nessun punteggio Grand Prix registrato per il {{ gpYear }}.</p>
+                {% endif %}
+
+                <p class="has-text-centered has-margin-b-4">
+                    <a href="/grandprix.html" class="button is-outlined">
+                        <span class="icon"><i class="fas fa-trophy"></i></span>
+                        <span>Tornei e classifiche complete</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
