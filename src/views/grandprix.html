@@ -156,15 +156,22 @@ function renderTournament(year, id) {
     const t = (data.tournaments || []).find(x => x.id === id);
     if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
 
-    const rows = t.players.map(p =>
-        `<tr>
+    const tbNames = t.tiebreak_names || [];
+
+    const rows = t.players.map(p => {
+        const tbCells = tbNames.map((_, i) =>
+            `<td class="has-text-centered">${p.tiebreaks[i] ?? '-'}</td>`
+        ).join('');
+        return `<tr>
             <td class="has-text-centered">${p.pos}</td>
             <td class="has-text-left"><a href="#t/${year}/${id}/${p.pos}">${p.name}</a></td>
-            <td class="has-text-centered">${p.rating || '-'}</td>
             <td class="has-text-centered"><strong>${p.pts}</strong></td>
+            ${tbCells}
             <td class="has-text-centered">${p.gp_points > 0 ? `<strong>${p.gp_points}</strong>` : '-'}</td>
-        </tr>`
-    ).join('');
+        </tr>`;
+    }).join('');
+
+    const tbHeaders = tbNames.map(n => `<th class="has-text-centered">${n}</th>`).join('');
 
     app.innerHTML =
         nav(year, null) +
@@ -175,8 +182,8 @@ function renderTournament(year, id) {
             <thead><tr>
                 <th class="has-text-centered">N°</th>
                 <th>Nome</th>
-                <th class="has-text-centered">Rtg</th>
                 <th class="has-text-centered">Pts</th>
+                ${tbHeaders}
                 <th class="has-text-centered">Punti GP</th>
             </tr></thead>
             <tbody>${rows}</tbody>
