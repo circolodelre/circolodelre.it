@@ -48,6 +48,11 @@ function route() {
     else renderGP(years[0]);
 }
 
+function formatDate(dateStr) {
+    const parts = dateStr.split(', ');
+    return (parts.length === 2 && parts[0] === parts[1]) ? parts[0] : dateStr;
+}
+
 function yearTabs(active) {
     return '<div class="tabs"><ul>' +
         years.map(y => `<li class="${y === active ? 'is-active' : ''}"><a href="#gp/${y}">${y}</a></li>`).join('') +
@@ -98,7 +103,7 @@ function renderGP(year) {
                    `<tr>
                        <td><a href="#t/${year}/${t.id}">${t.name}</a></td>
                        <td>${t.location}</td>
-                       <td class="has-text-centered">${t.date}</td>
+                       <td class="has-text-centered">${formatDate(t.date)}</td>
                    </tr>`
                ).join('')}</tbody>
            </table></div>`
@@ -160,7 +165,7 @@ function renderTournament(year, id) {
     app.innerHTML =
         nav(year, null) +
         `<h1 class="title">${t.name}</h1>
-        <p class="subtitle">${t.location} &middot; ${t.date}</p>
+        <p class="subtitle">${t.location} &middot; ${formatDate(t.date)}</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
             <thead><tr>
