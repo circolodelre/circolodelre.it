@@ -7,24 +7,24 @@
                 </h2>
 
                 {% if gpStandings %}
-                    <table class="table is-fullwidth is-striped is-narrow">
+                    <table class="table is-fullwidth is-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th class="has-text-centered">N°</th>
                                 <th>Giocatore</th>
-                                <th>Punti GP</th>
+                                <th class="has-text-centered">Punti GP</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for entry in gpStandings %}
                                 <tr>
-                                    <td>{{ loop.index }}</td>
+                                    <td class="has-text-centered">{{ loop.index }}</td>
                                     <td>
                                         <a href="/grandprix.html#gp/{{ gpYear }}/{{ entry.name|url_encode }}">
                                             {{ entry.name }}
                                         </a>
                                     </td>
-                                    <td><strong>{{ entry.total }}</strong></td>
+                                    <td class="has-text-centered"><strong>{{ entry.total }}</strong></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

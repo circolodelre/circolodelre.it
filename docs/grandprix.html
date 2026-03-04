@@ -31,14 +31,21 @@
 </section>
 
 <section class="section">
-    <div class="container">
-        <h2 class="title is-3">Grand Prix</h2>
-        <div id="gp-app"></div>
+    <div class="container has-text-centered">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div id="gp-app"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <script>
-const SEASONS = {"2026":{"tournaments":[{"id":"1","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]},{"id":"2","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]}]}};
+const SEASONS = {"2025":{"tournaments":[{"id":"1","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]},{"id":"2","name":"Torneo di Prova 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]}]},"2026":{"tournaments":[{"id":"1","name":"Gambetto del Belice 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]},{"id":"2","name":"Torneo di Prova 2026","location":"Castelvetrano","date":"21\/02\/2026, 21\/02\/2026","num_rounds":7,"players":[{"pos":1,"name":"Mattarella","gp_points":150,"rating":1800,"pts":6.5,"rounds":["+B16","+W6","+B3","+W2","+B7","=W4","+B5"]},{"pos":2,"name":"Ruggia","gp_points":0,"rating":1800,"pts":6,"rounds":["+W14","+B5","+W4","-B1","+B3","+W6","+B7"]},{"pos":3,"name":"Mangiaracina","gp_points":0,"rating":1800,"pts":5,"rounds":["+W7","+B4","-W1","+B5","-W2","+B8","+W10"]},{"pos":4,"name":"Tilotta","gp_points":0,"rating":1800,"pts":4.5,"rounds":["+B12","-W3","-B2","+W13","+W8","=B1","+W9"]},{"pos":5,"name":"Agoglitta","gp_points":0,"rating":1800,"pts":4,"rounds":["+B15","-W2","+B11","-W3","+B12","+W7","-W1"]},{"pos":6,"name":"Vaccaro","gp_points":50,"rating":1800,"pts":4,"rounds":["+W11","-B1","+W8","-B7","+W9","-B2","+W14"]},{"pos":7,"name":"Cacciato","gp_points":0,"rating":0,"pts":3,"rounds":["-B3","+W12","+B13","+W6","-W1","-B5","-W2"]},{"pos":8,"name":"Seguenti A.","gp_points":0,"rating":0,"pts":3,"rounds":["--","+W16","-B6","+W15","-B4","-W3","+B12"]},{"pos":9,"name":"Bainco F.","gp_points":0,"rating":1800,"pts":3,"rounds":["--","--","+B16","+W11","-B6","+W12","-B4"]},{"pos":10,"name":"Viana","gp_points":0,"rating":0,"pts":3,"rounds":["--","--","+B15","-W12","+B13","+W11","-B3"]},{"pos":11,"name":"Spennato G.","gp_points":0,"rating":0,"pts":3,"rounds":["-B6","+W15","-W5","-B9","+W14","-B10","+W16"]},{"pos":12,"name":"Spennato A.","gp_points":0,"rating":0,"pts":2,"rounds":["-W4","-B7","+W14","+B10","-W5","-B9","-W8"]},{"pos":13,"name":"Seguenti M.","gp_points":0,"rating":0,"pts":2,"rounds":["--","+B14","-W7","-B4","-W10","=B16","=W15"]},{"pos":14,"name":"Pisciotta","gp_points":0,"rating":0,"pts":2,"rounds":["-B2","-W13","-B12","+W16","-B11","+W15","-B6"]},{"pos":15,"name":"Bianco","gp_points":0,"rating":0,"pts":1.5,"rounds":["-W5","-B11","-W10","-B8","+W16","-B14","=B13"]},{"pos":16,"name":"La Rosa","gp_points":0,"rating":0,"pts":0.5,"rounds":["-W1","-B8","-W9","-B14","-B15","=W13","-B11"]}]}]}};
 
 const app = document.getElementById('gp-app');
 const years = Object.keys(SEASONS).sort().reverse();
@@ -76,21 +83,32 @@ function yearTabs(active) {
         '</ul></div>';
 }
 
+function nav(year, t) {
+    const back = `<a href="#gp/${year}" class="button is-small is-light">Grand Prix ${year}</a>`;
+    const tourn = t ? ` <a href="#t/${year}/${t.id}" class="button is-small is-light ml-2">${t.name}</a>` : '';
+    return `<div class="has-text-left mb-5">${back}${tourn}</div>`;
+}
+
 function renderGP(year) {
     const standings = GP[year] || [];
     const tournaments = (SEASONS[year] || {}).tournaments || [];
 
     const standingsHtml = standings.length > 0
         ? `<h3 class="title is-5">Classifica</h3>
-           <div class="table-container">
-           <table class="table is-fullwidth is-striped is-hoverable">
-               <thead><tr><th>#</th><th>Giocatore</th><th>Punti GP</th><th>Tornei</th></tr></thead>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th class="has-text-centered">N°</th>
+                   <th>Giocatore</th>
+                   <th class="has-text-centered">Punti GP</th>
+                   <th class="has-text-centered">Tornei</th>
+               </tr></thead>
                <tbody>${standings.map((s, i) =>
                    `<tr>
-                       <td>${i + 1}</td>
-                       <td><a href="#gp/${year}/${encodeURIComponent(s.name)}"><strong>${s.name}</strong></a></td>
-                       <td><strong>${s.total}</strong></td>
-                       <td>${s.results.length}</td>
+                       <td class="has-text-centered">${i + 1}</td>
+                       <td><a href="#gp/${year}/${encodeURIComponent(s.name)}">${s.name}</a></td>
+                       <td class="has-text-centered"><strong>${s.total}</strong></td>
+                       <td class="has-text-centered">${s.results.length}</td>
                    </tr>`
                ).join('')}</tbody>
            </table></div>`
@@ -98,20 +116,27 @@ function renderGP(year) {
 
     const tournamentsHtml = tournaments.length > 0
         ? `<h3 class="title is-5 mt-5">Tornei</h3>
-           <div class="table-container">
-           <table class="table is-fullwidth is-striped is-hoverable">
-               <thead><tr><th>Torneo</th><th>Luogo</th><th>Data</th></tr></thead>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th>Torneo</th>
+                   <th>Luogo</th>
+                   <th class="has-text-centered">Data</th>
+               </tr></thead>
                <tbody>${tournaments.map(t =>
                    `<tr>
                        <td><a href="#t/${year}/${t.id}">${t.name}</a></td>
                        <td>${t.location}</td>
-                       <td>${t.date}</td>
+                       <td class="has-text-centered">${t.date}</td>
                    </tr>`
                ).join('')}</tbody>
            </table></div>`
         : '';
 
-    app.innerHTML = yearTabs(year) + standingsHtml + tournamentsHtml;
+    app.innerHTML =
+        `<span class="icon has-text-warning is-large"><i class="fas fa-trophy fa-2x"></i></span>
+        <h1 class="title">Grand Prix ${year}</h1>` +
+        yearTabs(year) + standingsHtml + tournamentsHtml;
 }
 
 function renderPlayer(year, name) {
@@ -120,37 +145,30 @@ function renderPlayer(year, name) {
     if (!s) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
 
     const rows = s.results.map(r => {
-        // Find this player in that tournament for extra stats
         const t = (SEASONS[year] || {}).tournaments.find(x => x.id === r.id);
         const p = t ? t.players.find(x => x.name === name) : null;
-        const tournPts = p ? p.pts : '—';
-        const pos = p ? p.pos : '—';
         return `<tr>
-            <td><a href="#t/${year}/${r.id}">${r.name}</a></td>
-            <td>${pos}</td>
-            <td>${tournPts}</td>
-            <td><strong>${r.pts}</strong></td>
+            <td class="has-text-left"><a href="#t/${year}/${r.id}">${r.name}</a></td>
+            <td class="has-text-centered">${p ? p.pos : '—'}</td>
+            <td class="has-text-centered">${p ? p.pts : '—'}</td>
+            <td class="has-text-centered"><strong>${r.pts}</strong></td>
         </tr>`;
     });
 
     app.innerHTML =
-        `<div class="mb-4"><a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a></div>
-        <h3 class="title is-5">${name}</h3>
-        <p class="subtitle is-6">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.results.length} torneo/i</p>
-        <div class="table-container">
-        <table class="table is-fullwidth is-striped is-narrow">
-            <thead><tr><th>Torneo</th><th>Pos</th><th>Punti torneo</th><th>Punti GP</th></tr></thead>
+        nav(year, null) +
+        `<h1 class="title">${name}</h1>
+        <p class="subtitle">Stagione ${year} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.results.length} torneo/i</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th>Torneo</th>
+                <th class="has-text-centered">Pos</th>
+                <th class="has-text-centered">Punti torneo</th>
+                <th class="has-text-centered">Punti GP</th>
+            </tr></thead>
             <tbody>${rows.join('')}</tbody>
         </table></div>`;
-}
-
-function tournamentHeader(year, t, extra) {
-    return `<div class="mb-4">
-        <a href="#gp/${year}" class="button is-small is-light">← Grand Prix ${year}</a>
-        ${extra ? `<a href="#t/${year}/${t.id}" class="button is-small is-light ml-2">← ${t.name}</a>` : ''}
-    </div>
-    <h3 class="title is-5">${t.name}</h3>
-    <p class="subtitle is-6">${t.location} &middot; ${t.date}</p>`;
 }
 
 function renderTournament(year, id) {
@@ -158,23 +176,29 @@ function renderTournament(year, id) {
     const t = (data.tournaments || []).find(x => x.id === id);
     if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
 
-    const byPos = {};
-    for (const p of t.players) byPos[p.pos] = p.name;
+    const rows = t.players.map(p =>
+        `<tr>
+            <td class="has-text-centered">${p.pos}</td>
+            <td class="has-text-left"><a href="#t/${year}/${id}/${p.pos}">${p.name}</a></td>
+            <td class="has-text-centered">${p.rating || '-'}</td>
+            <td class="has-text-centered"><strong>${p.pts}</strong></td>
+            <td class="has-text-centered">${p.gp_points > 0 ? `<strong>${p.gp_points}</strong>` : '-'}</td>
+        </tr>`
+    ).join('');
 
-    const rows = t.players.map(p => {
-        const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
-        return `<tr>
-            <td>${p.pos}</td>
-            <td><a href="#t/${year}/${id}/${p.pos}">${p.name}</a>${gpBadge}</td>
-            <td>${p.rating || '-'}</td>
-            <td><strong>${p.pts}</strong></td>
-        </tr>`;
-    }).join('');
-
-    app.innerHTML = tournamentHeader(year, t, false) +
-        `<div class="table-container">
-        <table class="table is-fullwidth is-striped is-narrow is-hoverable">
-            <thead><tr><th>Pos</th><th>Nome</th><th>Rtg</th><th>Pts</th></tr></thead>
+    app.innerHTML =
+        nav(year, null) +
+        `<h1 class="title">${t.name}</h1>
+        <p class="subtitle">${t.location} &middot; ${t.date}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th class="has-text-centered">N°</th>
+                <th>Nome</th>
+                <th class="has-text-centered">Rtg</th>
+                <th class="has-text-centered">Pts</th>
+                <th class="has-text-centered">Punti GP</th>
+            </tr></thead>
             <tbody>${rows}</tbody>
         </table></div>`;
 }
@@ -190,33 +214,43 @@ function renderPlayerMatches(year, id, pos) {
     const byPos = {};
     for (const pl of t.players) byPos[pl.pos] = pl;
 
-    const gpBadge = p.gp_points > 0 ? ` <span class="tag is-primary is-small">${p.gp_points} GP</span>` : '';
-
     const rows = p.rounds.map((r, i) => {
         if (r === '--') {
-            return `<tr><td>${i + 1}</td><td><span class="tag is-light">Bye</span></td><td>—</td><td>—</td></tr>`;
+            return `<tr>
+                <td class="has-text-centered">${i + 1}</td>
+                <td class="has-text-centered"><span class="tag is-light">Bye</span></td>
+                <td>—</td><td>—</td>
+            </tr>`;
         }
         const res = r[0], col = r[1], oppPos = parseInt(r.slice(2));
         const opp = byPos[oppPos];
         const cls = res === '+' ? 'is-success' : res === '-' ? 'is-danger' : 'is-warning';
         const label = res === '+' ? 'Vittoria' : res === '-' ? 'Sconfitta' : 'Patta';
-        const colLabel = col === 'B' ? 'Nero' : 'Bianco';
         const oppLink = opp
             ? `<a href="#t/${year}/${id}/${oppPos}">${opp.name}</a> <small class="has-text-grey">(${opp.pts} pt)</small>`
             : oppPos;
         return `<tr>
-            <td>${i + 1}</td>
-            <td><span class="tag ${cls}">${label}</span></td>
-            <td>${colLabel}</td>
-            <td>${oppLink}</td>
+            <td class="has-text-centered">${i + 1}</td>
+            <td class="has-text-centered"><span class="tag ${cls}">${label}</span></td>
+            <td>${col === 'B' ? 'Nero' : 'Bianco'}</td>
+            <td class="has-text-left">${oppLink}</td>
         </tr>`;
     }).join('');
 
-    app.innerHTML = tournamentHeader(year, t, true) +
-        `<h4 class="title is-6 mt-4">${p.name}${gpBadge} — ${p.pts} punti</h4>
-        <div class="table-container">
-        <table class="table is-fullwidth is-striped is-narrow">
-            <thead><tr><th>Turno</th><th>Risultato</th><th>Colore</th><th>Avversario</th></tr></thead>
+    const gpNote = p.gp_points > 0 ? ` &middot; <strong>${p.gp_points}</strong> punti GP` : '';
+
+    app.innerHTML =
+        nav(year, t) +
+        `<h1 class="title">${p.name}</h1>
+        <p class="subtitle">${t.name} &middot; ${p.pts} punti${gpNote}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th class="has-text-centered">Turno</th>
+                <th class="has-text-centered">Risultato</th>
+                <th>Colore</th>
+                <th>Avversario</th>
+            </tr></thead>
             <tbody>${rows}</tbody>
         </table></div>`;
 }
