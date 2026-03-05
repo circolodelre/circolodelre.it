@@ -27,6 +27,8 @@ $item = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if (preg_match("/^\/{$eventSlug}/", $item)) {
     $file = __DIR__.'/pages/events.php';
+} elseif (preg_match('#^/grandprix/\d{4}/?$#', $item)) {
+    $file = __DIR__.'/pages/grandprix.php';
 } else {
     $page = __DIR__.'/pages'.$item;
     $path = preg_replace('/.html$/', '.php', rtrim($page, '/'));

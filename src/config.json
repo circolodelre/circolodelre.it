@@ -2,7 +2,8 @@
   "country": "it",
   "date_format": "%e %b %Y",
   "collections": [
-    "events"
+    "events",
+    "grandprix"
   ],
   "event_slug": "eventi",
   "tournaments": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSm0ukMCrI9lOYrIdg_8rX9NZwLrwH9OhWGyhJ3qhCxu7A-K5b2i0ZZzlInttNR5_wyRE5JNmp-3mIy/pubhtml",
@@ -11,7 +12,5 @@
   "events": [
     "src/events/events.json"
   ],
-  "pages": {
-    "/grandprix.html": "src/pages/grandprix.php"
-  }
+  "pages": {}
 }

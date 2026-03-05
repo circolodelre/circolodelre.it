@@ -24,7 +24,7 @@
                                 <tr>
                                     <td class="has-text-centered">{{ loop.index }}</td>
                                     <td>
-                                        <a href="/grandprix.html#gp/{{ gpYear }}/{{ entry.name|url_encode }}">
+                                        <a href="/grandprix/{{ gpYear }}/#gp/{{ entry.name|url_encode }}">
                                             {{ entry.name }}
                                         </a>
                                     </td>
@@ -38,7 +38,7 @@
                 {% endif %}
 
                 <p class="has-text-centered has-margin-b-4">
-                    <a href="/grandprix.html" class="button is-outlined">
+                    <a href="/grandprix/{{ gpYear }}/" class="button is-outlined">
                         <span class="icon"><i class="fas fa-trophy"></i></span>
                         <span>Tornei e classifiche complete</span>
                     </a>

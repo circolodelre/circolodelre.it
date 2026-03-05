@@ -1,6 +1,7 @@
 <?php
 
 use App\Events;
+use App\GrandPrix;
 use App\Services;
 use App\System;
 
@@ -20,6 +21,20 @@ foreach ($config['pages'] as $page => $file) {
 
     is_dir(dirname($path)) or mkdir(dirname($path), 0777, true);
     file_put_contents($path, $html);
+}
+
+$seasons = GrandPrix::loadSeasons();
+foreach (array_keys($seasons) as $year) {
+    $file = __DIR__.'/../pages/grandprix.php';
+    $page = '/grandprix/'.$year.'/';
+    $_SERVER['REQUEST_URI'] = $page;
+
+    $html = require $file;
+    $path = __DIR__.'/../../docs/grandprix/'.$year.'/index.html';
+
+    is_dir(dirname($path)) or mkdir(dirname($path), 0777, true);
+    file_put_contents($path, $html);
+    echo "  grandprix/$year/\n";
 }
 
 $events = Events::loadEvents();
