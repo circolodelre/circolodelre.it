@@ -58,7 +58,7 @@ function formatDate(dateStr) {
 function yearTabs() {
     return '<div class="tabs"><ul>' +
         ALL_YEARS.slice().reverse().map(y =>
-            `<li class="${y === YEAR ? 'is-active' : ''}"><a href="/grandprix/${y}/">${y}</a></li>`
+            `<li class="${y === YEAR ? 'is-active' : ''}" ${y === YEAR ? 'id="gp-tab-active"' : ''}><a href="/grandprix/${y}/">${y}</a></li>`
         ).join('') +
         '</ul></div>';
 }
@@ -116,6 +116,8 @@ function renderGP() {
         `<span class="icon has-text-warning is-large"><i class="fas fa-trophy fa-2x"></i></span>
         <h1 class="title">Grand Prix ${YEAR}</h1>` +
         yearTabs() + standingsHtml + tournamentsHtml;
+
+    document.getElementById('gp-tab-active')?.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
 }
 
 function renderPlayer(name) {
