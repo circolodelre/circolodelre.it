@@ -1,0 +1,24 @@
+Reef Pub 2026 - Torneo #2
+Selinunte - 26/08/2024, 26/08/2024
+
+ Tabellone al turno 6 ordinato per punti
+
+Pos NAME                           Rtg   T  Fed  Pts |   1     2     3     4     5     6    |     BH   BH/C1
+-------------------------------------------------------------------------------------------------------------
+  1 Bonsignore Giuseppe               0     ITA  6.0 | +B6   +W2   +B3   +W5   +B4   +W7    |   21.0    18.0
+  2 Tilotta Francesco                 0     ITA  4.0 | +W12  -B1   +B8   +W3   +B5   -W4    |   21.0    19.5
+  3 Vaccaro Giuseppe                  0     ITA  4.0 | +B5   +W4   -W1   -B2   +W9   +B10   |   21.0    19.0
+  4 Como Filippo                      0     ITA  4.0 | +W14  -B3   +B9   +W6   -W1   +B2    |   19.0    19.0
+  5 Elia Salvatore                    0     ITA  3.0 | -W3   +B10  +W7   -B1   -W2   +B9    |   21.0    19.0
+  6 Gueltrini Umberto                 0     ITA  3.0 | -W1   -B7   +W10  -B4   +W11  +B12   |   18.5    17.0
+  7 Vasile Lorenzo                    0     ITA  3.0 |  --   +W6   -B5   +W13  +B8   -B1    |   18.5    15.5
+  8 Giambelluca Yvonne                0     ITA  2.5 |  --   +B14  -W2   =B12  -W7   +B13   |   12.0     9.5
+  9 Scorsone Giuseppe                 0     ITA  2.0 |  --   +B12  -W4   +W11  -B3   -W5    |   16.5    14.5
+ 10 Moceri Leonrdo                    0     ITA  2.0 |  --   -W5   -B6   +B14  +W13  -W3    |   13.0    11.0
+ 11 Matteucci Angelo                  0     ITA  2.0 |  --    --   +W12  -B9   -B6   +W14   |   10.5     8.5
+ 12 Elia Giovanna                     0     ITA  1.5 | -B2   -W9   -B11  =W8   +B14  -W6    |   13.5    13.5
+ 13 Elia Gianfranco                   0     ITA  1.0 |  --    --   +W14  -B7   -B10  -W8    |    9.5     8.5
+ 14 Imperiale Leonardo                0     ITA  0.0 | -B4   -W8   -B13  -W10  -W12  -B11   |   13.0    12.0
+
+Generato da Vega - www.vegachess.com
+Linux version

@@ -1,0 +1,18 @@
+Reef Pub 2024 - Torneo #1
+Selinunte - 19/08/2024, 19/08/2024
+
+ Tabellone al turno 5 ordinato per punti
+
+Pos NAME                           Rtg   T  Fed  Pts |   1     2     3     4     5    |     BH   BH/C1
+-------------------------------------------------------------------------------------------------------
+  1 Pandolfo Sergio                   0     ITA  5.0 | +B2   +W4   +B3   +W5   +W8    |   11.0    11.0
+  2 Vaccaro Giuseppe                  0     ITA  3.5 | -W1   =B3   +B4   +W6   +B5    |   14.5    12.5
+  3 Tilotta Francesco                 0     ITA  3.5 | +B6   =W2   -W1   +B7   +B4    |   13.5    12.5
+  4 Stassi Vincenzo                   0     ITA  2.0 | +W5   -B1   -W2   +B8   -W3    |   14.0    14.0
+  5 Como Filippo                      0     ITA  2.0 | -B4   +W7   +B6   -B1   -W2    |   13.5    12.5
+  6 Elia Giovanna                     0     ITA  2.0 | -W3   +B8   -W5   -B2   +W7    |   10.0    10.0
+  7 Forte Marco                       0     ITA  1.0 |  --   -B5   +W8   -W3   -B6    |    8.5     7.5
+  8 Catalano Giada                    0     ITA  0.0 |  --   -W6   -B7   -W4   -B1    |   10.0    10.0
+
+Generato da Vega - www.vegachess.com
+Linux version
