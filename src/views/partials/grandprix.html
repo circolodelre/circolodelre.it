@@ -42,13 +42,6 @@
                     <p class="has-text-grey" style="margin-bottom:1rem">Nessun punteggio Grand Prix registrato per il {{ gpYear }}.</p>
                 {% endif %}
 
-                <p class="has-text-centered has-margin-b-4">
-                    <a href="/grandprix/{{ gpYear }}/" class="button is-outlined">
-                        <span class="icon"><i class="fas fa-trophy"></i></span>
-                        <span>Tornei e classifiche complete</span>
-                    </a>
-                </p>
-
                 {% if gpAlboOro %}
                     <hr>
                     <h3 class="title is-6" style="margin-bottom:0.75rem">
@@ -78,6 +71,13 @@
                         </tbody>
                     </table>
                 {% endif %}
+
+                <p class="has-text-centered has-margin-b-4">
+                    <a href="/grandprix/{{ gpYear }}/" class="button is-outlined">
+                        <span class="icon"><i class="fas fa-trophy"></i></span>
+                        <span>Tornei e classifiche complete</span>
+                    </a>
+                </p>
             </div>
         </div>
     </div>
