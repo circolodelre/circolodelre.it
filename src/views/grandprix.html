@@ -58,7 +58,9 @@ function formatDate(dateStr) {
 function yearTabs() {
     return '<div class="tabs"><ul>' +
         ALL_YEARS.slice().reverse().map(y =>
-            `<li class="${y === YEAR ? 'is-active' : ''}" ${y === YEAR ? 'id="gp-tab-active"' : ''}><a href="/grandprix/${y}/">${y}</a></li>`
+            y === YEAR
+                ? `<li class="is-active" id="gp-tab-active"><a href="/grandprix/${y}/" style="font-weight:700;border-bottom:3px solid currentColor">${y}</a></li>`
+                : `<li><a href="/grandprix/${y}/">${y}</a></li>`
         ).join('') +
         '</ul></div>';
 }
