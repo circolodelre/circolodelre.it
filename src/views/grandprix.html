@@ -43,7 +43,7 @@ function route() {
     const hash = location.hash.slice(1) || 'gp';
     const parts = hash.split('/');
     const view = parts[0];
-    if (view === 'gp' && parts[1]) renderPlayer(decodeURIComponent(parts[1]));
+    if (view === 'gp' && parts[1]) renderPlayer(decodeURIComponent(parts[1].replace(/\+/g, '%20')));
     else if (view === 'gp') renderGP();
     else if (view === 't' && parts[2]) renderPlayerMatches(parts[1], parseInt(parts[2]));
     else if (view === 't') renderTournament(parts[1]);
