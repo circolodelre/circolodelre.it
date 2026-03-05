@@ -130,7 +130,7 @@ function renderPlayer(name) {
         const t = SEASON.tournaments.find(x => x.id === r.id);
         const p = t ? t.players.find(x => x.name === name) : null;
         return `<tr>
-            <td class="has-text-left"><a href="#t/${r.id}">${r.name}</a></td>
+            <td class="has-text-left"><a href="#t/${r.id}${p ? '/' + p.pos : ''}">${r.name}</a></td>
             <td class="has-text-centered">${p ? p.pos : '—'}</td>
             <td class="has-text-centered">${p ? p.pts : '—'}</td>
             <td class="has-text-centered"><strong>${r.pts}</strong></td>
