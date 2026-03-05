@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Circolo del Re - Castelvetrano Scacchi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.4.0/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+
+<section class="section is-marginless-b is-paddingless-b">
+    <div class="container has-text-centered">
+        <a href="/">
+            <img src="/assets/img/logo.png" class="has-image-shadow">
+        </a>
+        <h1 class="is-marginless">
+            <a href="/">
+                <span class="title is-3 has-text-shadow">
+                    A.S.D. Circolo del Re
+                </span>
+            </a>
+        </h1>
+        <a href="/">
+            <span class="subtitle is-4 has-text-shadow">
+                Castelvetrano Scacchi
+            </span>
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container has-text-centered">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div id="gp-app"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const SEASON    = {"tournaments":[{"id":"1","name":"Camp. Promozionale 2018 - Torneo #1","location":"Castelvetrano","date":"27\/05\/2018, 27\/05\/2018","num_rounds":5,"tiebreak_names":["BH","BH\/C1"],"players":[{"pos":1,"name":"Mangiaracina Andrea","gp_points":20,"rating":0,"pts":4,"rounds":["+W7","+B3","-B2","+W4","+B5"],"tiebreaks":["13.0","12.0"]},{"pos":2,"name":"Mirasolo Davide","gp_points":10,"rating":0,"pts":4,"rounds":["+B4","+B6","+W1","-B3","+W7"],"tiebreaks":["13.0","12.0"]},{"pos":3,"name":"Vaccaro Giuseppe","gp_points":5,"rating":0,"pts":3.5,"rounds":["+B8","-W1","+B5","+W2","=B4"],"tiebreaks":["13.5","12.5"]},{"pos":4,"name":"Bianco Francesco","gp_points":0,"rating":0,"pts":2.5,"rounds":["-W2","+B8","+W6","-B1","=W3"],"tiebreaks":["14.5","13.5"]},{"pos":5,"name":"Bonagiuso Simone","gp_points":0,"rating":0,"pts":2,"rounds":["-W6","+B7","-W3","+B8","-W1"],"tiebreaks":["11.5","10.5"]},{"pos":6,"name":"Bertuglia Michelangelo","gp_points":0,"rating":0,"pts":2,"rounds":["+B5","-W2","-B4","+W7","-W8"],"tiebreaks":["10.5","9.5"]},{"pos":7,"name":"Marino Giorgia","gp_points":0,"rating":0,"pts":1,"rounds":["-B1","-W5","+W8","-B6","-B2"],"tiebreaks":["13.0","12.0"]},{"pos":8,"name":"Marino Giuseppe","gp_points":0,"rating":0,"pts":1,"rounds":["-W3","-W4","-B7","-W5","+B6"],"tiebreaks":["11.0","10.0"]}]},{"id":"2","name":"Camp. Promozionale 2018 - Torneo #2","location":"Castelvetrano","date":"24\/06\/2018, 24\/06\/2018","num_rounds":5,"tiebreak_names":["BH","BH\/C1"],"players":[{"pos":1,"name":"Marino Gabriele","gp_points":20,"rating":0,"pts":4.5,"rounds":["+B14","+W9","+B4","+W2","=B3"],"tiebreaks":["12.5","12.5"]},{"pos":2,"name":"Etiopia Salvatore","gp_points":10,"rating":0,"pts":4,"rounds":["+B8","+W11","+W5","-B1","+B4"],"tiebreaks":["14.5","12.5"]},{"pos":3,"name":"Scimemi Marco","gp_points":5,"rating":0,"pts":3.5,"rounds":["-B4","+W14","+B7","+B6","=W1"],"tiebreaks":["13.5","13.5"]},{"pos":4,"name":"Bonsignore Giuseppe","gp_points":0,"rating":0,"pts":3,"rounds":["+W3","+B6","-W1","+B5","-W2"],"tiebreaks":["18.0","15.0"]},{"pos":5,"name":"Bonagiuso Simone","gp_points":0,"rating":0,"pts":3,"rounds":["+B13","+W7","-B2","-W4","+B8"],"tiebreaks":["13.0","12.0"]},{"pos":6,"name":"Bianco Francesco","gp_points":0,"rating":0,"pts":3,"rounds":["+B9","-W4","+B8","-W3","+B10"],"tiebreaks":["12.5","10.5"]},{"pos":7,"name":"Mangiaracina Andrea","gp_points":0,"rating":0,"pts":3,"rounds":["+W10","-B5","-W3","+B12","+W9"],"tiebreaks":["12.5","10.5"]},{"pos":8,"name":"Signorello Andrea","gp_points":0,"rating":0,"pts":2,"rounds":["-W2","+B12","-W6","+B10","-W5"],"tiebreaks":["14.0","12.0"]},{"pos":9,"name":"Marino Martina","gp_points":0,"rating":0,"pts":2,"rounds":["-W6","-B1","+W13","+W11","-B7"],"tiebreaks":["13.5","12.5"]},{"pos":10,"name":"Titone Giuseppe","gp_points":0,"rating":0,"pts":2,"rounds":["-B7","+W13","+B11","-W8","-W6"],"tiebreaks":["11.0","10.0"]},{"pos":11,"name":"Bonagiuso Samuel","gp_points":0,"rating":0,"pts":2,"rounds":["+W12","-B2","-W10","-B9","+W14"],"tiebreaks":["10.0","10.0"]},{"pos":12,"name":"Messina Antonino","gp_points":0,"rating":0,"pts":2,"rounds":["-B11","-W8","+B14","-W7","+B13"],"tiebreaks":["8.0","8.0"]},{"pos":13,"name":"Sanclemente Fabrizio","gp_points":0,"rating":0,"pts":1,"rounds":["-W5","-B10","-B9","+W14","-W12"],"tiebreaks":["9.0","9.0"]},{"pos":14,"name":"Bertuglia Michelangelo","gp_points":0,"rating":0,"pts":0,"rounds":["-W1","-B3","-W12","-B13","-B11"],"tiebreaks":["13.0","12.0"]}]},{"id":"3","name":"Camp. Promozionale 2018 - Torneo #3","location":"Triscina","date":"29\/07\/2018, 29\/07\/2018","num_rounds":5,"tiebreak_names":["BH","BH\/C1"],"players":[{"pos":1,"name":"Mirasolo Davide","gp_points":20,"rating":0,"pts":4.5,"rounds":["=W6","+B8","+W3","+B2","+W4"],"tiebreaks":["12.0","11.5"]},{"pos":2,"name":"Guarina Filippo","gp_points":10,"rating":0,"pts":3.5,"rounds":["+W7","=B3","+B4","-W1","+B5"],"tiebreaks":["14.5","13.0"]},{"pos":3,"name":"Mangiaracina Andrea","gp_points":5,"rating":0,"pts":3.5,"rounds":["+B5","=W2","-B1","+W7","+B8"],"tiebreaks":["12.0","11.5"]},{"pos":4,"name":"Vaccaro Giuseppe","gp_points":0,"rating":0,"pts":3,"rounds":["+W8","+B6","-W2","+W5","-B1"],"tiebreaks":["12.0","11.5"]},{"pos":5,"name":"Bertuglia Michelangelo","gp_points":0,"rating":0,"pts":2,"rounds":["-W3","+B7","+W6","-B4","-W2"],"tiebreaks":["13.0","11.5"]},{"pos":6,"name":"Bianco Francesco","gp_points":0,"rating":0,"pts":1.5,"rounds":["=B1","-W4","-B5","=W8","=B7"],"tiebreaks":["11.5","11.0"]},{"pos":7,"name":"Oddo Giuseppe","gp_points":0,"rating":0,"pts":1.5,"rounds":["-B2","-W5","+W8","-B3","=W6"],"tiebreaks":["11.0","10.5"]},{"pos":8,"name":"Maggio Giuseppe","gp_points":0,"rating":0,"pts":0.5,"rounds":["-B4","-W1","-B7","=B6","-W3"],"tiebreaks":["14.0","12.5"]}]}]};
+const YEAR      = "2018";
+const ALL_YEARS = [2018,2026];
+
+const app = document.getElementById('gp-app');
+
+// Pre-compute GP standings for this season
+const standingsMap = {};
+const played = {};
+for (const t of SEASON.tournaments) {
+    for (const p of t.players) {
+        played[p.name] = (played[p.name] || 0) + 1;
+        if (p.gp_points > 0) {
+            if (!standingsMap[p.name]) standingsMap[p.name] = { name: p.name, total: 0, results: [] };
+            standingsMap[p.name].total += p.gp_points;
+            standingsMap[p.name].results.push({ id: t.id, name: t.name, pts: p.gp_points });
+        }
+    }
+}
+const GP = Object.values(standingsMap)
+    .map(s => ({ ...s, played: played[s.name] || s.results.length }))
+    .sort((a, b) => b.total - a.total);
+
+function route() {
+    const hash = location.hash.slice(1) || 'gp';
+    const parts = hash.split('/');
+    const view = parts[0];
+    if (view === 'gp' && parts[1]) renderPlayer(decodeURIComponent(parts[1].replace(/\+/g, '%20')));
+    else if (view === 'gp') renderGP();
+    else if (view === 't' && parts[2]) renderPlayerMatches(parts[1], parseInt(parts[2]));
+    else if (view === 't') renderTournament(parts[1]);
+    else renderGP();
+}
+
+function plural(n, singular, plural) {
+    return n === 1 ? singular : plural;
+}
+
+function formatDate(dateStr) {
+    const parts = dateStr.split(', ');
+    return (parts.length === 2 && parts[0] === parts[1]) ? parts[0] : dateStr;
+}
+
+function yearTabs() {
+    return '<div class="tabs"><ul>' +
+        ALL_YEARS.slice().reverse().map(y =>
+            String(y) === String(YEAR)
+                ? `<li class="is-active" id="gp-tab-active"><a href="/grandprix/${y}/" style="font-weight:700;border-bottom:3px solid currentColor">${y}</a></li>`
+                : `<li><a href="/grandprix/${y}/">${y}</a></li>`
+        ).join('') +
+        '</ul></div>';
+}
+
+function nav(t) {
+    const back = `<a href="#gp" class="button is-small is-light">Grand Prix ${YEAR}</a>`;
+    const tourn = t ? ` <a href="#t/${t.id}" class="button is-small is-light ml-2">${t.name}</a>` : '';
+    return `<div class="has-text-centered" style="margin-bottom:1.5rem">${back}${tourn}</div>`;
+}
+
+function renderGP() {
+    const tournaments = SEASON.tournaments || [];
+
+    const standingsHtml = GP.length > 0
+        ? `<h3 class="title is-5">Classifica</h3>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th class="has-text-centered">N°</th>
+                   <th>Giocatore</th>
+                   <th class="has-text-centered">Punti GP</th>
+                   <th class="has-text-centered">Tornei</th>
+               </tr></thead>
+               <tbody>${GP.map((s, i) =>
+                   `<tr>
+                       <td class="has-text-centered">${i + 1}</td>
+                       <td><a href="#gp/${encodeURIComponent(s.name)}">${s.name}</a></td>
+                       <td class="has-text-centered"><strong>${s.total}</strong></td>
+                       <td class="has-text-centered">${s.played}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '<p class="has-text-grey" style="margin-bottom:1.5rem">Nessun punteggio Grand Prix registrato per questo anno.</p>';
+
+    const tournamentsHtml = tournaments.length > 0
+        ? `<h3 class="title is-5 mt-5">Tornei</h3>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th>Torneo</th>
+                   <th>Luogo</th>
+                   <th class="has-text-centered">Data</th>
+               </tr></thead>
+               <tbody>${tournaments.map(t =>
+                   `<tr>
+                       <td><a href="#t/${t.id}">${t.name}</a></td>
+                       <td>${t.location}</td>
+                       <td class="has-text-centered">${formatDate(t.date)}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '';
+
+    app.innerHTML =
+        `<span class="icon has-text-warning is-large"><i class="fas fa-trophy fa-2x"></i></span>
+        <h1 class="title">Grand Prix ${YEAR}</h1>` +
+        yearTabs() + standingsHtml + tournamentsHtml;
+
+    document.getElementById('gp-tab-active')?.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+}
+
+function renderPlayer(name) {
+    const results = [];
+    for (const t of SEASON.tournaments) {
+        const p = t.players.find(x => x.name === name);
+        if (p) results.push({ t, p });
+    }
+    if (results.length === 0) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const gpTotal = results.reduce((sum, { p }) => sum + p.gp_points, 0);
+    const subtitle = gpTotal > 0
+        ? `Stagione ${YEAR} &middot; <strong>${gpTotal}</strong> punti Grand Prix in ${results.length} ${plural(results.length, 'torneo', 'tornei')}`
+        : `Stagione ${YEAR} &middot; ${results.length} ${plural(results.length, 'torneo partecipato', 'tornei partecipati')}`;
+
+    const rows = results.map(({ t, p }) => `<tr>
+        <td class="has-text-left"><a href="#t/${t.id}/${p.pos}">${t.name}</a></td>
+        <td class="has-text-centered">${p.pos}</td>
+        <td class="has-text-centered">${p.pts}</td>
+        <td class="has-text-centered">${p.gp_points > 0 ? `<strong>${p.gp_points}</strong>` : '—'}</td>
+    </tr>`);
+
+    app.innerHTML =
+        nav(null) +
+        `<h1 class="title mt-5 mb-4"><a href="#gp/${encodeURIComponent(name)}" style="color:inherit;text-decoration:none">${name} <span style="font-size:0.6em;vertical-align:middle;opacity:0.4"><i class="fas fa-user"></i></span></a></h1>
+        <p class="subtitle">${subtitle}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th>Torneo</th>
+                <th class="has-text-centered">Pos</th>
+                <th class="has-text-centered">Punti torneo</th>
+                <th class="has-text-centered">Punti GP</th>
+            </tr></thead>
+            <tbody>${rows.join('')}</tbody>
+        </table></div>`;
+}
+
+function renderTournament(id) {
+    const t = SEASON.tournaments.find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const tbNames = t.tiebreak_names || [];
+
+    const rows = t.players.map(p => {
+        const tbCells = tbNames.map((_, i) =>
+            `<td class="has-text-centered">${p.tiebreaks[i] ?? '-'}</td>`
+        ).join('');
+        return `<tr>
+            <td class="has-text-centered">${p.pos}</td>
+            <td class="has-text-left"><a href="#t/${id}/${p.pos}">${p.name}</a></td>
+            <td class="has-text-centered"><strong>${p.pts}</strong></td>
+            ${tbCells}
+            <td class="has-text-centered">${p.gp_points > 0 ? `<strong>${p.gp_points}</strong>` : '-'}</td>
+        </tr>`;
+    }).join('');
+
+    const tbHeaders = tbNames.map(n => `<th class="has-text-centered">${n}</th>`).join('');
+
+    app.innerHTML =
+        nav(null) +
+        `<h1 class="title mt-5 mb-4">${t.name}</h1>
+        <p class="subtitle">${t.location} &middot; ${formatDate(t.date)}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th class="has-text-centered">N°</th>
+                <th>Nome</th>
+                <th class="has-text-centered">Pts</th>
+                ${tbHeaders}
+                <th class="has-text-centered">Punti GP</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+function renderPlayerMatches(id, pos) {
+    const t = SEASON.tournaments.find(x => x.id === id);
+    if (!t) { app.innerHTML = '<p>Torneo non trovato.</p>'; return; }
+
+    const p = t.players.find(x => x.pos === pos);
+    if (!p) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const byPos = {};
+    for (const pl of t.players) byPos[pl.pos] = pl;
+
+    const rows = p.rounds.map((r, i) => {
+        if (r === '--') {
+            return `<tr>
+                <td class="has-text-centered">${i + 1}</td>
+                <td class="has-text-centered">—</td>
+                <td>—</td>
+                <td class="has-text-centered"><span class="tag is-light">Bye</span></td>
+            </tr>`;
+        }
+        const res = r[0], col = r[1], oppPos = parseInt(r.slice(2));
+        const opp = byPos[oppPos];
+        const cls = res === '+' ? 'is-success' : res === '-' ? 'is-danger' : 'is-warning';
+        const colEmoji = col === 'W' ? '⬜' : '⬛';
+        const score = res === '='
+            ? '0.5 - 0.5'
+            : ((col === 'W') === (res === '+')) ? '1 - 0' : '0 - 1';
+        const oppLink = opp
+            ? `<a href="#t/${id}/${oppPos}">${opp.name}</a> <small class="has-text-grey">(${opp.pts} pt)</small>`
+            : oppPos;
+        return `<tr>
+            <td class="has-text-centered">${i + 1}</td>
+            <td class="has-text-centered">${colEmoji}</td>
+            <td class="has-text-left">${oppLink}</td>
+            <td class="has-text-centered"><span class="tag ${cls}">${score}</span></td>
+        </tr>`;
+    }).join('');
+
+    const gpNote = p.gp_points > 0 ? ` &middot; <strong>${p.gp_points}</strong> punti GP` : '';
+
+    app.innerHTML =
+        nav(t) +
+        `<h1 class="title mt-5 mb-4"><a href="#gp/${encodeURIComponent(p.name)}" style="color:inherit;text-decoration:none">${p.name} <span style="font-size:0.6em;vertical-align:middle;opacity:0.4"><i class="fas fa-user"></i></span></a></h1>
+        <p class="subtitle">${t.name} &middot; ${p.pts} punti${gpNote}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th class="has-text-centered">T</th>
+                <th class="has-text-centered">Col</th>
+                <th>Avversario</th>
+                <th class="has-text-centered">Ris</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+window.addEventListener('hashchange', route);
+route();
+</script>
+
+<footer class="footer has-text-centered">
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
+                &nbsp;
+            </div>
+
+            <div class="column">
+                <p class="has-margin-b-4">
+                    <a href="/">
+                        <img src="/assets/img/logo.png" width="100" height="100">
+                    </a>
+                    <a href="/">
+                        <span class="title is-5 is-block">
+                            A.S.D. Circolo del Re
+                        </span>
+                    </a>
+                    <a href="/">
+                        <span class="subtitle is-6">
+                            Castelvetrano Scacchi
+                        </span>
+                    </a>
+                </p>
+
+                <p class="has-margin-b-4 content is-small">
+                    Via delle Due Sicilie, 36<br>
+                    91022 Castelvetrano (TP)
+                </p>
+
+                <p class="content is-small">
+                    Codice Fiscale: 90019450817<br>
+                    Email: info@circolodelre.it<br>
+                    PEC: circolodelre@pec.it<br>
+                </p>
+
+                <p class="content is-small">
+                    Presidente: Francesco Bianco<br>
+                    Responsabile Safeguarding: Francesco Bianco<br>
+                </p>
+
+                <!--p class="content is-small">
+                    <a href="https://docs.google.com/spreadsheets/d/1D3OvxciyEkAsyZ4xywO4anElUglhHwLXgU8lXpaCXYg/edit?gid=1878576470#gid=1878576470" target="_blank">Gestione Tornei</a>
+                </p-->
+
+                <p class="content is-small">
+                    <a href="https://github.com/circolodelre/statuto?tab=readme-ov-file#statuto-sociale" target="_blank">Leggi lo Statuto Sociale</a>
+                </p>
+
+
+            </div>
+
+            <div class="column is-3">
+                &nbsp;
+                <!--
+                <img src="/assets/img/trophy.png" width="100" height="100">
+                <p class="title is-5 has-margin-b-7">
+                    Campionato Promozionale
+                </p>
+                <ul class="has-margin-b-4">
+                    <li><a href="/campionato-promozionale/regolamento.html">Regolamento</a></li>
+                    <li><a href="/campionato-promozionale/categorie.html">Categorie</a></li>
+                </ul>
+                <p class="title is-6 has-margin-b-7">
+                    Tutte le Stagioni
+                </p>
+                <ul class="has-margin-b-4">
+                    <li><a href="/campionato-promozionale/2022.html">2022</a></li>
+                    <li><a href="/campionato-promozionale/2021.html">2021</a></li>
+                    <li><a href="/campionato-promozionale/2020.html">2020</a></li>
+                </ul>
+                -->
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.min.mjs">
+    window.pdfjsLib = pdfjsLib
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/assets/js/app.js"></script>
+
+<!-- 100% privacy-first analytics -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>
