@@ -1,0 +1,24 @@
+Coppa Bidielle 2025
+Campobello di Mazara - 06/06/2025, 06/06/2025
+
+ Tabellone al turno 5 ordinato per punti
+
+Pos NAME                           Rtg   T  Fed  Pts |   1     2     3     4     5    |     BH   BH/C1
+-------------------------------------------------------------------------------------------------------
+  1 Pantano Giuseppe                  0     ITA  5.0 | +W5   +B3   +W10  +W2   +B4    |   15.5    13.5
+  2 Agoglitta Martin                  0     ITA  4.0 | +W7   +B4   +W9   -B1   +W8    |   15.0    13.0
+  3 Bianco Francesco                  0     ITA  3.5 | +B13  -W1   =B12  +W10  +B7    |   12.0    11.0
+  4 Ruggia Samuele                    0     ITA  3.0 | +B11  -W2   +W5   +B6   -W1    |   17.0    15.0
+  5 Amato Paolo                       0     ITA  3.0 | -B1   +W8   -B4   +B13  +W9    |   13.5    12.5
+  6 Vaccaro Giuseppe                  0     ITA  3.0 | -B9   +W14  +B11  -W4   +B12   |    8.5     8.5
+  7 Gullo Antonino                    0     ITA  2.5 | -B2   +W11  =B8   +W12  -W3    |   13.5    12.0
+  8 Tilotta Francesco                 0     ITA  2.5 | +W10  -B5   =W7   +B9   -B2    |   13.5    11.5
+  9 Guirreri Filippo                  0     ITA  2.0 | +W6   +B12  -B2   -W8   -B5    |   14.0    12.5
+ 10 Guarino Giuseppe                  0     ITA  2.0 | -B8   +W13  -B1   -B3   +W14   |   12.0    12.0
+ 11 Bertuglia Michelangelo            0     ITA  2.0 | -W4   -B7   -W6   +B14  +W13   |    9.5     9.5
+ 12 Stinco Patrick                    0     ITA  1.5 | +B14  -W9   =W3   -B7   -W6    |   11.0    11.0
+ 13 Scibetta Gabriele                 0     ITA  1.0 | -W3   -B10  +B14  -W5   -B11   |   10.5    10.5
+ 14 Bianco Tancredi                   0     ITA  0.0 | -W12  -B6   -W13  -W11  -B10   |    9.5     8.5
+
+Generato da Vega - www.vegachess.com
+Linux version
