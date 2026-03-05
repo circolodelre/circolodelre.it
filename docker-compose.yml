@@ -1,3 +1,5 @@
+name: circolodelre
+
 services:
   php:
     build: .
