@@ -19,4 +19,4 @@ jobs:
       - run: make install
       - run: make download-events
       - run: make build
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
