@@ -66,7 +66,7 @@ function yearTabs() {
 function nav(t) {
     const back = `<a href="#gp" class="button is-small is-light">Grand Prix ${YEAR}</a>`;
     const tourn = t ? ` <a href="#t/${t.id}" class="button is-small is-light ml-2">${t.name}</a>` : '';
-    return `<div class="has-text-left mb-5">${back}${tourn}</div>`;
+    return `<div class="has-text-centered">${back}${tourn}</div>`;
 }
 
 function renderGP() {
@@ -135,7 +135,7 @@ function renderPlayer(name) {
 
     app.innerHTML =
         nav(null) +
-        `<h1 class="title">${name}</h1>
+        `<h1 class="title mt-5 mb-4">${name}</h1>
         <p class="subtitle">Stagione ${YEAR} &middot; <strong>${s.total}</strong> punti Grand Prix in ${s.played} torneo/i</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
@@ -172,7 +172,7 @@ function renderTournament(id) {
 
     app.innerHTML =
         nav(null) +
-        `<h1 class="title">${t.name}</h1>
+        `<h1 class="title mt-5 mb-4">${t.name}</h1>
         <p class="subtitle">${t.location} &middot; ${formatDate(t.date)}</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
@@ -228,7 +228,7 @@ function renderPlayerMatches(id, pos) {
 
     app.innerHTML =
         nav(t) +
-        `<h1 class="title">${p.name}</h1>
+        `<h1 class="title mt-5 mb-4">${p.name}</h1>
         <p class="subtitle">${t.name} &middot; ${p.pts} punti${gpNote}</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
