@@ -10,6 +10,11 @@
                     Ogni anno il Circolo del Re organizza una serie di tornei: ogni giocatore, in base alla propria performance, conquista punti che si accumulano nel corso della stagione formando la classifica del Grand Prix. Sono previsti premi speciali per i primi tre classificati di ogni stagione, che saranno comunicati a dicembre.
                 </p>
 
+                <h3 class="title is-6" style="margin-bottom:0.75rem">
+                    <span class="icon has-text-warning"><i class="fas fa-star"></i></span>
+                    Classifica stagione in corso
+                </h3>
+
                 {% if gpStandings %}
                     <table class="table is-fullwidth is-striped">
                         <thead>
@@ -34,7 +39,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p class="has-text-grey">Nessun punteggio Grand Prix registrato per il {{ gpYear }}.</p>
+                    <p class="has-text-grey" style="margin-bottom:1rem">Nessun punteggio Grand Prix registrato per il {{ gpYear }}.</p>
                 {% endif %}
 
                 <p class="has-text-centered has-margin-b-4">
@@ -43,6 +48,36 @@
                         <span>Tornei e classifiche complete</span>
                     </a>
                 </p>
+
+                {% if gpAlboOro %}
+                    <hr>
+                    <h3 class="title is-6" style="margin-bottom:0.75rem">
+                        <span class="icon has-text-warning"><i class="fas fa-medal"></i></span>
+                        Albo d'Oro
+                    </h3>
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th class="has-text-centered">Anno</th>
+                                <th>Campione</th>
+                                <th class="has-text-centered">Punti GP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in gpAlboOro %}
+                                <tr>
+                                    <td class="has-text-centered">{{ item.year }}</td>
+                                    <td>
+                                        <a href="/grandprix/{{ item.year }}/#gp/{{ item.name|url_encode }}">
+                                            {{ item.name }}
+                                        </a>
+                                    </td>
+                                    <td class="has-text-centered"><strong>{{ item.total }}</strong></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
             </div>
         </div>
     </div>

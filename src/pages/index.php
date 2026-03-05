@@ -15,6 +15,16 @@ $seasons = GrandPrix::loadSeasons();
 $gpYear = (string) max(array_keys($seasons) ?: [date('Y')]);
 $gpStandings = GrandPrix::computeStandings($seasons[$gpYear]['tournaments'] ?? []);
 
+$gpAlboOro = [];
+foreach ($seasons as $seasonYear => $data) {
+    if ((string)$seasonYear === $gpYear) continue;
+    $standings = GrandPrix::computeStandings($data['tournaments']);
+    if (!empty($standings)) {
+        $gpAlboOro[] = ['year' => (string)$seasonYear, 'name' => $standings[0]['name'], 'total' => $standings[0]['total']];
+    }
+}
+usort($gpAlboOro, fn($a, $b) => $b['year'] <=> $a['year']);
+
 return $twig->render('index.html', [
     'year'          => $year,
     'today'         => date($config['date_format']),
@@ -23,4 +33,5 @@ return $twig->render('index.html', [
     'config'        => $config,
     'gpYear'        => $gpYear,
     'gpStandings'   => $gpStandings,
+    'gpAlboOro'     => $gpAlboOro,
 ]);
