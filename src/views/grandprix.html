@@ -232,7 +232,7 @@ function renderPlayerMatches(id, pos) {
 
     app.innerHTML =
         nav(t) +
-        `<h1 class="title mt-5 mb-4">${p.name}</h1>
+        `<h1 class="title mt-5 mb-4"><a href="#gp/${encodeURIComponent(p.name)}" style="text-decoration:underline dotted">${p.name}</a></h1>
         <p class="subtitle">${t.name} &middot; ${p.pts} punti${gpNote}</p>
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
