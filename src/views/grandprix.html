@@ -66,7 +66,7 @@ function yearTabs() {
 function nav(t) {
     const back = `<a href="#gp" class="button is-small is-light">Grand Prix ${YEAR}</a>`;
     const tourn = t ? ` <a href="#t/${t.id}" class="button is-small is-light ml-2">${t.name}</a>` : '';
-    return `<div class="has-text-centered">${back}${tourn}</div>`;
+    return `<div class="has-text-centered" style="margin-bottom:1.5rem">${back}${tourn}</div>`;
 }
 
 function renderGP() {
