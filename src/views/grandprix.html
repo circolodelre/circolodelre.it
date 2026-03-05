@@ -201,22 +201,26 @@ function renderPlayerMatches(id, pos) {
         if (r === '--') {
             return `<tr>
                 <td class="has-text-centered">${i + 1}</td>
+                <td class="has-text-centered">—</td>
+                <td>—</td>
                 <td class="has-text-centered"><span class="tag is-light">Bye</span></td>
-                <td>—</td><td>—</td>
             </tr>`;
         }
         const res = r[0], col = r[1], oppPos = parseInt(r.slice(2));
         const opp = byPos[oppPos];
         const cls = res === '+' ? 'is-success' : res === '-' ? 'is-danger' : 'is-warning';
-        const label = res === '+' ? 'Vittoria' : res === '-' ? 'Sconfitta' : 'Patta';
+        const colEmoji = col === 'W' ? '⬜' : '⬛';
+        const score = res === '='
+            ? '0.5 - 0.5'
+            : ((col === 'W') === (res === '+')) ? '1 - 0' : '0 - 1';
         const oppLink = opp
             ? `<a href="#t/${id}/${oppPos}">${opp.name}</a> <small class="has-text-grey">(${opp.pts} pt)</small>`
             : oppPos;
         return `<tr>
             <td class="has-text-centered">${i + 1}</td>
-            <td class="has-text-centered"><span class="tag ${cls}">${label}</span></td>
-            <td>${col === 'B' ? 'Nero' : 'Bianco'}</td>
+            <td class="has-text-centered">${colEmoji}</td>
             <td class="has-text-left">${oppLink}</td>
+            <td class="has-text-centered"><span class="tag ${cls}">${score}</span></td>
         </tr>`;
     }).join('');
 
@@ -229,10 +233,10 @@ function renderPlayerMatches(id, pos) {
         <div class="table-container has-text-left">
         <table class="table is-fullwidth is-striped">
             <thead><tr>
-                <th class="has-text-centered">Turno</th>
-                <th class="has-text-centered">Risultato</th>
-                <th>Colore</th>
+                <th class="has-text-centered">T</th>
+                <th class="has-text-centered">Col</th>
                 <th>Avversario</th>
+                <th class="has-text-centered">Ris</th>
             </tr></thead>
             <tbody>${rows}</tbody>
         </table></div>`;
