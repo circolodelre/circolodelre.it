@@ -22,12 +22,21 @@ const ALL_YEARS = {{ all_years|json_encode|raw }};
 
 const app = document.getElementById('gp-app');
 
-// Pre-compute GP standings for this season
-const standingsMap = {};
-const played = {};
+// Per-player stats across all tournaments (for Perf% tiebreaker)
+const playerStats = {};
 for (const t of SEASON.tournaments) {
     for (const p of t.players) {
-        played[p.name] = (played[p.name] || 0) + 1;
+        if (!playerStats[p.name]) playerStats[p.name] = { scored: 0, possible: 0, count: 0 };
+        playerStats[p.name].scored  += p.pts;
+        playerStats[p.name].possible += t.num_rounds;
+        playerStats[p.name].count   += 1;
+    }
+}
+
+// Pre-compute GP standings for this season
+const standingsMap = {};
+for (const t of SEASON.tournaments) {
+    for (const p of t.players) {
         if (p.gp_points > 0) {
             if (!standingsMap[p.name]) standingsMap[p.name] = { name: p.name, total: 0, results: [] };
             standingsMap[p.name].total += p.gp_points;
@@ -36,8 +45,12 @@ for (const t of SEASON.tournaments) {
     }
 }
 const GP = Object.values(standingsMap)
-    .map(s => ({ ...s, played: played[s.name] || s.results.length }))
-    .sort((a, b) => b.total - a.total);
+    .map(s => {
+        const st = playerStats[s.name] || { scored: 0, possible: 1, count: 0 };
+        const perf = st.possible > 0 ? (st.scored / st.possible * 100) : 0;
+        return { ...s, played: st.count, perf };
+    })
+    .sort((a, b) => b.total !== a.total ? b.total - a.total : b.perf - a.perf);
 
 function route() {
     const hash = location.hash.slice(1) || 'gp';
@@ -87,6 +100,7 @@ function renderGP() {
                    <th>Giocatore</th>
                    <th class="has-text-centered">Punti GP</th>
                    <th class="has-text-centered">Tornei</th>
+                   <th class="has-text-centered">Perf%</th>
                </tr></thead>
                <tbody>${GP.map((s, i) =>
                    `<tr>
@@ -94,6 +108,7 @@ function renderGP() {
                        <td><a href="#gp/${encodeURIComponent(s.name)}">${s.name}</a></td>
                        <td class="has-text-centered"><strong>${s.total}</strong></td>
                        <td class="has-text-centered">${s.played}</td>
+                       <td class="has-text-centered">${s.perf.toFixed(1)}%</td>
                    </tr>`
                ).join('')}</tbody>
            </table></div>`
