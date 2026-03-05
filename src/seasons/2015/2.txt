@@ -1,0 +1,26 @@
+Reef Pub 2015
+Selinunte - 11/08/2015, 11/08/2015
+
+ Cross Table at round 6 sorted by score
+
+Pos NAME                 Rtg   T  Fed  Pts |   1     2     3     4     5     6    |  Buc1    BucT
+---------------------------------------------------------------------------------------------------
+  1 Mattarella Pietro       0   A ITA  5.0 | +W11  +B7   +W2   -W3   +B4   +B6    |   20.0    23.0
+  2 Mirasolo Davide         0   A ITA  5.0 | +B6   +W5   -B1   +W8   +B7   +W3    |   20.0    23.0
+  3 Pantano Giuseppe        0   A ITA  5.0 | +W10  +B13  +W4   +B1   +W6   -B2    |   20.0    22.0
+  4 Roberti Ignazio         0   A ITA  4.0 | +B8   +W12  -B3   +W5   -W1   +B10   |   20.0    22.0
+  5 Rizzo Fabrizio          0   B ITA  4.0 | +W9   -B2   +W13  -B4   +W12  +B8    |   17.0    19.0
+  6 Clemente Antionio       0   A ITA  3.0 | -W2   +B14  +B15  +W7   -B3   -W1    |   19.0    20.0
+  7 Agoglitta Martin        0   B ita  3.0 | +W15  -W1   +B9   -B6   -W2   +B14   |   17.0    18.0
+  8 Guirreri Filippo        0   A ITA  3.0 | -W4   +B16  +W12  -B2   +W14  -W5    |   16.0    17.0
+  9 Graffeo Iannone Eras    0   B ita  3.0 | -B5   +B11  -W7   -B12  +W16  +W13   |   14.0    15.0
+ 10 Cudia Dario Claudio     0   B ITA  3.0 | -B3   -W15  +W16  +B14  +B13  -W4    |   13.0    14.0
+ 11 Alessandria Alberto     0   B ITA  3.0 | -B1   -W9   -W14  +B16  +W15  +B12   |   12.0    13.0
+ 12 Stella Ferdinando       0   B ita  2.0 | +W14  -B4   -B8   +W9   -B5   -W11   |   17.0    18.0
+ 13 Favara Antonino         0   A ita  2.0 | +W16  -W3   -B5   +B15  -W10  -B9    |   16.0    17.0
+ 14 Gulino Gaspare          0   A ITA  1.0 | -B12  -W6   +B11  -W10  -B8   -W7    |   15.0    17.0
+ 15 La Rosa Vincenzo        0   B ITA  1.0 | -B7   +B10  -W6   -W13  -B11  -B16   |   14.0    15.0
+ 16 Pompei Alessandro       0   B ITA  1.0 | -B13  -W8   -B10  -W11  -B9   +W15   |   14.0    15.0
+
+Generato da Vega - www.vegachess.com
+(copia registrata da: unregistered)
