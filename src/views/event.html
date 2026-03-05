@@ -25,13 +25,11 @@
                                 {% if event['status'] == 'open' %}
                                     Chiusura iscrizioni: <strong>{{ event['deadline'] | strftime }}</strong>
                                 {% else %}
-                                    <!--i class="fas fa-calendar"></i-->
-                                    Iscrizioni aperte dal: <strong>{{ event['opening'] | strftime }}</strong>
+                                            Iscrizioni aperte dal: <strong>{{ event['opening'] | strftime }}</strong>
                                 {% endif %}
                             </span>
                             <span class="is-block-mobile has-margin-lr-7 has-margin-b-7">
-                                <!--i class="fas fa-flag-checkered"></i-->
-                                Data evento: <strong>{{ event['time'] | strftime }}</strong>
+                                    Data evento: <strong>{{ event['time'] | strftime }}</strong>
                             </span>
                         </p>
 
