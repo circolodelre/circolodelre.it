@@ -30,16 +30,24 @@ class GrandPrix
 
     public static function computeStandings(array $tournaments): array
     {
-        $standings = [];
+        $standings   = [];
+        $playerStats = [];
 
         foreach ($tournaments as $t) {
             foreach ($t['players'] as $p) {
+                $name = $p['name'];
+                if (!isset($playerStats[$name])) {
+                    $playerStats[$name] = ['scored' => 0.0, 'possible' => 0];
+                }
+                $playerStats[$name]['scored']   += $p['pts'];
+                $playerStats[$name]['possible'] += $t['num_rounds'];
+
                 if ($p['gp_points'] > 0) {
-                    if (!isset($standings[$p['name']])) {
-                        $standings[$p['name']] = ['name' => $p['name'], 'total' => 0, 'results' => []];
+                    if (!isset($standings[$name])) {
+                        $standings[$name] = ['name' => $name, 'total' => 0, 'results' => []];
                     }
-                    $standings[$p['name']]['total'] += $p['gp_points'];
-                    $standings[$p['name']]['results'][] = [
+                    $standings[$name]['total'] += $p['gp_points'];
+                    $standings[$name]['results'][] = [
                         'id'   => $t['id'],
                         'name' => $t['name'],
                         'pts'  => $p['gp_points'],
@@ -48,7 +56,17 @@ class GrandPrix
             }
         }
 
-        usort($standings, fn($a, $b) => $b['total'] <=> $a['total']);
+        foreach ($standings as $name => &$s) {
+            $st = $playerStats[$name] ?? ['scored' => 0, 'possible' => 1];
+            $s['perf'] = $st['possible'] > 0 ? ($st['scored'] / $st['possible'] * 100) : 0.0;
+        }
+        unset($s);
+
+        usort($standings, function ($a, $b) {
+            if ($b['total'] !== $a['total']) return $b['total'] <=> $a['total'];
+            return $b['perf'] <=> $a['perf'];
+        });
+
         return array_values($standings);
     }
 
