@@ -4,7 +4,7 @@ namespace App;
 
 class System
 {
-    public static function setLocale()
+    public static function setLocale(): void
     {
         setlocale(LC_ALL, 'it_IT.UTF-8');
         setlocale(LC_TIME, 'it_IT.UTF-8');
