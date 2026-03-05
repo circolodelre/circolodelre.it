@@ -35,6 +35,8 @@ serve:
 start: serve
 
 push:
+	@git add .
+	@git commit -m "Release $(shell date +%Y-%m-%d)" || true
 	@git push https://francescobianco:$(GITHUB_TOKEN)@github.com/circolodelre/circolodelre.it.git
 
 release: build download-events push
