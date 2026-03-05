@@ -35,10 +35,7 @@ serve:
 start: serve
 
 push:
-	@git config credential.helper 'cache --timeout=3600'
-	@git add .
-	@git commit -am fix || true
-	@git push
+	@git push https://francescobianco:$(GITHUB_TOKEN)@github.com/circolodelre/circolodelre.it.git
 
 release: build download-events push
 
