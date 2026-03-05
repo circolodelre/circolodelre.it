@@ -91,7 +91,7 @@ class GrandPrix
             $roundsStr = $parts[1];
             $tbStr     = $parts[2];
 
-            if (!preg_match('/^\s*(\d+)\s+(.+?)\s{2,}(\d+)\s+\S+\s+\S+\s+([\d.]+)\s*$/', $info, $m)) continue;
+            if (!preg_match('/^\s*(\d+)\s+(.+?)\s{2,}(\d+)\s+(?:\S+\s+)?\S+\s+([\d.]+)\s*$/', $info, $m)) continue;
 
             $pos    = (int)$m[1];
             $name   = trim($m[2]);
