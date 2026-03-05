@@ -50,6 +50,10 @@ function route() {
     else renderGP();
 }
 
+function plural(n, singular, plural) {
+    return n === 1 ? singular : plural;
+}
+
 function formatDate(dateStr) {
     const parts = dateStr.split(', ');
     return (parts.length === 2 && parts[0] === parts[1]) ? parts[0] : dateStr;
@@ -132,8 +136,8 @@ function renderPlayer(name) {
 
     const gpTotal = results.reduce((sum, { p }) => sum + p.gp_points, 0);
     const subtitle = gpTotal > 0
-        ? `Stagione ${YEAR} &middot; <strong>${gpTotal}</strong> punti Grand Prix in ${results.length} torneo/i`
-        : `Stagione ${YEAR} &middot; ${results.length} torneo/i partecipato/i`;
+        ? `Stagione ${YEAR} &middot; <strong>${gpTotal}</strong> punti Grand Prix in ${results.length} ${plural(results.length, 'torneo', 'tornei')}`
+        : `Stagione ${YEAR} &middot; ${results.length} ${plural(results.length, 'torneo partecipato', 'tornei partecipati')}`;
 
     const rows = results.map(({ t, p }) => `<tr>
         <td class="has-text-left"><a href="#t/${t.id}/${p.pos}">${t.name}</a></td>
