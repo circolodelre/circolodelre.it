@@ -2,7 +2,7 @@ FROM php:8.0-cli
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y locales libzip-dev zip unzip git && \
-    docker-php-ext-install gettext
+    docker-php-ext-install zip
 
 RUN echo 'it_IT.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
