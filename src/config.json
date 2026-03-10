@@ -5,6 +5,7 @@
     "events",
     "grandprix"
   ],
+  "default_elo": 1399,
   "event_slug": "eventi",
   "tournaments": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSm0ukMCrI9lOYrIdg_8rX9NZwLrwH9OhWGyhJ3qhCxu7A-K5b2i0ZZzlInttNR5_wyRE5JNmp-3mIy/pubhtml",
   "joiners": "https://docs.google.com/spreadsheets/d/1D3OvxciyEkAsyZ4xywO4anElUglhHwLXgU8lXpaCXYg/export?format=csv",

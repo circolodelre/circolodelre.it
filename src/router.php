@@ -29,6 +29,8 @@ if (preg_match("/^\/{$eventSlug}/", $item)) {
     $file = __DIR__.'/pages/events.php';
 } elseif (preg_match('#^/grandprix/\d{4}/?$#', $item)) {
     $file = __DIR__.'/pages/grandprix.php';
+} elseif (preg_match('#^/ranking/\d{4}/?$#', $item)) {
+    $file = __DIR__.'/pages/ranking.php';
 } else {
     $page = __DIR__.'/pages'.$item;
     $path = preg_replace('/.html$/', '.php', rtrim($page, '/'));

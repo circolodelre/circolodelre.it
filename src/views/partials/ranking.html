@@ -1,0 +1,56 @@
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <h2 class="title is-3 has-margin-b-4">
+                    Lista ELO {{ rankingYear }}
+                </h2>
+
+                <p class="has-text-justified has-margin-b-7">
+                    La classifica ELO del Circolo del Re tiene traccia del livello di gioco di ogni socio. Il rating viene aggiornato dopo ogni partita ufficiale disputata durante le tappe stagionali.
+                </p>
+
+                <h3 class="title is-6" style="margin-bottom:0.75rem">
+                    <span class="icon has-text-info"><i class="fas fa-chess"></i></span>
+                    Classifica stagione in corso
+                </h3>
+
+                {% if rankingTop %}
+                    <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th class="has-text-centered">N°</th>
+                                <th>Giocatore</th>
+                                <th class="has-text-centered">Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entry in rankingTop %}
+                                <tr>
+                                    <td class="has-text-centered">
+                                        {% if loop.index == 1 %}🥇{% elseif loop.index == 2 %}🥈{% else %}🥉{% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="/ranking/{{ rankingYear }}/#player/{{ entry.name|url_encode }}">
+                                            {{ entry.name }}
+                                        </a>
+                                    </td>
+                                    <td class="has-text-centered"><strong>{{ entry.rating }}</strong></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="has-text-grey" style="margin-bottom:1rem">Nessun dato disponibile per il {{ rankingYear }}.</p>
+                {% endif %}
+
+                <p class="has-text-centered has-margin-b-4">
+                    <a href="/ranking/{{ rankingYear }}/" class="button is-outlined">
+                        <span class="icon"><i class="fas fa-chess"></i></span>
+                        <span>Mostra la lista completa</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

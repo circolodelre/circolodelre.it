@@ -2,6 +2,7 @@
 
 use App\Events;
 use App\GrandPrix;
+use App\Ranking;
 use App\Services;
 use App\System;
 
@@ -25,6 +26,11 @@ foreach ($seasons as $seasonYear => $data) {
 }
 usort($gpAlboOro, fn($a, $b) => $b['year'] <=> $a['year']);
 
+$rankingYears = Ranking::loadYears();
+$rankingYear  = end($rankingYears) ?: date('Y');
+$rankingData  = $rankingYear ? Ranking::loadYear((string) $rankingYear) : ['standings' => []];
+$rankingTop   = array_slice($rankingData['standings'], 0, 3);
+
 return $twig->render('index.html', [
     'year'          => $year,
     'today'         => date($config['date_format']),
@@ -34,4 +40,6 @@ return $twig->render('index.html', [
     'gpYear'        => $gpYear,
     'gpStandings'   => $gpStandings,
     'gpAlboOro'     => $gpAlboOro,
+    'rankingYear'   => $rankingYear,
+    'rankingTop'    => $rankingTop,
 ]);
