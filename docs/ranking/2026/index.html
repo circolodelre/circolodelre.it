@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Circolo del Re - Castelvetrano Scacchi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.4.0/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+
+<section class="section is-marginless-b is-paddingless-b">
+    <div class="container has-text-centered">
+        <a href="/">
+            <img src="/assets/img/logo.png" class="has-image-shadow">
+        </a>
+        <h1 class="is-marginless">
+            <a href="/">
+                <span class="title is-3 has-text-shadow">
+                    A.S.D. Circolo del Re
+                </span>
+            </a>
+        </h1>
+        <a href="/">
+            <span class="subtitle is-4 has-text-shadow">
+                Castelvetrano Scacchi
+            </span>
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container has-text-centered">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-content">
+                        <div id="ranking-app"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const STANDINGS = [{"name":"Mangiaracina A.","rating":1644,"initial":1644,"delta":0,"rounds":[]},{"name":"Bianco F.","rating":1626,"initial":1622,"delta":4,"rounds":[{"round_id":"2026-01-01","round_name":"Tappa #1 - 2026","round_date":"09\/12\/2026","opponent":"Mirasolo D.","color":"white","score":1,"rating_before":1622,"delta":4}]},{"name":"Mirasolo D.","rating":1395,"initial":1399,"delta":-4,"rounds":[{"round_id":"2026-01-01","round_name":"Tappa #1 - 2026","round_date":"09\/12\/2026","opponent":"Bianco F.","color":"black","score":0,"rating_before":1399,"delta":-4}]}];
+const ROUNDS    = [{"id":"2026-01-01","name":"Tappa #1 - 2026","location":"Castelvetrano","date":"09\/12\/2026","matches":[{"white":"Bianco F.","black":"Mirasolo D.","score_white":1,"score_black":0}]}];
+const YEAR      = "2026";
+const ALL_YEARS = ["2026"];
+
+const app = document.getElementById('ranking-app');
+
+function route() {
+    const hash  = location.hash.slice(1) || 'ranking';
+    const parts = hash.split('/');
+    const view  = parts[0];
+
+    if (view === 'player' && parts[1]) {
+        renderPlayer(decodeURIComponent(parts[1].replace(/\+/g, '%20')));
+    } else if (view === 'round' && parts[1]) {
+        renderRound(parts[1]);
+    } else {
+        renderStandings();
+    }
+}
+
+function yearTabs() {
+    return '<div class="tabs"><ul>' +
+        ALL_YEARS.slice().reverse().map(y =>
+            String(y) === String(YEAR)
+                ? `<li class="is-active" id="ranking-tab-active"><a href="/ranking/${y}/" style="font-weight:700;border-bottom:3px solid currentColor">${y}</a></li>`
+                : `<li><a href="/ranking/${y}/">${y}</a></li>`
+        ).join('') +
+        '</ul></div>';
+}
+
+function nav(extraHtml) {
+    const back = `<a href="#ranking" class="button is-small is-light">Ranking ${YEAR}</a>`;
+    const extra = extraHtml ? ` ${extraHtml}` : '';
+    return `<div class="has-text-centered" style="margin-bottom:1.5rem">${back}${extra}</div>`;
+}
+
+function deltaTag(delta) {
+    if (delta > 0) return `<span class="tag is-success">+${delta}</span>`;
+    if (delta < 0) return `<span class="tag is-danger">${delta}</span>`;
+    return `<span class="tag is-light">0</span>`;
+}
+
+function scoreTag(score) {
+    if (score === 1)   return '<span class="tag is-success">1 - 0</span>';
+    if (score === 0)   return '<span class="tag is-danger">0 - 1</span>';
+    return '<span class="tag is-warning">½ - ½</span>';
+}
+
+function renderStandings() {
+    const rows = STANDINGS.map((s, i) => {
+        const medal = i === 0 ? '🥇 ' : i === 1 ? '🥈 ' : i === 2 ? '🥉 ' : '';
+        const matchesPlayed = s.rounds.length;
+        return `<tr>
+            <td class="has-text-centered">${i + 1}</td>
+            <td class="has-text-left">${medal}<a href="#player/${encodeURIComponent(s.name)}">${s.name}</a></td>
+            <td class="has-text-centered"><strong>${s.rating}</strong></td>
+            <td class="has-text-centered">${deltaTag(s.delta)}</td>
+            <td class="has-text-centered">${matchesPlayed}</td>
+        </tr>`;
+    }).join('');
+
+    const roundsHtml = ROUNDS.length > 0
+        ? `<h3 class="title is-5 mt-5">Tappe</h3>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th>Tappa</th>
+                   <th>Luogo</th>
+                   <th class="has-text-centered">Data</th>
+                   <th class="has-text-centered">Partite</th>
+               </tr></thead>
+               <tbody>${ROUNDS.map(r =>
+                   `<tr>
+                       <td><a href="#round/${r.id}">${r.name}</a></td>
+                       <td>${r.location}</td>
+                       <td class="has-text-centered">${r.date}</td>
+                       <td class="has-text-centered">${r.matches.length}</td>
+                   </tr>`
+               ).join('')}</tbody>
+           </table></div>`
+        : '';
+
+    const standingsHtml = STANDINGS.length > 0
+        ? `<h3 class="title is-5">Classifica ELO</h3>
+           <div class="table-container has-text-left">
+           <table class="table is-fullwidth is-striped">
+               <thead><tr>
+                   <th class="has-text-centered">N°</th>
+                   <th>Giocatore</th>
+                   <th class="has-text-centered">Rating</th>
+                   <th class="has-text-centered">Variazione</th>
+                   <th class="has-text-centered">Partite</th>
+               </tr></thead>
+               <tbody>${rows}</tbody>
+           </table></div>`
+        : '<p class="has-text-grey" style="margin-bottom:1.5rem">Nessun dato disponibile per questo anno.</p>';
+
+    app.innerHTML =
+        `<span class="icon has-text-info is-large"><i class="fas fa-chess fa-2x"></i></span>
+        <h1 class="title">Ranking ELO ${YEAR}</h1>` +
+        yearTabs() + standingsHtml + roundsHtml;
+
+    document.getElementById('ranking-tab-active')?.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+}
+
+function renderPlayer(name) {
+    const player = STANDINGS.find(s => s.name === name);
+    if (!player) { app.innerHTML = '<p>Giocatore non trovato.</p>'; return; }
+
+    const rows = player.rounds.map(r => {
+        const colEmoji = r.color === 'white' ? '⬜' : '⬛';
+        const round = ROUNDS.find(x => x.id === r.round_id);
+        const roundLink = round
+            ? `<a href="#round/${r.round_id}">${r.round_name}</a>`
+            : r.round_name;
+        return `<tr>
+            <td class="has-text-left">${roundLink}</td>
+            <td class="has-text-centered">${colEmoji}</td>
+            <td class="has-text-left"><a href="#player/${encodeURIComponent(r.opponent)}">${r.opponent}</a></td>
+            <td class="has-text-centered">${scoreTag(r.score)}</td>
+            <td class="has-text-centered">${r.rating_before}</td>
+            <td class="has-text-centered">${deltaTag(r.delta)}</td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML =
+        nav() +
+        `<h1 class="title mt-5 mb-2"><a href="#player/${encodeURIComponent(name)}" style="color:inherit;text-decoration:none">${name} <span style="font-size:0.6em;vertical-align:middle;opacity:0.4"><i class="fas fa-user"></i></span></a></h1>
+        <p class="subtitle">Rating attuale: <strong>${player.rating}</strong> &middot; Variazione: ${deltaTag(player.delta)} &middot; Partite: ${player.rounds.length}</p>
+        ${player.rounds.length > 0
+            ? `<div class="table-container has-text-left">
+               <table class="table is-fullwidth is-striped">
+                   <thead><tr>
+                       <th>Tappa</th>
+                       <th class="has-text-centered">Col</th>
+                       <th>Avversario</th>
+                       <th class="has-text-centered">Ris</th>
+                       <th class="has-text-centered">Rating</th>
+                       <th class="has-text-centered">Delta</th>
+                   </tr></thead>
+                   <tbody>${rows}</tbody>
+               </table></div>`
+            : '<p class="has-text-grey">Nessuna partita registrata.</p>'
+        }`;
+}
+
+function renderRound(id) {
+    const round = ROUNDS.find(r => r.id === id);
+    if (!round) { app.innerHTML = '<p>Tappa non trovata.</p>'; return; }
+
+    const rows = round.matches.map(m => {
+        const resultW = m.score_white === 1 ? '<span class="tag is-success">1</span>'
+                      : m.score_white === 0 ? '<span class="tag is-danger">0</span>'
+                      : '<span class="tag is-warning">½</span>';
+        const resultB = m.score_black === 1 ? '<span class="tag is-success">1</span>'
+                      : m.score_black === 0 ? '<span class="tag is-danger">0</span>'
+                      : '<span class="tag is-warning">½</span>';
+        return `<tr>
+            <td class="has-text-left"><a href="#player/${encodeURIComponent(m.white)}">${m.white}</a></td>
+            <td class="has-text-centered">${resultW}</td>
+            <td class="has-text-centered">—</td>
+            <td class="has-text-centered">${resultB}</td>
+            <td class="has-text-left"><a href="#player/${encodeURIComponent(m.black)}">${m.black}</a></td>
+        </tr>`;
+    }).join('');
+
+    app.innerHTML =
+        nav() +
+        `<h1 class="title mt-5 mb-2">${round.name}</h1>
+        <p class="subtitle">${round.location} &middot; ${round.date}</p>
+        <div class="table-container has-text-left">
+        <table class="table is-fullwidth is-striped">
+            <thead><tr>
+                <th>Bianco</th>
+                <th class="has-text-centered" colspan="3">Risultato</th>
+                <th>Nero</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+        </table></div>`;
+}
+
+window.addEventListener('hashchange', route);
+route();
+</script>
+
+<footer class="footer has-text-centered">
+    <div class="container">
+        <div class="columns">
+
+            <div class="column is-3">
+                &nbsp;
+            </div>
+
+            <div class="column">
+                <p class="has-margin-b-4">
+                    <a href="/">
+                        <img src="/assets/img/logo.png" width="100" height="100">
+                    </a>
+                    <a href="/">
+                        <span class="title is-5 is-block">
+                            A.S.D. Circolo del Re
+                        </span>
+                    </a>
+                    <a href="/">
+                        <span class="subtitle is-6">
+                            Castelvetrano Scacchi
+                        </span>
+                    </a>
+                </p>
+
+                <p class="has-margin-b-4 content is-small">
+                    Via delle Due Sicilie, 36<br>
+                    91022 Castelvetrano (TP)
+                </p>
+
+                <p class="content is-small">
+                    Codice Fiscale: 90019450817<br>
+                    Email: info@circolodelre.it<br>
+                    PEC: circolodelre@pec.it<br>
+                </p>
+
+                <p class="content is-small">
+                    Presidente: Francesco Bianco<br>
+                    Responsabile Safeguarding: Francesco Bianco<br>
+                </p>
+
+                <p class="content is-small">
+                    <a href="https://github.com/circolodelre/statuto?tab=readme-ov-file#statuto-sociale" target="_blank">Leggi lo Statuto Sociale</a>
+                </p>
+
+            </div>
+
+            <div class="column is-3">
+                &nbsp;
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.4.149/pdf.min.mjs">
+    window.pdfjsLib = pdfjsLib
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/assets/js/app.js"></script>
+
+<!-- 100% privacy-first analytics -->
+<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+Torneo Rapid di Primavera 2025
+Castelvetrano - 28/03/2025, 29/03/2025
+
+ Tabellone al turno 5 ordinato per punti
+
+Pos NAME                           Rtg   T  Fed  Pts |   1     2     3     4     5    |     BH   BH/C1
+-------------------------------------------------------------------------------------------------------
+  1 Pantano Giuseppe                  0     ITA  5.0 | +W5   +B3   +W10  +W2   +B4    |   15.5    13.5
+  2 Agoglitta Martin                  0     ITA  4.0 | +W7   +B4   +W9   -B1   +W8    |   15.0    13.0
+  3 Bianco Francesco                  0     ITA  3.5 | +B13  -W1   =B12  +W10  +B7    |   12.0    11.0
+  4 Ruggia Samuele                    0     ITA  3.0 | +B11  -W2   +W5   +B6   -W1    |   17.0    15.0
+  5 Amato Paolo                       0     ITA  3.0 | -B1   +W8   -B4   +B13  +W9    |   13.5    12.5
+  6 Vaccaro Giuseppe                  0     ITA  3.0 | -B9   +W14  +B11  -W4   +B12   |    8.5     8.5
+
+Ricostruito manualmente grazie al contributo di Francesco Tilotta
