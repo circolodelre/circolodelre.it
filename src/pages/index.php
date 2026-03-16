@@ -26,10 +26,14 @@ foreach ($seasons as $seasonYear => $data) {
 }
 usort($gpAlboOro, fn($a, $b) => $b['year'] <=> $a['year']);
 
-$rankingYears = Ranking::loadYears();
-$rankingYear  = end($rankingYears) ?: date('Y');
-$rankingData  = $rankingYear ? Ranking::loadYear((string) $rankingYear) : ['standings' => []];
-$rankingTop   = array_slice($rankingData['standings'], 0, 3);
+$rankingYear = null;
+$rankingTop  = [];
+if ($config['elo_ranking']) {
+    $rankingYears = Ranking::loadYears();
+    $rankingYear  = end($rankingYears) ?: date('Y');
+    $rankingData  = $rankingYear ? Ranking::loadYear((string) $rankingYear) : ['standings' => []];
+    $rankingTop   = array_slice($rankingData['standings'], 0, 3);
+}
 
 return $twig->render('index.html', [
     'year'          => $year,

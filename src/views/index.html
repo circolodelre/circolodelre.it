@@ -22,7 +22,9 @@
 
                     {% include 'partials/grandprix.html' %}
 
-                    {% include 'partials/ranking.html' %}
+                    {% if config.elo_ranking %}
+                        {% include 'partials/ranking.html' %}
+                    {% endif %}
 
                 </div>
             </div>
